@@ -1,0 +1,41 @@
+<!-- 기간성별나이입력 -->
+<form [formGroup]="basicForm">
+	<hospital-search></hospital-search>
+	<div class="col-sm-12 form-line">
+		<!-- 성별 -->
+		<div class="form-group row">
+			<label for="basic-4" class="col-sm-3 col-form-label">
+				{{'research.gender' | translate}}
+			</label>
+			<div class="col-sm-9 px-0">
+				<select
+					class="form-control custom-select"
+					title="select gender"
+					formControlName="gender"
+					[(ngModel)]="setBasic.gender">
+					<option value="A">{{'common.all' | translate}}</option>
+					<option value="M">{{'research.male' | translate}}</option>
+					<option value="F">{{'research.female' | translate}}</option>
+				</select>
+				<i class="fas fa-caret-down"></i>
+			</div>
+		</div>
+		<!-- 생년월일 -->
+		<div class="form-group row col-birthday">
+			<label for="birthday-2" class="col-sm-3 col-form-label">
+				{{'research.date.of.birth' | translate}}
+			</label>
+			<div class="col-sm-9 px-0">
+				<!-- <dashboard-datepicker
+					(secDate)="selectDate($event)"
+					[storageDate]="storageDate">
+				</dashboard-datepicker>				 -->
+				<daterangepicker
+					(secDate)="selectDate($event)" 
+					[secCode]="'datepicker-birthday'"
+					[storageDate]="storageDate">
+				</daterangepicker>
+			</div>
+		</div>
+	</div>
+</form>

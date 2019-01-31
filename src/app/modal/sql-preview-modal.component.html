@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        {{'renewal2017.sqlViewer' | translate}}
+    </h3>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Close Click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+	<div *ngIf="data">
+		<codemirror [(ngModel)]="data"
+        	[config]="config">
+    	</codemirror>
+	</div>
+    
+</div>
+<div class="modal-footer text-right">
+    <button 
+        type="button" 
+        class="btn btn-primary btn-rounded" 
+        (click)="activeModal.close('Close Click')">
+        {{'common.ok' | translate}}
+    </button>
+</div>

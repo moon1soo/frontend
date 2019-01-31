@@ -1,0 +1,76 @@
+<div class="tab-inner-area">
+    <form [formGroup]="rediationForm">
+        <div class="col-sm-12 form-line">
+            <!-- 예약일 -->
+            <div class="form-group row">
+                <label for="rediation-2" class="col-sm-2 col-form-label">
+                    {{'renewal2017.rediation.date' | translate}}
+                </label>
+                <div class="col-sm-5">
+                    <daterangepicker
+						(secDate)="selectDate($event)" [secCode]="'datepicker-period'"
+						[storageDate]="storageDate">
+					</daterangepicker>
+                </div>
+                <div class="col-sm-3 label-border">
+                    <div class="form-check form-check-inline mb-0">
+                        <label class="custom-control custom-checkbox">
+                            <input
+                                class="custom-control-input"
+                                type="checkbox"
+                                value="Y"
+                                formControlName="yn"
+                                [(ngModel)]="rediationData.yn"
+                                [checked]="rediationData.yn === 'Y'">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">
+                                {{'renewal2017.rediation.yn' | translate}}
+                            </span>
+                        </label>                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <ngb-tabset class="table-list"
+        [destroyOnHide]="true">
+        <!-- 방사선 치료 -->
+        <ngb-tab id="tab-rediation">
+            <ng-template ngbTabTitle>
+                {{'renewal2017.rediation.treatment.title' | translate}}
+            </ng-template>
+            <ng-template ngbTabContent>
+                <rediation-search></rediation-search>
+            </ng-template>
+        </ngb-tab>
+        <!-- 치료실 -->
+        <ngb-tab id="tab-rediationRoom">
+            <ng-template ngbTabTitle>
+                {{'renewal2017.rediation.room.title' | translate}}
+            </ng-template>
+            <ng-template ngbTabContent>
+                <rediation-room-search></rediation-room-search>
+            </ng-template>
+        </ngb-tab>
+        <!-- 치료부위 -->
+        <ngb-tab id="tab-rediationRegion">
+            <ng-template ngbTabTitle>
+                {{'renewal2017.rediation.region.title' | translate}}
+            </ng-template>
+            <ng-template ngbTabContent>
+                <rediation-region-search></rediation-region-search>
+            </ng-template>
+        </ngb-tab>
+        <!-- 담당의 -->
+        <ngb-tab id="tab-rediationDoctor">
+            <ng-template ngbTabTitle>
+                {{'renewal2017.rediation.doctor.title' | translate}}
+            </ng-template>
+            <ng-template ngbTabContent>
+                <rediation-doctor-search></rediation-doctor-search>
+            </ng-template>
+        </ngb-tab> 
+    </ngb-tabset>
+</div>
+
+    

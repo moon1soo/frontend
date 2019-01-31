@@ -1,0 +1,18 @@
+<!-- <div *ngIf="loading" class="blind-curton">
+    <div class="load-spinner">
+        <i class="fal fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+    </div>
+</div> -->
+<div class="chart-area">
+    <div #containerPieChart></div>
+</div>
+<dx-load-panel
+    #loadPanel
+    shadingColor="rgba(255,255,255,0)"
+    [position]="{ of: '.chart-area' }"
+    [(visible)]="loading"
+    [showIndicator]="true"
+    [showPane]="true"
+    [shading]="true"
+    [closeOnOutsideClick]="false">
+</dx-load-panel>

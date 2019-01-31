@@ -1,0 +1,45 @@
+<dx-data-grid 
+    id="medicine-server"
+    class="gridContainer floor-510"
+    [dataSource]="dataSource"
+    [columnResizingMode]="'nextColumn'" [allowColumnResizing]="true"
+    (onContentReady)="onContentReady($event)"
+    (onSelectionChanged)="onSelectionChanged($event)"
+    (onRowClick)="onRowClick($event)"
+    (onToolbarPreparing)="onToolbarPreparing($event)">
+    <dxo-filter-row 
+        [visible]="true"></dxo-filter-row>
+    <dxo-header-filter 
+        [visible]="true"></dxo-header-filter>
+    <dxo-search-panel 
+        [visible]="true" 
+        [width]="240" 
+        placeholder="Search..."></dxo-search-panel>
+    <dxi-column dataField="useYn" caption="{{'research.drug.useYn' | translate}}" [width]="60" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="rprnMdprCd" caption="{{'research.drug.rprn' | translate}}" [width]="120" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="mdprCd" caption="{{'research.drug.code' | translate}}" [width]="120" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="atcCd" caption="{{'research.drug.atc' | translate}}" [width]="100" cssClass="text-center"></dxi-column>
+    <!-- <dxi-column dataField="kpemMdprNm" caption="{{'research.drug.common.name' | translate}}"></dxi-column> -->
+    <dxi-column dataField="atcIngrNm" caption="{{'research.drug.component.name' | translate}}"></dxi-column>
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+    <dxo-selection
+        mode="multiple"
+       [selectAllMode]="allMode"
+        showCheckBoxesMode="onClick">
+    </dxo-selection>
+    <dxo-sorting mode="single"></dxo-sorting>   
+
+    <div *dxTemplate="let data of 'totalCount'">
+        <h3 class="title-grid-sub">
+            {{'research.drug.search' | translate}}
+        </h3>
+        <div class="informer">
+            {{'research.search.result.0' | translate}}: <strong>{{resultCount}} / {{totalCount}}</strong>{{'common.cnt' | translate}}
+        </div>
+    </div>
+</dx-data-grid>
+<div *ngIf="loading" class="blind-curton">
+    <div class="load-spinner">
+        <i class="fal fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+    </div>
+</div>

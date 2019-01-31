@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h3 class="modal-title">Admin</h3>
+    <button type="button" class="close" aria-label="Close"
+        (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <admin-log></admin-log>
+</div>
+<div class="modal-footer text-right">
+    <button
+        type="button"
+        class="btn btn-md btn-light btn-rounded"
+        (click)="activeModal.close('no')">
+        {{'renewal2017.button.close' | translate}}
+    </button>
+</div>

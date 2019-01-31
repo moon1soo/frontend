@@ -1,0 +1,173 @@
+<div class="dx-viewport demo-container" style="margin-left: 30px;margin-right: 30px;margin-top:40px;height: 100%;">
+  <div class="row dx-datagrid-title" style="margin-top:16px;">
+    <div class="col-6"><h5>마트 정보</h5></div>
+    <div class="col-6 text-right">
+      <button type="button" class="btn btn-light btn-sm" (click)="cohortSave()">
+        <i class="fal fa-save" aria-hidden="true"></i>
+        {{'cohort.save' | translate}}
+      </button>
+    </div>
+    <span class="input-material headline col-12" style="height: 10px;margin-bottom: 10px;"></span>
+  </div>
+</div>
+  <div class="full-width-content" style="margin-left: 15px;margin-right: 15px;">
+    <div class="col-sm-12 form-line">
+      <div class="form-group row" style="padding-top: 13px; padding-bottom: 13px;">
+        <label for="martName" class="col-sm-2 col-form-label">
+          {{'cohort.mart.name' | translate}}
+        </label>
+        <input
+          #mName
+          id="martName"
+          type="text"
+          class="form-control col-sm-6 float-left"
+          title="Name"
+          maxlength="50"
+          [(ngModel)]="mart.name">
+      </div>
+    </div>
+    <div class="col-sm-12 form-line">
+      <div class="form-group row" style="padding-top: 13px; padding-bottom: 13px;">
+        <label for="martCnte" class="col-sm-2 col-form-label">
+          {{'cohort.mart.cnte' | translate}}
+        </label>
+        <input
+          #mCnte
+          id="martCnte"
+          type="text"
+          class="form-control col-sm-10 float-left"
+          title="Description"
+          maxlength="2000"
+          style="width:165px;"
+          [(ngModel)]="mart.cnte">
+      </div>
+    </div>
+    <div class="col-sm-12 form-line">
+      <div class="form-group row" style="padding-top: 13px; padding-bottom: 13px;">
+        <label for="martSuffix" class="col-sm-2 col-form-label">
+          {{'cohort.mart.suffix' | translate}}
+        </label>
+        <input
+          #mSuffix
+          id="martSuffix"
+          type="text"
+          class="form-control col-sm-10 float-left"
+          title="Suffix"
+          maxlength="19"
+          style="width:165px;"
+          [(ngModel)]="mart.suffix">
+      </div>
+    </div>
+    <div class="col-sm-12 form-line">
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">
+          환자리스트 스케쥴
+        </label>
+        <div class="form-radio" style="margin-top: 4px;">
+          <label class="custom-control custom-radio">
+            <input
+              class="custom-control-input"
+              type="radio"
+              value="Y"
+              [(ngModel)]="mart.plsch">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">
+                    {{'renewal2017.label.yes' | translate}}
+                </span>
+          </label>
+          <label class="custom-control custom-radio">
+            <input
+              class="custom-control-input"
+              type="radio"
+              value="N"
+              [(ngModel)]="mart.plsch">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">
+                    {{'renewal2017.label.no' | translate}}
+                </span>
+          </label>
+      </div>
+    </div>
+    <div class="col-sm-12 form-line">
+      <div class="form-group row" style="padding-top: 13px; padding-bottom: 13px;">
+        <label for="martSuffix" class="col-sm-2 col-form-label">
+          {{'cohort.mart.schedule.name' | translate}}
+        </label>
+        <select
+          #mSchedule
+          class="form-control col-sm-2 float-left custom-select"
+          [(ngModel)]="mart.schedule">
+          <option value="N" selected>{{'cohort.mart.schedule.none' | translate}}</option>
+          <option value="D">{{'cohort.mart.schedule.day' | translate}}</option>
+          <option value="W">{{'cohort.mart.schedule.week' | translate}}</option>
+          <option value="M">{{'cohort.mart.schedule.month' | translate}}</option>
+          <option value="Y">{{'cohort.mart.schedule.year' | translate}}</option>
+        </select>
+      </div>
+    </div>
+    <!--div class="col-sm-12 form-line">
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">
+          {{'cohort.isshare' | translate}}
+        </label>
+        <div class="form-radio" style="margin-top: 4px;">
+          <label class="custom-control custom-radio">
+            <input
+              class="custom-control-input"
+              type="radio"
+              value="Y"
+              [(ngModel)]="mart.share">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">
+                    {{'renewal2017.label.yes' | translate}}
+                </span>
+          </label>
+          <label class="custom-control custom-radio">
+            <input
+              class="custom-control-input"
+              type="radio"
+              value="N"
+              [(ngModel)]="mart.share">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">
+                    {{'renewal2017.label.no' | translate}}
+                </span>
+          </label>
+      </div>
+    </div//-->
+    <!--div class="col-sm-12 form-line">
+        <input
+          #mOwner
+          id="martOwner"
+          type="text"
+          class="form-control input-date-sm float-left"
+          title="Owner"
+          maxlength="50"
+          style="width:165px;"
+          [(ngModel)]="mart.owner">
+      </div>
+    </div//-->
+    <div class="col-sm-12 form-line">
+      <div class="form-group row" style="padding-top: 13px; padding-bottom: 13px;">
+        <label for="martPatientSql" class="col-sm-2 col-form-label">
+          {{'cohort.mart.patient-sql' | translate}}
+        </label>
+        <textarea
+          #mPatientSql
+          id="martPatientSql"
+          type="text"
+          class="form-control col-sm-10  float-left"
+          title="Patient Sql"
+          rows="10"
+          maxlength="20000"
+          style="height: initial;padding-top: .75em;"
+          [(ngModel)]="mart.patientSql"></textarea>
+        <!--dx-text-area
+          id="martPatientSql"
+          [height]="300"
+          [maxLength]="maxLength"
+          [(value)]="martPatientSql">
+        </dx-text-area//-->
+      </div>
+    </div>
+</div>

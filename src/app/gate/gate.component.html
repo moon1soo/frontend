@@ -1,0 +1,126 @@
+<section class="gate-container">
+    <div class="bg-img"></div>
+    <div class="floating-container">
+        <header>
+            <div class="row">
+                <h1 class="gate-ci">
+                    <!-- <img src="assets/styles/images/ci_invert.png" height="13" alt="{{'renewal2017.snuh' | translate}}"> -->
+                </h1>
+                <!-- <p class="caption mt-3"><em>S</em>eoul National <em>U</em>niversity Hospital <em>P</em>atient <em>R</em>esearch <em>E</em>nviron<em class="sm">me</em>nt</p> -->
+                <p class="caption">
+                    <img src="assets/styles/images/p_supreme.png" alt="Seoul National University Hospital Patient Research Environment" height="20">
+                </p>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Guide Mode</h2>
+                        <p>
+                            {{'renewal2017.p.guidemode' | translate}}
+                        </p>
+                        <div class="text-center">
+                            <a routerLink="/tempAuth.do/basicmode/scenario"
+                                skipLocationChange
+                                class="btn btn-primary btn-lg btn-rounded">
+                                {{'renewal2017.button.start' | translate}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Power Mode</h2>
+                        <p>
+                            {{'renewal2017.p.powermode' | translate}}
+                        </p>
+                        <div class="text-center">
+                            <a routerLink="/tempAuth.do/powermode/scenario"
+                                skipLocationChange
+                                class="btn btn-info btn-lg btn-rounded">
+                                {{'renewal2017.button.start' | translate}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Cohort Marts</h2>
+                        <p>
+                            {{'renewal2017.p.cohort' | translate}}
+                        </p>
+                        <div class="text-center">
+                          <a routerLink="/tempAuth.do/cohortmart/cohortList"
+                             skipLocationChange
+                             class="btn btn-primary btn-lg btn-rounded">
+                            {{'renewal2017.button.start' | translate}}
+                          </a>
+
+                            <!--button
+                                class="btn btn-primary btn-lg"
+                                (click)="notice($event)">
+                                {{'renewal2017.button.start' | translate}}
+                            </button//-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-right" (click)="citation()">
+            <span class="citation"><u>Citation & Acknowledgement</u></span>
+        </div>
+    </div>
+    <div class="floating-container text-center" *ngIf="warning">
+        <header>
+            <div class="row">
+                <h1 class="gate-ci">
+                </h1>
+                <p class="caption">
+                    <img src="assets/styles/images/p_supreme.png" alt="Seoul National University Hospital Patient Research Environment" height="20">
+                </p>
+            </div>
+        </header>
+        <div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="message">
+                        <h2>
+                            <span class="text-danger"><b><u>{{ 'renewal2017.p.warning-agree-title' | translate }}</u></b></span>
+                        </h2>
+                        <br>
+                        <p>
+                            {{ 'renewal2017.p.warning-agree-message-1' | translate }}
+                            <br>
+                            {{ 'renewal2017.p.warning-agree-message-2' | translate }}
+                            <span class="text-warning"><b>{{ 'renewal2017.p.warning-agree-word-1' | translate }}</b></span>
+                            {{ 'renewal2017.p.warning-agree-message-3' | translate }}
+                        </p>
+                        <p>
+                            {{ 'renewal2017.p.warning-agree-message-4' | translate }}
+                            <span class="text-warning"><b>{{ 'renewal2017.p.warning-agree-word-2' | translate }}</b></span>
+                            {{ 'renewal2017.p.warning-agree-message-5' | translate }}
+                            <span class="text-warning"><b>{{ 'renewal2017.p.warning-agree-word-3' | translate }}</b></span>
+                            {{ 'renewal2017.p.warning-agree-message-6' | translate }}
+                            <br>
+                            {{ 'renewal2017.p.warning-agree-message-7' | translate }}
+                            <br>
+                        </p>
+                    </div>
+                    <div class="button">
+                        <button
+                            class="btn btn-primary btn-lg btn-rounded confirm"
+                            (click)="confirm()">
+                            {{ 'common.ok' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

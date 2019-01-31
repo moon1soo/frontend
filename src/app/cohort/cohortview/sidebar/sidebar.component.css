@@ -1,0 +1,11 @@
+a.sidebar-list-link i {
+  margin-right: 0px;
+}
+a.sidebar-list-link {
+  height:39px;
+  line-height: 39px;
+}
+
+a.sidebar-list-link.active{
+  background-color: #148ecf;
+}

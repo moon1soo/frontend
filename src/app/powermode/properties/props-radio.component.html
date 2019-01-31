@@ -1,0 +1,23 @@
+<div class="power-props-inner">
+    <h2 class="h6">{{propsTitle}}</h2>
+    <form [formGroup]="radioForm">
+        <div *ngIf="dataSource">
+            <div class="form-check"
+                *ngFor="let data of dataSource.data">
+                <label class="custom-control custom-radio">
+                    <input
+                        class="custom-control-input"
+                        type="radio"
+                        [value]="data.name"
+                        formControlName="radioCtrl"
+                        [(ngModel)]="dataSource.isRadio"
+                        (ngModelChange)="changeVal($event)">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">
+                        {{data.name}}
+                    </span>
+                </label>
+            </div>
+        </div>
+    </form>
+</div>

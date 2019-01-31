@@ -1,0 +1,24 @@
+<vertical-split-pane
+    class="vertical-split-grid inner-area"
+    primary-component-minsize="80"
+    secondary-component-minsize="80"
+    primary-component-initialratio="0.5"
+    separator-thickness="1">
+    <div class="split-pane-content-primary">
+        <div class="left">
+            <surgical-server></surgical-server>
+        </div>
+    </div>
+    <div class="split-pane-content-secondary">
+        <div class="right">
+            <div *ngIf="isFilter">
+                <surgical-filter></surgical-filter>
+            </div>
+            <div *ngIf="!isFilter">
+                <surgical-client></surgical-client>
+            </div>
+        </div>
+    </div>
+</vertical-split-pane>
+
+

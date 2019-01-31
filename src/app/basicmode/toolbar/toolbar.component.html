@@ -1,0 +1,63 @@
+<header class="nav az-navbar fixed-top basic-mode"> 
+    <h1 [ngClass]="{'menu-collapsed': isMenuCollapsed}" *ngIf="!isScenario">
+        <span class="input-material headline" *ngIf="headLine"
+            (clickOutside)="inputFocus($event, 'blur')">
+            <input type="text" 		
+                [ngClass]="{'focus': focusInput}"						
+                (blur)="inputFocus($event, 'blur')"
+                [(ngModel)]="headLine"
+                [disabled]="!focusInput">
+            <button type="button" class="btn btn-md btn-transparent"
+                (click)="inputFocus($event, 'focus')" 
+                ngbTooltip="{{'renewal2017.button.modify' | translate}}" 
+                placement="bottom">
+                <i class="fal fa-pencil" aria-hidden="true"></i>
+            </button>
+        </span>
+    </h1>
+    <ul class="nav nav-pills nav-result-status" *ngIf="!isScenario">
+        <li class="nav-item">
+            <a class="nav-link" 
+                routerLink="/tempAuth.do/basicmode/condition" 
+                skipLocationChange 
+                routerLinkActive="active"
+                [ngClass]="{'disable-link': isUploadY}">
+                {{'renewal2017.conditionSetup' | translate}}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" 
+                routerLink="{{patientListLink}}" 
+                skipLocationChange 
+                routerLinkActive="active"
+                [ngClass]="{'disable-link': isEnableInterim}">
+                {{'renewal2017.patientList' | translate}}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" 
+                routerLink="/tempAuth.do/basicmode/additem" 
+                skipLocationChange 
+                routerLinkActive="active"
+                [ngClass]="{'disable-link': isEnableAddItem}">
+                {{'renewal2017.addItems' | translate}}
+            </a>
+            <!-- <a class="nav-link" 
+                routerLink="/tempAuth.do/basicmode/additem" 
+                skipLocationChange 
+                routerLinkActive="active">
+                {{'renewal2017.addItems' | translate}}
+            </a> -->
+        </li>
+    </ul>
+    <div class="btn-group-right">
+        <div class="btn-group">
+            <setting-window></setting-window>
+            <a href="javascript: void(0)"
+                (click)="openTransModal()"
+                class="btn-change-mode">
+                → &nbsp; Power Mode
+            </a> 
+        </div>           
+    </div>
+</header>

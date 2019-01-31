@@ -1,0 +1,50 @@
+<form [formGroup]="tableGroupForm" (ngSubmit)="submitForm()" (keypress)="onKeyPress($event)">
+    <div class="modal-header">
+        <h3 class="modal-title">
+            {{'cohort.mart.table.group.dlg-title' | translate}}
+        </h3>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Close Click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" style="padding-top:40px;">
+      <div class="modal-text" style="margin-bottom:40px;">
+        <h5>{{data.title}}</h5> {{'cohort.mart.table.group.input.info' | translate}}
+      </div>
+        <input
+          type="text"
+          class="form-control angular-material"
+          formControlName="GRP_SORT"
+          [(ngModel)]="GRP_SORT"
+          placeholder="{{'cohort.mart.table.group.input.grp_sort' | translate}}"
+          id="GRP_SORT" style="margin-bottom:20px;" autofocus>
+        <input
+          type="text"
+          class="form-control angular-material"
+          formControlName="GRP_NM"
+          [(ngModel)]="GRP_NM"
+          placeholder="{{'cohort.mart.table.group.input.grp_nm' | translate}}"
+          id="GRP_NM" style="margin-bottom:20px;">
+        <input
+          type="text"
+          class="form-control angular-material"
+          formControlName="GRP_CNTE"
+          [(ngModel)]="GRP_CNTE"
+          placeholder="{{'cohort.mart.table.group.input.grp_cnte' | translate}}"
+          id="GRP_CNTE" style="margin-bottom:20px;" >
+    </div>
+    <div class="modal-footer text-center">
+        <button
+            type="submit"
+            class="btn btn-md btn-info btn-rounded"
+            [disabled]="!tableGroupForm.valid">
+            {{'cohort.save' | translate}}
+        </button>
+        <button
+            type="button"
+            class="btn btn-md btn-light btn-rounded"
+            (click)="activeModal.close('no')">
+            {{'cohort.cancel' | translate}}
+        </button>
+    </div>
+</form>

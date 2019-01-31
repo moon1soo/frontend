@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h3 class="modal-title">Confirm</h3>
+        <button type="button" class="close" aria-label="Close"
+        (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="modal-text-area">
+        <div class="modal-icon text-danger">
+            <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i>
+        </div>
+        <div class="modal-text">
+            <span class="text-info">[{{data}}]</span>
+        </div>
+    </div>
+</div>
+<div class="modal-footer text-right">
+    <button
+        type="button"
+        class="btn btn-md btn-info btn-rounded"
+        (click)="activeModal.close('Confirm')">
+        {{'common.ok' | translate}}
+    </button>
+    <button
+        type="button"
+        class="btn btn-md btn-light btn-rounded"
+        (click)="activeModal.close('no')">
+        {{'common.cancel' | translate}}
+    </button>
+</div>

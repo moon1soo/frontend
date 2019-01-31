@@ -1,0 +1,45 @@
+<dx-data-grid 
+    id="exam-server"
+    class="gridContainer floor-470"
+    [dataSource]="dataSource"
+    [allowColumnResizing]="true"
+    [allowColumnResizing]="true"
+    (onContentReady)="onContentReady($event)"
+    (onSelectionChanged)="onSelectionChanged($event)"
+    (onRowClick)="onRowClick($event)"
+    (onToolbarPreparing)="onToolbarPreparing($event)">
+    <dxo-filter-row 
+        [visible]="true"></dxo-filter-row>
+    <dxo-header-filter 
+        [visible]="true"></dxo-header-filter>
+    <dxo-search-panel 
+        [visible]="true" 
+        [width]="240" 
+        placeholder="Search..."></dxo-search-panel>
+    <dxi-column dataField="exmCd" caption="{{'research.examination.code' | translate}}" cssClass="text-center" [width]="100"></dxi-column>
+    <!-- <dxi-column dataField="hspTpNm" caption="{{'research.hospital.name' | translate}}"></dxi-column> -->
+    <dxi-column dataField="exmNm" caption="{{'research.examination.name.0' | translate}}"></dxi-column>
+    <dxi-column dataField="pnlExmNm" caption="{{'research.panel.name.0' | translate}}"></dxi-column>
+    <dxi-column dataField="slipNm" caption="{{'research.slip.name.0' | translate}}"></dxi-column>
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+    <dxo-selection
+        mode="multiple"
+       [selectAllMode]="allMode"
+        showCheckBoxesMode="onClick">
+    </dxo-selection>
+    <!-- <dxo-sorting mode="single"></dxo-sorting>    -->
+
+    <div *dxTemplate="let data of 'totalCount'">
+        <h3 class="title-grid-sub">
+            {{'research.examination.name.search' | translate}}
+        </h3>
+        <div class="informer">
+            {{'research.search.result.0' | translate}}: <strong>{{resultCount}} / {{totalCount}}</strong>{{'common.cnt' | translate}}
+        </div>
+    </div>
+</dx-data-grid>
+<div *ngIf="loading" class="blind-curton">
+    <div class="load-spinner">
+        <i class="fal fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+    </div>
+</div>

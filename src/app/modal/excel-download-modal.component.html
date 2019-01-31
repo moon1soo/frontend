@@ -1,0 +1,55 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        {{'renewal2017.excel.modal.header' | translate}}
+    </h3>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('cancel')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">  
+    <div class="modal-text">
+        <p><span>ㆍ{{'renewal2017.excel.modal.alert-1' | translate}}</span></p>
+        <p><span>ㆍ{{'renewal2017.excel.modal.alert-2' | translate}}</span></p>
+        <p><span class="text-danger">ㆍ{{'renewal2017.excel.modal.alert-3' | translate}}</span></p>
+        <p><span>ㆍ{{'renewal2017.excel.modal.alert-4' | translate}}</span></p>
+        <p><span>ㆍ{{'renewal2017.excel.modal.alert-5' | translate}}</span></p>
+        <p>
+            <span *ngIf="status==='start'" class="text-info">ㆍ{{'renewal2017.excel.modal.start' | translate}}</span>
+            <span *ngIf="status==='working'" class="text-info">ㆍ{{'renewal2017.excel.modal.working' | translate}}</span>
+            <span *ngIf="status==='complete'" class="text-info">ㆍ{{'renewal2017.excel.modal.complete' | translate}}</span>
+            <span *ngIf="status==='error'" class="text-warning">ㆍ{{'renewal2017.excel.modal.error' | translate}}</span>
+        </p>
+        <dx-progress-bar #excelProgressBar
+            *ngIf="status==='start'"
+            id="excel-bar-status"
+            class="mt-5"
+            [class.complete]="excelProgressBar.value == maxValue"
+            [min]="0"
+            [max]="maxValue"
+            [value]="progressRate">
+        </dx-progress-bar>
+    </div>
+</div>
+<div class="modal-footer text-right">
+    <button
+        *ngIf="!isAgreed"
+        type="button"
+        class="btn btn-md btn-info btn-rounded"
+        (click)="setAgreement()">
+        {{'common.ok' | translate}}
+    </button>    
+    <button
+        *ngIf="isAgreed"
+        type="button"
+        class="btn btn-md btn-info btn-rounded"
+        (click)="excelDownload()"
+        [disabled]="!isRun">
+        {{'renewal2017.excel.modal.save-button' | translate}}
+    </button>
+    <button
+        type="button"
+        class="btn btn-md btn-light btn-rounded"
+        (click)="activeModal.close('cancel')">
+        {{'renewal2017.button.cancel' | translate}}
+    </button>
+</div>

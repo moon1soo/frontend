@@ -1,0 +1,41 @@
+<dx-data-grid 
+    id="rediation-search-server"
+    class="gridContainer floor-470"
+    [dataSource]="dataSource"
+    [columnResizingMode]="'nextColumn'" [allowColumnResizing]="true"
+    (onContentReady)="onContentReady($event)"
+    (onSelectionChanged)="onSelectionChanged($event)"
+    (onRowClick)="onRowClick($event)"
+    (onToolbarPreparing)="onToolbarPreparing($event)">
+    <dxo-filter-row 
+        [visible]="true"></dxo-filter-row>
+    <dxo-header-filter 
+        [visible]="true"></dxo-header-filter>
+    <dxo-search-panel 
+        [visible]="true" 
+        [width]="240" 
+        placeholder="Search..."></dxo-search-panel>
+    <dxi-column dataField="ordCd" caption="{{'renewal2017.rediation.treatment.ordCd' | translate}}" [width]="120" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="ordNm" caption="{{'renewal2017.rediation.treatment.ordNm' | translate}}"></dxi-column>
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+    <dxo-selection
+        mode="multiple"
+       [selectAllMode]="allMode"
+        showCheckBoxesMode="onClick">
+    </dxo-selection>
+    <dxo-sorting mode="single"></dxo-sorting>   
+
+    <div *dxTemplate="let data of 'totalCount'">
+        <h3 class="title-grid-sub">
+            {{'renewal2017.rediation.treatment.title' | translate}}
+        </h3>
+        <div class="informer">
+            {{'research.search.result.0' | translate}}: <strong>{{resultCount}} / {{totalCount}}</strong>{{'common.cnt' | translate}}
+        </div>
+    </div>
+</dx-data-grid>
+<div *ngIf="loading" class="blind-curton">
+    <div class="load-spinner">
+        <i class="fal fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+    </div>
+</div>

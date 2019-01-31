@@ -1,0 +1,24 @@
+.dx-datagrid-header-panel .dx-toolbar {
+  height: 34px;
+}
+
+.cell-selected {
+  background-color: lightgreen;
+}
+
+.dx-datagrid {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.highlightText {
+  background: yellow;
+}
+
+/deep/ .tab-content {
+  height: 100%;
+}
+
+/deep/ .tab-pane {
+  height: 100%;
+}

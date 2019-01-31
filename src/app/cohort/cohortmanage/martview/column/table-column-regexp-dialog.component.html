@@ -1,0 +1,109 @@
+    <div class="modal-header">
+        <h3 class="modal-title">
+            {{'cohort.mart.table.column.regex.dlg-title' | translate}}
+        </h3>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Close Click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" style="padding-top:40px;">
+      <div class="modal-text" style="margin-bottom:40px;">
+        <h5>{{COL_NM}}&nbsp;{{data.title}}</h5> {{'cohort.mart.table.column.regex.info' | translate}}
+      </div>
+      <!--input
+        type="text"
+        class="form-control angular-material"
+        [(ngModel)]="COL_NM"
+        placeholder="{{'cohort.mart.table.column.input.col_nm' | translate}}"
+        id="COL_NM" style="margin-bottom:20px;" readonly//-->
+      <div style="height:100%;overflow-y:auto;">
+        <table class="table table-hover demo-table-search table-responsive-blockd">
+          <thead>
+          <tr>
+            <th>{{'cohort.mart.table.column.regex.category' | translate}}</th>
+            <th>{{'cohort.mart.table.column.regex.name' | translate}}</th>
+            <th>{{'cohort.date' | translate}}</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody *ngIf ="columnRegularExpress">
+          <tr *ngFor="let cre of columnRegularExpress; let idx = index">
+            <td>{{cre.CTG_NM}}</td>
+            <td>{{cre.RGEP_NM}}</td>
+            <td>{{cre.LOAD_DTM}}</td>
+            <td>
+              <button type="button"
+                      class="btn btn-text-type"
+                      ngbTooltip="{{'research.delete' | translate}}"
+                      (click)="deleteRegularExpress(cre.RGEP_ID)" >
+                <i class="fal fa-trash" aria-hidden="true"></i>
+                <span class="sr-only">{{'research.delete' | translate}}</span>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+          <tbody *ngIf="!columnRegularExpress">
+            <tr>
+              <td class="text-center" colspan="4">No Data.</td>
+            </tr>
+            <tr>
+              <td class="text-center" colspan="4">No Data.</td>
+            </tr>
+            <tr>
+              <td class="text-center" colspan="4">No Data.</td>
+            </tr>
+            <tr>
+              <td class="text-center" colspan="4">No Data.</td>
+            </tr>
+            <tr>
+              <td class="text-center" colspan="4">No Data.</td>
+            </tr>
+            <tr>
+              <td class="text-center" colspan="4">No Data.</td>
+            </tr>
+            <tr>
+              <td class="text-center" colspan="4">No Data.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="form-group row" style="margin-right: 0px;margin-left: 0px;">
+        <label class="col-1 col-form-label" style="padding-left: 0px;margin-left:-2px;">
+          Regexp.
+        </label>
+        <div class="col-5" style="padding-right: 4px;">
+          <select
+            class="form-control custom-select"
+            [(ngModel)]="regexpCategory"
+            #regexpCategorySelect (change)="changeRegexpCategory($event.target.value)">
+            <option *ngFor="let state of regexpCategorys" [value]="state.CTG_CD">
+              {{state.CTG_NM}}
+            </option>
+          </select>
+        </div>
+        <div class="col-5" style="padding-left: 4px;">
+          <select
+            class="form-control custom-select"
+            [(ngModel)]="regexp"
+            #regexpsSelect (change)="changeRegexp($event.target.value)">
+            <option *ngFor="let state of regexps" [value]="state.RGEP_CD">
+              {{state.RGEP_NM}}
+            </option>
+          </select>
+        </div>
+        <div class="col-1" style="padding-left: 4px;">
+          <button type="button" class="btn btn-light btn-sm" (click)="addRegularExpress()" style="margin-left: -10px;margin-top: 4px;">
+            <i class="fal fa-save" aria-hidden="true"></i>
+            {{'cohort.mart.table.add' | translate}}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer text-center">
+        <button
+            type="button"
+            class="btn btn-md btn-light btn-rounded"
+            (click)="activeModal.close('no')">
+            {{'cohort.cancel' | translate}}
+        </button>
+    </div>

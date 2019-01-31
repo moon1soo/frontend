@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="532px" height="220px" viewBox="0 0 532 220" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 25</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="58.8072289%" y1="50%" x2="0%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#66A6FF" offset="0%"></stop>
+            <stop stop-color="#89F7FE" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Guide-Mode" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Run-Query" transform="translate(-413.000000, -56.000000)" fill="url(#linearGradient-1)">
+            <path d="M413,56 C599.141955,56 756.808622,56 886,56 C951.481645,56 930.382175,73.9157623 908.572165,79.1098061 C873.511106,87.4595809 919.844613,114.531498 938.798515,141.203853 C948.046187,154.217384 965.529011,217.110789 817.626661,223.402616 C765.89874,225.603143 889.202858,276 767.382584,276 C691.27804,276 573.150512,276 413,276 L413,56 Z" id="Rectangle-25"></path>
+        </g>
+    </g>    
+</svg>

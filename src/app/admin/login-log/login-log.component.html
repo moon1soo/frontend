@@ -1,0 +1,96 @@
+<div class="tab-inner-area">
+    <div class="col-sm-12 mt-5 row">
+        <div class="col-sm-6">
+            <dx-data-grid 
+                id="login-log"
+                class="gridContainer"
+                [dataSource]="dataSource"
+                [columnResizingMode]="'nextColumn'" 
+                [allowColumnResizing]="true"
+                (onContentReady)="onContentReady($event)"
+                [height]="735">
+                <dxo-filter-row 
+                    [visible]="true"></dxo-filter-row>
+                <dxo-header-filter 
+                    [visible]="true"></dxo-header-filter>
+                <dxi-column dataField="loginDtm" caption="접속일시" width="150" cssClass="text-center"></dxi-column>
+                <dxi-column dataField="loginIp" caption="접속 IP" cssClass="text-center"></dxi-column>
+                <dxi-column dataField="stfNo" caption="사번" cssClass="text-center"></dxi-column>
+                <dxi-column dataField="deptNm" caption="부서" cssClass="text-center"></dxi-column>
+                <dxi-column dataField="stfNm" caption="이름" cssClass="text-center"></dxi-column>
+                <dxo-scrolling mode="virtual"></dxo-scrolling>
+                <dxo-sorting mode="single"></dxo-sorting>   
+            </dx-data-grid>
+            <dx-load-panel
+                #loadPanel
+                shadingColor="rgba(255,255,255,0)"
+                [position]="{ of: '#login-log' }"
+                [(visible)]="loading"
+                [showIndicator]="true"
+                [showPane]="true"
+                [shading]="true"
+                [closeOnOutsideClick]="false">
+            </dx-load-panel>
+        </div>
+        <div class="col-sm-6">
+            <h3 class="title-grid-sub">{{'renewal2017.login-overview.weekly' | translate}}</h3>
+            <dx-chart
+                *ngIf="weeklyChart"
+                [dataSource]="weeklyChart"
+                style="height: 310px;">
+                <dxi-series
+                    argumentField="period"
+                    valueField="count"
+                    type="spline"
+                    color="#89898a">
+                </dxi-series>
+                <dxi-value-axis [valueMarginsEnabled]="true" [showZero]="true"></dxi-value-axis>
+                <dxo-crosshair
+                    [enabled]="true"
+                    color="#949494"
+                    [width]="3"
+                    dashStyle="dot">
+                    <dxo-label
+                        [visible]="true"
+                        backgroundColor="#949494">
+                        <dxo-font
+                            color="#fff"
+                            [size]="12">
+                        </dxo-font>
+                    </dxo-label>
+                </dxo-crosshair>
+                <dxo-format type="largeNumber" [precision]="1"></dxo-format>
+                <dxo-legend [visible]="false"></dxo-legend>
+            </dx-chart>
+            <h3 class="title-grid-sub mt-5">{{'renewal2017.login-overview.daily' | translate}}</h3>
+            <dx-chart
+                *ngIf="dailyChart"
+                [dataSource]="dailyChart"
+                style="height: 310px;">
+                <dxi-series
+                    argumentField="period"
+                    valueField="count"
+                    type="spline"
+                    color="#89898a">
+                </dxi-series>
+                <dxi-value-axis [valueMarginsEnabled]="true" [showZero]="true"></dxi-value-axis>
+                <dxo-crosshair
+                    [enabled]="true"
+                    color="#949494"
+                    [width]="3"
+                    dashStyle="dot">
+                    <dxo-label
+                        [visible]="true"
+                        backgroundColor="#949494">
+                        <dxo-font
+                            color="#fff"
+                            [size]="12">
+                        </dxo-font>
+                    </dxo-label>
+                </dxo-crosshair>
+                <dxo-format type="largeNumber" [precision]="1"></dxo-format>
+                <dxo-legend [visible]="false"></dxo-legend>
+            </dx-chart>
+        </div>
+    </div>
+</div>

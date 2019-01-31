@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>SUPREME</title>
+	<base href=".">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+	<link rel="stylesheet" href="assets/vendor/pace/themes/orange/pace-theme-flash.css"/>
+	<link rel="stylesheet" href="assets/styles/fontawesome/fontawesome-all.min.css"/>
+	<link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap-datepicker.css"/>
+
+	<style type="text/css">
+		@media print { body { -webkit-print-color-adjust: exact; } }
+		.pace .pace-activity {
+			top: 65px !important;
+			left: 60px !important;
+			border-top-color: #eb7a55 !important;
+  			border-left-color: #eb7a55 !important;
+		} 
+		.pace .pace-progress-inner {box-shadow: none;}
+		.pace .pace-progress {
+			z-index: 3000 !important;
+  			background: #eb7a55 ! important;
+		}
+		.loading::before,
+		.loading::after {
+			position: fixed;
+			z-index: 3000;
+			top: 0;
+			right: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+		}
+		.loading::before {
+			content: '';
+			background-color: #fff;
+		}
+		.loading::after {
+			font-family: "Malgun Gothic", "Helvetica Neue", Helvetica, sans-serif;
+			content: 'Loading....';
+			text-align: center;
+			white-space: pre;
+			font-weight: normal;
+			font-size: 24px;
+			letter-spacing: 0.04rem;
+			color: #000;
+			opacity: 0.8;
+			animation: animation 1s alternate infinite;
+		}
+		@keyframes animation {
+			to { opacity: 0.2; }
+		}
+		
+	</style>
+	
+	<script type="text/javascript">
+		window.paceOptions = {
+			document: true,
+			eventLag: true,
+			restartOnPushState: true,
+			restartOnRequestAfter: true,
+			ajax: {
+				// trackMethods: [ 'POST', 'GET', 'UPDATE', 'DELETE']
+				trackMethods: [ 'POST', 'GET' ],
+				trackWebSockets: false
+			}			
+		};
+		history.pushState(null, null, location.href);
+		window.onpopstate = function () {
+			history.go(1);
+			console.log(history);
+		};
+	</script>
+	<script src="assets/vendor/pace/pace.min.js"></script>	
+	<script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="assets/vendor/bootstrap/bootstrap-datepicker.min.js"></script>
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script> -->
+</head>
+<body>
+	<app-root class="wrap">
+		<div class="loading"></div>
+	</app-root>
+	
+	<script src="assets/vendor/lodash/lodash.min.js"></script>
+	<script src="assets/vendor/backbone/backbone.min.js"></script>
+	<script src="assets/vendor/joint/joint.min.js"></script>
+	<script src="assets/vendor/joint/joint.shapes.devs.min.js"></script>
+	<script src="assets/vendor/d3/d3.min.js"></script>
+	<script src="assets/vendor/d3/d3.tip.js"></script>
+	<script src="assets/vendor/dragscroll/dragscroll.js"></script>
+</body>
+</html>

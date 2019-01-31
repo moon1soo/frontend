@@ -1,0 +1,9 @@
+.
+.dx-datagrid-header-panel .dx-toolbar {
+  height: 34px;
+}
+
+/deep/ .dx-toolbar-item-content .dx-texteditor {
+  width: 110px !important;
+  min-width: 110px;
+}

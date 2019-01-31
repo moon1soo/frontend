@@ -1,0 +1,88 @@
+<form [formGroup]="tableForm" (ngSubmit)="submitForm()" (keypress)="onKeyPress($event)">
+    <div class="modal-header">
+        <h3 class="modal-title">
+            {{'cohort.mart.table.dlg-title' | translate}}
+        </h3>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Close Click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" style="padding-top:40px;">
+      <div class="modal-text" style="margin-bottom:40px;">
+        <h5>{{data.title}}</h5> {{'cohort.mart.table.input.info' | translate}}
+      </div>
+        <input
+          type="text"
+          class="form-control angular-material"
+          formControlName="TBL_SFX"
+          [(ngModel)]="TBL_SFX"
+          placeholder="{{'cohort.mart.table.input.suffix' | translate}}"
+          id="TBL_SFX" style="margin-bottom:20px;" [readonly]="data.MODE=='edit'" [autofocus]="data.MODE=='add'">
+        <input
+          type="text"
+          class="form-control angular-material"
+          formControlName="PSO_CNTE"
+          [(ngModel)]="PSO_CNTE"
+          placeholder="{{'cohort.mart.table.input.pso_cnte' | translate}}"
+          id="PSO_CNTE" style="margin-bottom:20px;"  [autofocus]="data.MODE=='edit'">
+        <input
+          type="text"
+          class="form-control angular-material"
+          formControlName="PRC_CNTE"
+          [(ngModel)]="PRC_CNTE"
+          placeholder="{{'cohort.mart.table.input.prc_cnte' | translate}}"
+          id="PRC_CNTE" style="margin-bottom:20px;" >
+        <input
+          type="number"
+          class="form-control angular-material"
+          formControlName="TBL_SORT"
+          [(ngModel)]="TBL_SORT"
+          placeholder="{{'cohort.mart.table.input.sort' | translate}}"
+          id="TBL_SORT" style="margin-bottom:20px;" >
+      <!--div class="form-group row">
+        <label class="col-sm-2 col-form-label" style="margin-left: 12px;">
+          {{'cohort.isshare' | translate}}
+        </label>
+        <div class="form-radio" style="margin-top: 4px;">
+          <label class="custom-control custom-radio">
+            <input
+              class="custom-control-input"
+              type="radio"
+              value="Y"
+              formControlName="TBL_SHARE"
+              [(ngModel)]="TBL_SHARE">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">
+                    {{'renewal2017.label.yes' | translate}}
+                </span>
+          </label>
+          <label class="custom-control custom-radio">
+            <input
+              class="custom-control-input"
+              type="radio"
+              value="N"
+              formControlName="TBL_SHARE"
+              [(ngModel)]="TBL_SHARE">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">
+                    {{'renewal2017.label.no' | translate}}
+                </span>
+          </label>
+        </div>
+      </div//-->
+    </div>
+    <div class="modal-footer text-center">
+        <button
+            type="submit"
+            class="btn btn-md btn-info btn-rounded"
+            [disabled]="!tableForm.valid">
+            {{'cohort.save' | translate}}
+        </button>
+        <button
+            type="button"
+            class="btn btn-md btn-light btn-rounded"
+            (click)="activeModal.close('no')">
+            {{'cohort.cancel' | translate}}
+        </button>
+    </div>
+</form>

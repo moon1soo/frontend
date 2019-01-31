@@ -1,0 +1,13 @@
+.sidebar {
+  width: 100%;
+  position: initial;
+}
+
+.v-outer {
+  max-width: 50%;
+  min-width: 15%;
+}
+
+.left-component {
+  max-width: 50% !important;
+}

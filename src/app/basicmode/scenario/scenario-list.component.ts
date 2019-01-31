@@ -1,0 +1,178 @@
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NgbModal, ModalDismissReasons, NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Location } from '@angular/common';
+import { AppState } from '../../app.state';
+import { AppService } from '../../app.service';
+import { DashboardFunc } from '../dashboard.func';
+import { DashboardService } from '../dashboard.service';
+import { TranslateService } from '@ngx-translate/core';
+import { StoreService } from '../store/store.service';
+import { ScenarioService } from './scenario.service';
+import { DeleteScenarioModal } from '../../modal/delete-scenario-modal.component';
+import { ShareListModal } from '../../modal/share-list-modal.component';
+import { Router } from '@angular/router';
+
+@Component({
+    selector: 'scenario-list',
+    templateUrl: './scenario-list.component.html',
+    providers: [ ScenarioService ]
+})
+export class ScenarioListComponent implements OnInit {
+    closeResult: string;
+
+    myQueries: any[] = [];
+    sharedQueries: any[] = [];
+
+    modifying = false;
+    config: any;
+
+    constructor(
+        private _app: AppState,
+        private _func: DashboardFunc,
+        private _store: StoreService,
+        private _modalService: NgbModal,
+        private _service: ScenarioService,
+        private _translate: TranslateService,
+        private _router: Router,
+        private _appService: AppService,
+        private _dashService: DashboardService,
+    ) {
+
+    }
+    ngOnInit() {
+        sessionStorage.setItem('currentUrl', this._router.url);
+        this._func.getCurUrl('scenario');
+        this.getMyQueryList();
+        this.getSharedQueryList();
+
+		// 언어 변경
+		this._translate.use(this._appService.langInfo);
+		this._appService.language$.subscribe(res => {
+			this._translate.use(res); 
+			setTimeout(() => {
+				window.location.reload();
+			}, 100);
+		});
+
+		// 하단 설명 변경
+		this._translate.get('renewal2017.p.message-open').subscribe(res => {
+			this._dashService.setMessage(res);
+		});        
+    }
+    // 시나리오 목록 불러오기
+    getMyQueryList() {
+        this.myQueries = [];
+        this._service.myQueries().subscribe(res => {
+            for (let data of res) {
+                const shareStfNo = data.shareStfNo.split(', ');
+
+                this.myQueries.push({
+                    id: data.queryFlowId,
+                    nm: data.queryFlowNm,
+                    dtm: data.saveDtm.substring(0, 10),
+                    ctg: data.category,
+                    cdt: data.condition,
+                    idxs: data.indexs,
+                    syn: data.shareYn,
+                    sid: shareStfNo
+                });
+            }
+        });
+    }
+
+    getSharedQueryList() {
+        this.sharedQueries = [];
+        this._service.sharedQueries().subscribe(res => {
+            for (let data of res) {
+                this.sharedQueries.push({
+                    id: data.queryFlowId,
+                    nm: data.queryFlowNm,
+                    stf: data.stfNo,
+                    dtm: data.saveDtm.substring(0, 10),
+                    ctg: data.category,
+                    cdt: data.condition,
+                    idxs: data.indexs
+                });
+            }
+        });
+    }    
+
+    // 시나리오 삭제
+    deleteQuery(event: MouseEvent, scId: string, scNm: string) {
+        event.stopPropagation();
+        event.preventDefault();
+        
+        const store = Object.assign({}, this._store.store);
+        const modalRef = this._modalService.open(DeleteScenarioModal);
+        modalRef.componentInstance.data = scNm;
+        modalRef.result.then((result) => {
+            if (result === 'Confirm') {
+                this._service.deleteQuery(scId).subscribe(res => {
+                    if(res) {
+                        this.getMyQueryList();
+                    }
+                });
+                // window.location.reload();
+        }
+        }, (reason) => {
+            this.closeResult = `Dismissed ${reason}`;
+        });
+    }
+
+    shareList(event: MouseEvent, sid: any) {
+        event.stopPropagation();
+        event.preventDefault();
+        
+        const store = Object.assign({}, this._store.store);
+        const modalRef = this._modalService.open(ShareListModal);
+
+        let list = '';
+
+        sid.forEach((person, index) => {
+            person = `'${person.substring(0, 5)}'`;
+
+            if (index < sid.length - 1) {
+                person = person + ',';
+            }
+
+            list = list + person;
+        });
+
+        modalRef.componentInstance.data = list;
+        modalRef.result.then((result) => {
+            if (result === 'Confirm') {
+
+            }
+        }, (reason) => {
+            this.closeResult = `Dismissed ${reason}`;
+        });
+    }
+
+    // 저장된 시나리오 불러오기
+    openQuery(id) {
+        this._func.setCreatePatient(true);
+		this._func.setRunQuery(false);
+
+        this._service.openQuery(id).subscribe(res => {
+            if(res.result.basicStore) {
+                this._router.navigateByUrl('/tempAuth.do/basicmode/condition', { skipLocationChange: true });
+            }
+        });        
+    }
+
+    onClose() {
+        const prevLink = sessionStorage.getItem('prevLink');
+
+        let url = '';
+
+        if (prevLink === 'gate' || prevLink === 'condition') {
+            url = '/tempAuth.do/basicmode/condition';
+        } else if (prevLink === 'interim') {
+            url = '/tempAuth.do/basicmode/result/interim/patient';
+        } else if (prevLink === 'final') {
+            url = '/tempAuth.do/basicmode/additem';
+        }
+
+        this._router.navigateByUrl(url, { skipLocationChange: true });
+    }
+}

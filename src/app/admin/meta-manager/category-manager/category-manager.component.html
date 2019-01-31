@@ -1,0 +1,120 @@
+<div id="tool" class="mb-1 text-right">
+    <button
+        class="btn btn-md btn-light"
+        (click)="saveData()">
+        <i class="fal fa-save"></i>
+    </button>
+</div>
+<div id="fixed">
+    <dx-data-grid 
+        id="category-manager-fixed"
+        class="gridContainer-powermode-result"
+        [dataSource]="fixedSource"
+        keyExpr="setSeq"
+        [columnResizingMode]="'nextColumn'" 
+        [allowColumnResizing]="true"
+        (onContentReady)="onContentReadyForFixed($event)"
+        [height]="70"
+        [showColumnHeaders]="false">
+        <dxi-column dataField="setSeq" caption="순번" [width]="50" cssClass="text-center"></dxi-column>
+        <dxi-column dataField="ctgCd" caption="카테코리 코드"></dxi-column>
+        <dxi-column dataField="ctgNm" caption="카테고리명"></dxi-column>
+        <dxi-column dataField="ctgEngNm" caption="카테코리명(영문)"></dxi-column>
+        <dxi-column dataField="tabNm" caption="테이블명"></dxi-column>
+        <dxi-column dataField="tabNmPower" caption="테이블명(파워모드)"></dxi-column>
+        <dxi-column dataField="tmpTabNm" caption="임시테이블명"></dxi-column>
+        <dxi-column dataField="useYn" caption="사용" [width]="50" cssClass="text-center"></dxi-column>
+        <dxo-scrolling mode="virtual"></dxo-scrolling>
+        <dxo-sorting mode="single"></dxo-sorting>
+    </dx-data-grid>
+</div>
+<div id="editable">
+    <dx-data-grid
+        #editGrid
+        id="category-manager-editable"
+        class="gridContainer-powermode-result mt-2"
+        [dataSource]="editableSource"
+        keyExpr="setSeq"
+        [columnResizingMode]="'nextColumn'" 
+        [allowColumnResizing]="true"
+        (onContentReady)="onContentReady($event)"
+        (onEditorPreparing)="onEditorPreparing($event)"
+        [height]="665">
+        <dxo-editing
+            mode="cell"
+            [allowUpdating]="true">
+        </dxo-editing>
+        <dxi-column dataField="setSeq" caption="순번" [width]="50" cssClass="text-center"></dxi-column>
+        <dxi-column dataField="ctgCd" caption="카테코리 코드"></dxi-column>
+        <dxi-column dataField="ctgNm" caption="카테고리명"></dxi-column>
+        <dxi-column dataField="ctgEngNm" caption="카테코리명(영문)"></dxi-column>
+        <dxi-column dataField="tabNm" caption="테이블명"></dxi-column>
+        <dxi-column dataField="tabNmPower" caption="테이블명(파워모드)"></dxi-column>
+        <dxi-column dataField="tmpTabNm" caption="임시테이블명"></dxi-column>
+        <dxi-column dataField="useYn" caption="사용" [width]="50" cssClass="text-center">
+            <dxo-lookup
+                [dataSource]="ynLookup"
+                valueExpr="ID"
+                displayExpr="Name"> 
+            </dxo-lookup>
+        </dxi-column>
+        <dxo-scrolling mode="virtual"></dxo-scrolling>
+        <dxo-sorting mode="single"></dxo-sorting>
+    </dx-data-grid>
+    <dx-load-panel
+        #loadPanel
+        shadingColor="rgba(255,255,255,0)"
+        class="mb-5"
+        [position]="{ of: '#category-manager-editable' }"
+        [(visible)]="loading"
+        [showIndicator]="true"
+        [showPane]="true"
+        [shading]="true"
+        [closeOnOutsideClick]="false">
+    </dx-load-panel>
+    <dx-popup
+        class="popup"
+        [width]="640"
+        [height]="445"
+        [dragEnabled]="false"
+        [closeOnOutsideClick]="false"
+        [(visible)]="popupVisible">
+        <div *dxTemplate="let data of 'content'">
+            <div class="col-sm-12">
+                <dx-data-grid 
+                    id="category-manager-table"
+                    class="gridContainer-powermode-result"
+                    [dataSource]="tableSource"
+                    [columnResizingMode]="'nextColumn'" 
+                    [allowColumnResizing]="true"
+                    (onContentReady)="onContentReadyForTable($event)"
+                    (onRowClick)="onRowClick($event)"
+                    [height]="390">
+                    <dxo-filter-row 
+                        [visible]="true">
+                    </dxo-filter-row>
+                    <dxo-header-filter 
+                        [visible]="true">
+                    </dxo-header-filter>
+                    <dxo-selection mode="single"></dxo-selection>
+                    <dxi-column dataField="tableName" caption="테이블명"></dxi-column>
+                    <dxi-column dataField="comments" caption="설명"></dxi-column>
+                    <dxo-scrolling mode="virtual"></dxo-scrolling>
+                    <dxo-sorting mode="single"></dxo-sorting>
+                </dx-data-grid>
+                <dx-load-panel
+                    #loadPanel
+                    shadingColor="rgba(255,255,255,0)"
+                    class="mb-5"
+                    [position]="{ of: '#category-manager-table' }"
+                    [(visible)]="tableLoading"
+                    [showIndicator]="true"
+                    [showPane]="true"
+                    [shading]="true"
+                    [closeOnOutsideClick]="false">
+                </dx-load-panel>
+            </div>
+        </div>
+    </dx-popup>
+</div>
+

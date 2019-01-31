@@ -1,0 +1,68 @@
+<div ngbDropdown ="d-inline-block" placement="bottom-right" class="top-dropdown">
+    <a href="javascript:void(0)" id="dropdownBasic1" class="profile" ngbDropdownToggle>
+        <img src="{{imgPath}}" alt="" class="rounded-circle"> {{ stfNm }}
+    </a>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="setting-dropdown">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="user-info">
+                    <img src="{{imgPath}}" alt="user-img" class="img-circle user-img">                    
+                    <p>
+                        {{ deptNm }}
+                    </p>
+                    <p>
+                        {{ stfNm }}
+                    </p>
+                </div>
+            </li>
+            <!-- <li class="list-group-item text-center">
+                <span class="switch-icon">
+                    KO
+                </span>
+                <label class="switch">
+                    <input type="checkbox" [(ngModel)]="language" (ngModelChange)="translate($event)">
+                    <span class="slider round"></span>
+                </label> 
+                <span class="switch-icon">
+                    EN
+                </span>
+            </li> -->
+            <!-- <li class="list-group-item">
+                <dl>
+                    <dt>Font Size</dt>
+                    <dd>
+                        <button type="button" class="btn btn-xs btn-info">
+                            <i class="fal fa-plus" aria-hidden="true"></i>
+                            <span class="sr-only">{{'renewal2017.button.increase' | translate}}</span>
+                        </button>
+                        <button type="button" class="btn btn-xs btn-info">
+                            <i class="fal fa-minus" aria-hidden="true"></i>
+                            <span class="sr-only">{{'renewal2017.button.decrease' | translate}}</span>
+                        </button>
+                    </dd>
+                </dl> 
+            </li> -->
+            <li class="list-group-item text-center">
+                <span class="switch-icon">
+                    <i class="fal fa-sun-o" aria-hidden="true"></i>
+                </span>
+                <label class="switch text-center ml-2 mr-2">
+                    <input type="checkbox" [(ngModel)]="darkMode" (ngModelChange)="selDarkMode($event)">
+                    <span class="slider round"></span>
+                </label>
+                <span class="switch-icon">
+                    <i class="fal fa-moon-o" aria-hidden="true"></i>
+                </span>
+            </li>
+            <li class="list-group-item btn-text-area bg-info">
+                <a href="logout.do">
+                    <button type="button" class="btn btn-text-type btn-fill" (click)="clearSession()">
+                        <i class="fal fa-power-off" aria-hidden="true"></i>
+                        Logout
+                    </button>
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</div>

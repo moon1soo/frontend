@@ -1,0 +1,236 @@
+<div class="content-bot-area output-item">
+	<form [formGroup]="resultForm">
+		<div class="container-header mb-4">
+			<div class="float-left form-group row col-sm-5">
+				<label class="col-form-label mr-4">
+					{{'renewal2017.search-period' | translate}}
+				</label>
+				<div>
+					<!-- <dashboard-datepicker
+						(secDate)="selectDate($event)" [secCode]="'datepicker-period'"
+						[storageDate]="storageDate">
+					</dashboard-datepicker> -->
+					<daterangepicker
+						(secDate)="selectDate($event)" [secCode]="'datepicker-period'"
+						[storageDate]="storageDate">
+					</daterangepicker>
+				</div>
+			</div>
+			<div class="float-right">
+				<button type="button" class="btn btn-primary btn-lg btn-rounded" (click)="viewResultTable()">
+					<i class="fal fa-plus-circle mr-2" aria-hidden="true"></i>
+					{{'renewal2017.apply' | translate}}	
+				</button>
+			</div>
+		</div>
+		<div class="bot-table-area">
+			<ul class="list-group-vertical">
+				<li *ngFor="let cate of categoryGroup; let idx = index">
+					<div *ngIf="cate">
+						<h5 class="h5">
+							<span *ngIf="cate === 'ptInfo'">{{'renewal2017.title.ptInfo' | translate}}</span>
+							<span *ngIf="cate === 'basic'">{{'renewal2017.basic' | translate}}</span>
+							<span *ngIf="cate === 'visit'">{{'renewal2017.treatment' | translate}}</span>
+							<span *ngIf="cate === 'diagnosis'">{{'research.diagnosis.0' | translate}}</span>
+							<span *ngIf="cate === 'exam'">{{'research.examination.0' | translate}}</span>
+							<span *ngIf="cate === 'pathology'">{{'renewal2017.pathology.title' | translate}}</span>
+							<span *ngIf="cate === 'pathologyData'">{{'renewal2017.pathology.all' | translate}}</span>
+							<span *ngIf="cate === 'medicine'">{{'research.drug.0' | translate}}</span>
+							<span *ngIf="cate === 'order'">{{'research.order.0' | translate}}</span>
+							<span *ngIf="cate === 'fee'">{{'research.cost.0' | translate}}</span>
+							<span *ngIf="cate === 'surgical'">{{'research.surgery.0' | translate}}</span>
+							<span *ngIf="cate === 'cc'">{{'renewal2017.cc' | translate}}</span>
+							<span *ngIf="cate === 'form'">{{'research.form.0' | translate}}</span>
+							<span *ngIf="cate === 'nursDiag'">{{'renewal2017.nurs.diagnosis.title' | translate}}</span>
+							<span *ngIf="cate === 'nursState'">{{'renewal2017.nurs.statement.title' | translate}}</span>
+							<span *ngIf="cate === 'nursEav'">{{'renewal2017.nurs.term.title' | translate}}</span>
+							<span *ngIf="cate === 'nursAssm'">{{'renewal2017.nurs.assessment.common.title' | translate}}</span>
+							<span *ngIf="cate === 'rediation'">{{'renewal2017.rediation.title' | translate}}</span>
+						</h5>
+						<div class="form-check form-check-inline"
+							*ngFor="let data of dataSource | itemFilter: cate"
+							[ngClass]="{'checked-item': data.isChecked}">
+							<label
+								id="label-{{data.itemCd}}" 
+								class="custom-control custom-checkbox"
+								(mouseenter)="toggleVisible(data)"
+								(mouseleave)="toggleVisible(data)">
+								<input
+									class="custom-control-input"
+									type="checkbox"
+									formControlName="{{data.ctgCd}}-{{data.itemCd}}"
+									[disabled]="data.isDisabled"
+									[(ngModel)]="data.isChecked">
+								<span class="custom-control-indicator"></span>
+								<span class="custom-control-description">
+									{{data.itemNm}}
+								</span>
+							</label>
+							<!-- 필터 버튼 -->
+							<span class="floating-button-right" *ngIf="data.isFilter">
+								<button type="button" 
+									class="btn btn-xs btn-primary"
+									(click)="toggleFilter($event, data)"
+									[disabled]="!data.isChecked">
+									{{'common.filter' | translate}}
+								</button>
+							</span>
+							<dx-tooltip
+								*ngIf="data.itemCd === 'nrVocEntAtrItemNm'"
+								target="#label-nrVocEntAtrItemNm"
+								position="bottom"
+								[(visible)]="tooltipVisible">
+								<div *dxTemplate="let data = data of 'content'">
+									이 항목은 필터와 검색을 위한 용도로, 최종 결과에 값이 출력되지 않습니다.<br>
+									값을 보고 싶은 경우 Entity, Attribute, 간호항목/진술문명 등을 선택하세요.
+								</div>
+							</dx-tooltip>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+<!-- 필터 영역 -->
+<section class="bot-collapse-area" [ngClass]="{'menu-collapsed': isFilterCollapsed}">
+	<h1 class="sr-only">Filter Area</h1>
+	<button type="button" 
+		class="btn btn-xs float-right" 
+		title="Close" 
+		ngbTooltip="{{'common.close' | translate}}"
+		(click)="closeBotTab($event)">
+		<i class="fal fa-times" aria-hidden="true"></i>
+		<span class="sr-only">Close</span>
+	</button>
+	<div *ngIf="selectCtgCd === 'visit'">
+		<div *ngIf="selectItemCd==='dsMedDeptCd'">
+			<!-- 수진진료과 -->
+			<medical-search></medical-search>
+		</div>
+		<div *ngIf="selectItemCd==='drStfNm'">
+			<!-- 수진진료의 -->
+			<doctor-search></doctor-search>
+		</div>
+	</div>
+	<div *ngIf="selectCtgCd === 'diagnosis'">
+		<div *ngIf="selectItemCd==='dgnsNm'">
+			<!-- 진단진료과 -->
+			<diagnosis-search></diagnosis-search>
+		</div>
+		<div *ngIf="selectItemCd==='dgnsMedDeptNm'">
+			<!-- 원내 진단명 -->
+			<diag-medical-search></diag-medical-search>
+		</div>
+	</div>	
+	<div *ngIf="selectCtgCd === 'exam'">
+		<div *ngIf="selectItemCd==='exmNm'">
+			<!-- 검사명 -->
+			<exam-search></exam-search>
+		</div>
+		<div *ngIf="selectItemCd==='mdfmCpemNm'">
+			<!-- 검사결과 -->
+			<exam-result-search></exam-result-search>
+		</div>
+	</div>
+	<div *ngIf="selectCtgCd === 'surgical'">
+		<div *ngIf="selectItemCd==='opVocNm'">
+			<!-- 원내수술명 -->
+			<surgical-search></surgical-search>
+		</div>
+		<div *ngIf="selectItemCd==='medDeptNm'">
+			<!-- 수술진료과 -->
+			<sur-medical-search></sur-medical-search>
+		</div>
+		<div *ngIf="selectItemCd==='pfdrStfNm'">
+			<!-- 집도의(수술확정당시) -->
+			<sur-doctor-search></sur-doctor-search>
+		</div>
+		<div *ngIf="selectItemCd==='opDgnsVocNm'">
+			<!-- 수술진단명 -->
+			<sur-diag-search></sur-diag-search>
+		</div>
+	</div>
+	<div *ngIf="selectCtgCd === 'medicine'">
+		<div *ngIf="selectItemCd==='ingrMdprNm'">
+			<!-- 약품명 -->
+			<medicine-search></medicine-search>
+		</div>		
+	</div>
+	<div *ngIf="selectCtgCd === 'order'">
+		<div *ngIf="selectItemCd==='ordNm'">
+			<!-- 오더명 -->
+			<order-search></order-search>
+		</div>		
+	</div>
+	<div *ngIf="selectCtgCd === 'fee'">
+		<div *ngIf="selectItemCd==='ordNm'">
+			<!-- 수가명 -->
+			<fee-search></fee-search>
+		</div>		
+	</div>
+	<div *ngIf="selectCtgCd === 'cc'">
+		<div *ngIf="selectItemCd==='cfcmVocNm'">
+			<!-- cc명 -->
+			<cc-search></cc-search>
+		</div>		
+	</div>
+	<div *ngIf="selectCtgCd === 'form'">
+		<div *ngIf="selectItemCd==='mdfmNm'">
+			<!-- 서식 -->
+			<form-basic-search></form-basic-search>
+		</div>
+		<div *ngIf="selectItemCd==='mdfmCpemNm'">
+			<!-- 서식 세부 -->
+			<form-detail-search></form-detail-search>
+		</div>		
+	</div>
+	<div *ngIf="selectCtgCd === 'pathology'">
+		<div *ngIf="selectItemCd==='ordSlipCtgCd'">
+			<!-- 병리 slip -->
+			<path-slip-search></path-slip-search>
+		</div>		
+	</div>
+	<div *ngIf="selectCtgCd === 'pathology'">
+		<div *ngIf="selectItemCd==='plrtLdatKey'">
+			<!-- 병리 slip -->
+			<path-search></path-search>
+		</div>		
+	</div>
+	<div *ngIf="selectCtgCd === 'nursState'">
+		<div *ngIf="selectItemCd==='nrItemNm'">
+			<!-- 간호진술문 -->
+			<nurs-state-search></nurs-state-search>
+		</div>		
+	</div>
+	<div *ngIf="selectCtgCd === 'nursEav'">
+		<div *ngIf="selectItemCd==='nrVocEntAtrItemNm'">
+			<!-- 간호항목/용어 -->
+			<nurs-eav-search></nurs-eav-search>
+		</div>		
+	</div>
+	<div *ngIf="selectCtgCd === 'rediation'">
+		<div *ngIf="selectItemCd==='rttOrdNm'">
+			<!-- 방사선치료 -->
+			<rediation-search></rediation-search>
+		</div>		
+	</div>
+	<div *ngIf="selectCtgCd === 'rediation'">
+		<div *ngIf="selectItemCd==='tyrmNm'">
+			<!-- 방사선치료 치료실 -->
+			<rediation-room-search></rediation-room-search>
+		</div>		
+	</div>
+	<div *ngIf="selectCtgCd === 'rediation'">
+		<div *ngIf="selectItemCd==='trpRgnNm'">
+			<!-- 방사선치료 치료부위 -->
+			<rediation-region-search></rediation-region-search>
+		</div>		
+	</div>
+	<div *ngIf="selectCtgCd === 'rediation'">
+		<div *ngIf="selectItemCd==='chdrStfNm'">
+			<!-- 방사선치료 담당의 -->
+			<rediation-doctor-search></rediation-doctor-search>
+		</div>		
+	</div>
+</section>

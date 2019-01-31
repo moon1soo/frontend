@@ -1,0 +1,25 @@
+<div class="dx-viewport demo-container" style="margin-left: 30px;margin-right: 30px;margin-top:40px;height: 100%;">
+  <div class="row dx-datagrid-title" style="margin-top:16px;margin-bottom: 7px;">
+    <h5>원본 데이터</h5>
+  </div>
+  <div id="tableDataArea" class="row">
+    <dx-data-grid
+      id="tableData"
+      [dataSource]="dataSource"
+      (onRowClick)="onRowClick($event)">
+      <!--dxi-column dataField="RNUM" caption="No." [visible]="true" [allowEditing]="false" cssClass="text-center"></dxi-column//-->
+      <dxi-column dataField="TBL_SFX" caption="{{'cohort.mart.table.tbl-sfx' | translate}}" [visible]="true" [allowEditing]="false" cssClass="text-center"></dxi-column>
+      <!--dxi-column dataField="PSO_SQL" caption="{{'cohort.mart.table.pso-sql' | translate}}" [visible]="true" [allowEditing]="false" cssClass="text-center"></dxi-column//-->
+      <dxi-column dataField="PSO_CNTE" caption="{{'cohort.mart.table.pso-cnte' | translate}}" [visible]="true" [allowEditing]="false" cssClass="text-center"></dxi-column>
+      <!--dxi-column dataField="LOAD_DTM" caption="{{'cohort.date' | translate}}" [visible]="true" [allowEditing]="false" cssClass="text-center"></dxi-column//-->
+      <dxo-scrolling mode="infinite"></dxo-scrolling>
+      <dxo-remote-operations
+        [sorting]="true"
+        [paging]="true">
+      </dxo-remote-operations>
+      <dxo-paging [pageSize]="1000"></dxo-paging>
+      <dxo-sorting mode="none"></dxo-sorting>
+      <dxo-load-panel [enabled]="false"></dxo-load-panel>
+    </dx-data-grid>
+  </div>
+</div>

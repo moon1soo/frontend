@@ -1,0 +1,707 @@
+<div class="bx-workflow-diagram">
+	<!-- =========== 기본 ===============-->
+	<article class="workflow workflow-basic relative-area">
+		<div class="blind-edit" *ngIf="curUrl === 'interim'"></div>
+		<h2 class="title-workflow">
+			{{'renewal2017.basicInfo' | translate}}
+			<small>{{'renewal2017.basicInfoEx' | translate}}</small>
+		</h2>
+		<basic-view></basic-view>		
+	</article>
+	<!--// =========== 기본 ===============-->
+
+	<article class="workflow workflow-card">
+		<!-- <svg width="532px" height="220px" viewBox="0 0 532 220" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<title>Rectangle 25</title>
+			<desc>Created with Sketch.</desc>
+			<defs>
+				<linearGradient x1="58.8072289%" y1="50%" x2="0%" y2="50%" id="linearGradient-1">
+					<stop stop-color="#66A6FF" offset="0%"></stop>
+					<stop stop-color="#89F7FE" offset="100%"></stop>
+				</linearGradient>
+			</defs>
+			<g id="Guide-Mode" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+				<g id="Run-Query" transform="translate(-413.000000, -56.000000)" fill="url(#linearGradient-1)">
+					<path d="M413,56 C599.141955,56 756.808622,56 886,56 C951.481645,56 930.382175,73.9157623 908.572165,79.1098061 C873.511106,87.4595809 919.844613,114.531498 938.798515,141.203853 C948.046187,154.217384 965.529011,217.110789 817.626661,223.402616 C765.89874,225.603143 889.202858,276 767.382584,276 C691.27804,276 573.150512,276 413,276 L413,56 Z" >
+					<animate id="path" attributeName="d"
+						from="M413,56 C599.141955,56 756.808622,56 886,56 C951.481645,56 930.382175,73.9157623 908.572165,79.1098061 C873.511106,87.4595809 919.844613,114.531498 938.798515,141.203853 C948.046187,154.217384 965.529011,217.110789 817.626661,223.402616 C765.89874,225.603143 889.202858,276 767.382584,276 C691.27804,276 573.150512,276 413,276 L413,56 Z"
+						to="M0,6.53467682e-14 C151.268504,3.50611628e-14 279.396528,3.50611628e-14 384.384071,6.53467682e-14 C437.597816,7.46477851e-14 407.738734,13.6814228 402.394399,23.1098061 C399.14368,28.8446681 394.901773,40.7470009 450.704325,50.112709 C497.630018,57.988556 402.394399,141.218576 485.860017,153.3754 C568.743148,165.447385 566.960855,220 467.963449,220 C406.116992,220 250.129176,220 0,220 L0,6.53467682e-14 Z"
+						dur="3s" fill="freeze" repeatCount="indefinite"/>
+					</path>
+				</g>
+			</g>
+		</svg> -->
+
+		<h2 class="title-workflow">
+			{{'renewal2017.processOverview' | translate}}
+			<small>{{'renewal2017.processOverviewEx' | translate}}</small>
+		</h2>
+		<div class="btn-group-right">
+			<button type="button" class="btn btn-md btn-light mr-2" (click)="resetStore('reset')">
+				<i class="fal fa-refresh" aria-hidden="true"></i>
+				Reset
+			</button>
+			<button type="button" *ngIf="curUrl !== 'interim'" class="btn btn-sm btn-info btn-rounded" (click)="runQuery()">
+				<i class="fal fa-play" aria-hidden="true"></i>
+				Run Query
+			</button>
+			<button type="button" *ngIf="curUrl === 'interim'" class="btn btn-sm btn-danger btn-rounded" (click)="stopQuery()" [disabled]="!stoppable">
+				<i class="fal fa-stop" aria-hidden="true"></i>
+				Stop Query
+			</button>
+		</div>
+		<!-- {{winSize}} -->
+		<ngx-carousel			
+			class="wrap-slider"
+			[moveToSlide]="2"
+			[inputs]="carouselOne"			
+			(carouselLoad)="carouselfunc($event)">
+			<ngx-item NgxCarouselItem *ngFor="let item of datasource; let i = index">
+				<div class="workflow-diagram"
+					[ngClass]="{'first': i ===0, 'workflow-disabled': item.except }"
+					[attr.data-group]="item.group"
+					[attr.data-condition]="item.condition">
+					<div class="card card-workflow" (clickOutside)="collapseCard($event, item.group)">
+						<div class="card-header">
+							<span>
+								<span *ngIf="item.group === 'concernPatient'">{{'renewal2017.concern-patient.title' | translate}}</span>
+								<span *ngIf="item.group === 'visit'">{{'renewal2017.treatment' | translate}}</span>
+								<span *ngIf="item.group === 'diagnosis'">{{'research.diagnosis.0' | translate}}</span>
+								<span *ngIf="item.group === 'exam'">{{'research.examination.0' | translate}}</span>
+								<span *ngIf="item.group === 'pathology'">{{'renewal2017.pathology.title' | translate}}</span>
+								<span *ngIf="item.group === 'medicine'">{{'research.drug.0' | translate}}</span>
+								<span *ngIf="item.group === 'order'">{{'research.order.0' | translate}}</span>
+								<span *ngIf="item.group === 'fee'">{{'research.cost.0' | translate}}</span>
+								<span *ngIf="item.group === 'surgical'">{{'research.surgery.0' | translate}}</span>
+								<span *ngIf="item.group === 'cc'">{{'renewal2017.cc' | translate}}</span>
+								<span *ngIf="item.group === 'form'">{{'research.form.0' | translate}}</span>
+								<!-- <span *ngIf="item.group === 'nurs'">{{'renewal2017.nursing' | translate}}</span> -->
+								<span *ngIf="item.group === 'nursDiag'">{{'renewal2017.nurs.diagnosis.title' | translate}}</span>
+								<span *ngIf="item.group === 'nursState'">{{'renewal2017.nurs.statement.title' | translate}}</span>
+								<span *ngIf="item.group === 'nursEav'">{{'renewal2017.nurs.term.title' | translate}}</span>
+								<span *ngIf="item.group === 'nursAssm'">{{'renewal2017.nurs.assessment.common.title' | translate}}</span>
+								<span *ngIf="item.group === 'rediation'">{{'renewal2017.rediation.title' | translate}}</span>
+							</span>
+							<div class="widget-controls">
+								<!-- 삭제 -->
+								<a data-widgster="close"
+									*ngIf="curUrl === 'condition'"
+									href="javascript: void(0)"
+									(click)="deleteWorkflow($event, item)"
+									ngbTooltip="{{'renewal2017.button.delete-work' | translate}}"
+									container="body"
+									class="transition">
+									<i class="fal fa-times" aria-hidden="true"></i>
+									<span class="sr-only">{{'research.delete' | translate}}</span>
+								</a>
+								<!-- 조건제외 -->
+								<!-- <a data-widgster="minimalize"
+									*ngIf="curUrl === 'interim' && !item.except"
+									href="javascript: void(0)"
+									(click)="exceptWorkflow($event, item)"
+									ngbTooltip="{{'renewal2017.button.except-work' | translate}}"
+									container="body"
+									class="transition">
+									<i class="fal fa-window-minimize" aria-hidden="true"></i>
+									<span class="sr-only">{{'renewal2017.button.except-work' | translate}}</span>
+								</a> -->
+								<!-- 조건제외 취소 -->
+								<!-- <a data-widgster="minimalize"
+									*ngIf="curUrl === 'interim' && item.except"
+									href="javascript: void(0)"
+									(click)="exceptWorkflowCancel($event, item)"
+									ngbTooltip="{{'renewal2017.button.except-cancel' | translate}}"
+									container="body"
+									class="transition">
+									<i class="fal fa-window-maximize" aria-hidden="true"></i>
+									<span class="sr-only">{{'renewal2017.button.except-cancel' | translate}}</span>
+								</a> -->
+							</div>
+						</div>
+						<div class="card-body widget-body" id="#card-body-{{idx}}">
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/concernView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'concernPatient') || (!stoppable && item.group === 'concernPatient')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/hospitalView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'visit') || (!stoppable && item.group === 'visit')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/diagnosisView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'diagnosis') || (!stoppable && item.group === 'diagnosis')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/examView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'exam') || (!stoppable && item.group === 'exam')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/pathView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'pathology') || (!stoppable && item.group === 'pathology')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/medicineView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'medicine') || (!stoppable && item.group === 'medicine')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/orderView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'order') || (!stoppable && item.group === 'order')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/feeView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'fee') || (!stoppable && item.group === 'fee')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/surgicalView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'surgical') || (!stoppable && item.group === 'surgical')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/ccView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'cc') || (!stoppable && item.group === 'cc')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/formView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'form') || (!stoppable && item.group === 'form')"></a>
+							<!-- <a class="card-link" routerLink="/tempAuth.do/basicmode/condition/nursView" skipLocationChange *ngIf="item.group === 'nurs'"></a> -->
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/nursDiagView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'nursDiag') || (!stoppable && item.group === 'nursDiag')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/nursStateView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'nursState') || (!stoppable && item.group === 'nursState')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/nursEavView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'nursEav') || (!stoppable && item.group === 'nursEav')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/nursAssmView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'nursAssm') || (!stoppable && item.group === 'nursAssm')"></a>
+							<a class="card-link" routerLink="/tempAuth.do/basicmode/condition/rediationView" skipLocationChange *ngIf="(curUrl !== 'interim' && item.group === 'rediation') || (!stoppable && item.group === 'rediation')"></a>
+							<div *ngIf="item.group === 'visit'">
+								<dl *ngIf="storeVo.basicStore.period1">
+									<dt>{{'research.vdt.period' |  translate}}</dt>
+									<dd>
+										<i class="fal fa-calendar" *ngIf="storeVo.basicStore.period1"></i>
+										{{storeVo.basicStore.period1}} ~ {{storeVo.basicStore.period2}}
+									</dd>
+								</dl>
+								<p *ngIf="storeVo.basicStore.pactTpCd && storeVo.basicStore.pactTpCd !== 'A'">
+									{{'research.patient.classify' | translate}}
+								</p>
+								<p *ngIf="storeVo.basicStore.age1 || storeVo.basicStore.age2">
+									{{'research.vdt.at.that.age' | translate}}
+								</p>
+							</div>
+							<div *ngFor="let member of item.member">
+								<div *ngIf="member.title === 'rediationTreatmentStore' && (member.content.select1.length || member.content.testDtSt || member.content.testDtEd)">
+									<dl *ngIf="member.content.testDtSt">
+										<dt>{{'renewal2017.rediation.date' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.testDtSt.length"></i>
+											{{member.content.testDtSt}} ~ {{member.content.testDtEd}}
+										</dd>
+										
+									</dl>
+									<dl *ngIf="member.content.yn === 'Y'">
+										<dt>{{'renewal2017.rediation.yn' | translate}}</dt>
+									</dl>
+									<dl *ngIf="member.content.select1 && member.content.select1.length">
+										<dt>{{'renewal2017.rediation.treatment.title' | translate}}
+											<span *ngIf="member.content.groupTitle">: {{ member.content.groupTitle }}</span>
+										</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+								</div>
+								<dl *ngIf="member.title === 'rediationTherapyRoomStore'">
+									<dt>{{'renewal2017.rediation.room.title' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<dl *ngIf="member.title === 'rediationTherapyRegionStore'">
+									<dt>{{'renewal2017.rediation.region.title' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<dl *ngIf="member.title === 'rediationDoctorStore'">
+									<dt>{{'renewal2017.rediation.doctor.title' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<div *ngIf="member.title === 'concernPatientStore' || member.content.uploadYN === 'Y'">
+									<p *ngIf="member.content.select1 && member.content.select1.length">{{'renewal2017.concern-patient.title' | translate}}</p>
+									<p *ngIf="member.content.uploadYN === 'Y'">{{'renewal2017.label.upload-patient2' | translate}}</p>
+								</div>
+								<dl *ngIf="member.title === 'medicalStore'">
+									<dt *ngFor="let text of member.content.select1">{{'research.dept.0' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<dl *ngIf="member.title === 'doctorStore'">
+									<dt>{{'research.treatment.dr.search' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<div *ngIf="member.title === 'diagnosisStore'">
+									<dl *ngIf="member.content.dgnsDtSt">
+										<dt>{{'research.diagnosis.day' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.dgnsDtSt.length"></i>
+											{{member.content.dgnsDtSt}} ~ {{member.content.dgnsDtEd}}
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.select1 && member.content.select1.length">
+										<dt>{{'research.diagnosis.name' | translate}}</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+								</div>
+								<dl *ngIf="member.title === 'diagnosisMedicalStore'">
+									<dt>{{'research.diagnosis.dept.0' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<div *ngIf="member.title === 'examStore'">
+									<dl *ngIf="member.content.testDtSt">
+										<dt>{{'research.examination.date' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.testDtSt.length"></i>
+											{{member.content.testDtSt}} ~ {{member.content.testDtEd}}
+										</dd>
+									</dl>
+									<span *ngIf="member.content.yn === 'Y'">{{'research.run.yn' | translate}}<br></span>
+									<dl *ngIf="member.content.select1 && member.content.select1.length">
+										<dt>{{'research.examination.name.0' | translate}}</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+								</div>
+								<div *ngIf="member.title === 'pathologyStore'">
+									<dl *ngIf="member.content.testDtSt">
+										<dt>{{'research.examination.date' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.testDtSt.length"></i>
+											{{member.content.testDtSt}} ~ {{member.content.testDtEd}}
+										</dd>
+									</dl>
+									<span *ngIf="member.content.yn === 'Y'">{{'research.run.yn' | translate}}<br></span>
+									<dl *ngIf="member.content.select1 && member.content.select1.length">
+										<dt>{{'renewal2017.pathology.else' | translate}}</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+								</div>								
+								<dl *ngIf="member.title === 'examResultStore'">
+									<dt>{{'research.examination.result.default.search' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<dl *ngIf="member.title === 'examDetailStore'">
+									<dt>{{'research.examination.result.detail.search' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<div *ngIf="member.title === 'orderStore'">
+									<dl *ngIf="member.content.ordDtSt">
+										<dt>{{'research.order.prescription.date' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.ordDtSt.length"></i>
+											{{member.content.ordDtSt}} ~ {{member.content.ordDtEd}}
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.freeText && member.content.freeText.length">
+										<dt>{{'research.free.text.order' | translate}}</dt>
+										<dd>
+											
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.select1 && member.content.select1.length">
+										<dt>{{'research.order.name.0' | translate}}</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+								</div>
+								<div *ngIf="member.title === 'feeStore'">
+									<dl *ngIf="member.content.feeDtSt">
+										<dt>{{'renewal2017.prescriptionDate' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.feeDtSt.length"></i>
+											{{member.content.feeDtSt}} ~ {{member.content.feeDtEd}}
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.select1 && member.content.select1.length">
+										<dt>{{'research.cost.name.0' | translate}}</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+								</div>
+								<div *ngIf="member.title === 'medicineStore'">
+									<dl *ngIf="member.content.mdprDtSt">
+										<dt>{{'research.day.of.drug.prescription' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.mdprDtSt.length"></i>
+											{{member.content.mdprDtSt}} ~ {{member.content.mdprDtEd}}
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.select1 && member.content.select1.length">
+										<dt>{{'research.drug.name' | translate}}</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+								</div>
+								<div *ngIf="member.title === 'surgicalStore' && ((member.content.select1 && member.content.select1.length) || member.content.srgrDtSt || member.content.srgrDtEd)">
+									<dl *ngIf="member.content.srgrDtSt">
+										<dt>{{'research.surgery.day' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.srgrDtSt.length"></i>
+											{{member.content.srgrDtSt}} ~ {{member.content.srgrDtEd}}
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.select1 && member.content.select1.length">
+										<dt>{{'research.surgery.name.0' | translate}}
+											<span *ngIf="member.content.groupTitle">: {{ member.content.groupTitle }}</span>
+										</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+								</div>
+								<dl *ngIf="member.title === 'surgicalDiagnosisStore'">
+									<dt>{{'research.surgery.diagnosis.name.0' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<dl *ngIf="member.title === 'surgicalMedicalStore'">
+									<dt>{{'research.surgery.dept.0' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<dl *ngIf="member.title === 'surgicalDoctorStore'">
+									<dt>{{'research.surgery.operating.surgeon.0' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<dl *ngIf="member.title === 'postOPCheckOutPlaceStore'">
+									<dt>{{'research.out.place.after.place' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<dl *ngIf="member.title === 'anesthesiaKindStore'">
+									<dt>{{'research.kind.of.anaesthesia' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<div *ngIf="member.title === 'chiefComplaintStore'">
+									<dl *ngIf="member.content.ccDtSt">
+										<dt>{{'renewal2017.ccRecordData' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.ccDtSt.length"></i>
+											{{member.content.ccDtSt}} ~ {{member.content.ccDtEd}}
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.select1 && member.content.select1.length">
+										<dt>{{'research.CC.name.0' | translate}}</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+								</div>
+								<div *ngIf="member.title === 'formStore'">
+									<dl *ngIf="member.content.formDtSt">
+										<dt>{{'renewal2017.recordData' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.formDtSt.length"></i>
+											{{member.content.formDtSt}} ~ {{member.content.formDtEd}}
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.select1 && member.content.select1.length">
+										<dt>{{'research.form.0' | translate}}</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.yn === 'Y'">
+										<dt>{{'research.sign.yn' | translate}}</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+								</div>
+								<dl *ngIf="member.title === 'formDetailStore'">
+									<dt>{{'research.form.detail.0' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<dl *ngIf="member.title === 'nursCircumstanceStore'">
+									<dt>{{'renewal2017.nurs.diagnosis.circumstance.title' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<dl *ngIf="member.title === 'nursDiagnosisStore'">
+									<dt>{{'renewal2017.nurs.diagnosis.diagnosis.title' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<div *ngIf="member.title === 'nursPlanStore'">
+									<dl *ngIf="member.content.wrtDtSt">
+										<dt>{{'renewal2017.nurs.common.date' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.wrtDtSt.length"></i>
+											{{member.content.wrtDtSt}} ~ {{member.content.wrtDtEd}}
+										</dd>
+									</dl>
+									<p *ngIf="member.content.fmtYn1">{{'renewal2017.nurs.diagnosis.yn' | translate}}</p>
+									<dl *ngIf="member.content.select1 && member.content.select1.length">
+										<dt>{{'renewal2017.nurs.diagnosis.plan.title' | translate}}</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+								</div>
+								<div *ngIf="member.title === 'nursStateStore'">
+									<dl *ngIf="member.content.wrtDtSt">
+										<dt>{{'renewal2017.nurs.common.date' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.wrtDtSt.length"></i>
+											{{member.content.wrtDtSt}} ~ {{member.content.wrtDtEd}}
+										</dd>
+									</dl>
+									<p *ngIf="member.content.dept1">{{'renewal2017.nurs.dept.title' | translate}}</p>
+									<dl *ngIf="member.content.select1 && member.content.select1.length">
+										<dt>{{'renewal2017.nurs.statement.statement.title' | translate}}</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+								</div>
+								<dl *ngIf="member.title === 'nursStateEavStore'">
+									<dt>{{'renewal2017.nurs.statement.eav.title' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<dl *ngIf="member.title === 'nursEavStore'">
+									<dl *ngIf="member.content.wrtDtSt">
+										<dt>{{'renewal2017.nurs.common.date' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.wrtDtSt.length"></i>
+											{{member.content.wrtDtSt}} ~ {{member.content.wrtDtEd}}
+										</dd>
+									</dl>
+									<p *ngIf="member.content.dept1">{{'renewal2017.nurs.dept.title' | translate}}</p>
+									<dl *ngIf="member.content.select1 && member.content.select1.length">
+										<dt>{{'renewal2017.nurs.term.title' | translate}}</dt>
+										<dd *ngFor="let text of member.content.name1">
+											<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+										</dd>
+									</dl>
+								</dl>
+								<dl *ngIf="member.title === 'nursEavItemsStore'">
+									<dt>{{'renewal2017.nurs.term.items.title' | translate}}</dt>
+									<dd *ngFor="let text of member.content.name1">
+										<i class="fal fa-check" aria-hidden="true" *ngIf="text"></i>{{text}}
+									</dd>
+								</dl>
+								<dl *ngIf="member.title === 'nursAssessmentStore'">
+									<dl *ngIf="member.content.wrtDtSt">
+										<dt>{{'renewal2017.nurs.common.date' | translate}}</dt>
+										<dd>
+											<i class="fal fa-calendar" *ngIf="member.content.wrtDtSt.length"></i>
+											{{member.content.wrtDtSt}} ~ {{member.content.wrtDtEd}}
+										</dd>
+									</dl>
+									<p *ngIf="member.content.dept1">{{'renewal2017.nurs.dept.title' | translate}}</p>
+									<dl *ngIf="member.content.ifflFrom || member.content.ifflTo || (member.content.ifflCtg && member.content.ifflCtg.length > 0)">
+										<dt>{{'renewal2017.nurs.assessment.iffl' | translate}}</dt>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.ifflFrom || member.content.ifflTo">
+												<span>{{'renewal2017.nurs.assessment.common.total' | translate}} {{member.content.ifflFrom}} ~ {{member.content.ifflTo}}</span>
+											</i>
+										</dd>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.ifflCtg && member.content.ifflCtg.length > 0">
+												<span *ngIf="member.content.ifflCtg.indexOf('N') > -1">{{'renewal2017.nurs.assessment.common.category.no' | translate}}</span>
+												<span *ngIf="member.content.ifflCtg.indexOf('L') > -1">{{'renewal2017.nurs.assessment.common.category.mid' | translate}}</span>
+												<span *ngIf="member.content.ifflCtg.indexOf('H') > -1">{{'renewal2017.nurs.assessment.common.category.high' | translate}}</span>
+											</i>											
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.bdsrFrom || member.content.bdsrTo || (member.content.bdsrCtg && member.content.bdsrCtg.length > 0)">
+										<dt>{{'renewal2017.nurs.assessment.bdsr' | translate}}</dt>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.bdsrFrom || member.content.bdsrTo">
+												<span>{{'renewal2017.nurs.assessment.common.total' | translate}} {{member.content.bdsrFrom}} ~ {{member.content.bdsrTo}}</span>
+											</i>
+										</dd>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.bdsrCtg && member.content.bdsrCtg.length > 0">
+												<span *ngIf="member.content.bdsrCtg.indexOf('M') > -1">{{'renewal2017.nurs.assessment.common.category.minus' | translate}}</span>
+												<span *ngIf="member.content.bdsrCtg.indexOf('P') > -1">{{'renewal2017.nurs.assessment.common.category.plus' | translate}}</span>
+											</i>											
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.cmmOldFrom || member.content.cmmOldTo || (member.content.cmmOldCtg && member.content.cmmOldCtg.length > 0)">
+										<dt>{{'renewal2017.nurs.assessment.pt.cmm-old' | translate}}</dt>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.cmmOldFrom || member.content.cmmOldTo">
+												<span>{{'renewal2017.nurs.assessment.common.total' | translate}} {{member.content.cmmOldFrom}} ~ {{member.content.cmmOldTo}}</span>
+											</i>
+										</dd>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.cmmOldCtg && member.content.cmmOldCtg.length > 0">
+												<span *ngIf="member.content.cmmOldCtg.indexOf('1') > -1">{{'renewal2017.nurs.assessment.common.group.1' | translate}}</span>
+												<span *ngIf="member.content.cmmOldCtg.indexOf('2') > -1">{{'renewal2017.nurs.assessment.common.group.2' | translate}}</span>
+												<span *ngIf="member.content.cmmOldCtg.indexOf('3') > -1">{{'renewal2017.nurs.assessment.common.group.3' | translate}}</span>
+												<span *ngIf="member.content.cmmOldCtg.indexOf('4') > -1">{{'renewal2017.nurs.assessment.common.group.4' | translate}}</span>
+												<span *ngIf="member.content.cmmOldCtg.indexOf('5') > -1">{{'renewal2017.nurs.assessment.common.group.5' | translate}}</span>
+												<span *ngIf="member.content.cmmOldCtg.indexOf('6') > -1">{{'renewal2017.nurs.assessment.common.group.6' | translate}}</span>
+											</i>											
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.apcOldFrom || member.content.apcOldTo || (member.content.apcOldCtg && member.content.apcOldCtg.length > 0)">
+										<dt>{{'renewal2017.nurs.assessment.pt.apc-old' | translate}}</dt>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.apcOldFrom || member.content.apcOldTo">
+												<span>{{'renewal2017.nurs.assessment.common.total' | translate}} {{member.content.apcOldFrom}} ~ {{member.content.apcOldTo}}</span>
+											</i>
+										</dd>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.apcOldCtg && member.content.apcOldCtg.length > 0">
+												<span *ngIf="member.content.apcOldCtg.indexOf('1') > -1">{{'renewal2017.nurs.assessment.common.group.1' | translate}}</span>
+												<span *ngIf="member.content.apcOldCtg.indexOf('2') > -1">{{'renewal2017.nurs.assessment.common.group.2' | translate}}</span>
+												<span *ngIf="member.content.apcOldCtg.indexOf('3') > -1">{{'renewal2017.nurs.assessment.common.group.3' | translate}}</span>
+												<span *ngIf="member.content.apcOldCtg.indexOf('4') > -1">{{'renewal2017.nurs.assessment.common.group.4' | translate}}</span>
+												<span *ngIf="member.content.apcOldCtg.indexOf('5') > -1">{{'renewal2017.nurs.assessment.common.group.5' | translate}}</span>
+												<span *ngIf="member.content.apcOldCtg.indexOf('6') > -1">{{'renewal2017.nurs.assessment.common.group.6' | translate}}</span>
+											</i>											
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.mtFrom || member.content.mtTo || (member.content.mtCtg && member.content.mtCtg.length > 0)">
+										<dt>{{'renewal2017.nurs.assessment.pt.mt' | translate}}</dt>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.mtFrom || member.content.mtTo">
+												<span>{{'renewal2017.nurs.assessment.common.total' | translate}} {{member.content.mtFrom}} ~ {{member.content.mtTo}}</span>
+											</i>
+										</dd>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.mtCtg && member.content.mtCtg.length > 0">
+												<span *ngIf="member.content.mtCtg.indexOf('1') > -1">{{'renewal2017.nurs.assessment.common.group.1' | translate}}</span>
+												<span *ngIf="member.content.mtCtg.indexOf('2') > -1">{{'renewal2017.nurs.assessment.common.group.2' | translate}}</span>
+												<span *ngIf="member.content.mtCtg.indexOf('3') > -1">{{'renewal2017.nurs.assessment.common.group.3' | translate}}</span>
+												<span *ngIf="member.content.mtCtg.indexOf('4') > -1">{{'renewal2017.nurs.assessment.common.group.4' | translate}}</span>
+												<span *ngIf="member.content.mtCtg.indexOf('5') > -1">{{'renewal2017.nurs.assessment.common.group.5' | translate}}</span>
+												<span *ngIf="member.content.mtCtg.indexOf('6') > -1">{{'renewal2017.nurs.assessment.common.group.6' | translate}}</span>
+											</i>											
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.cmmFrom || member.content.cmmTo || (member.content.cmmCtg && member.content.cmmCtg.length > 0)">
+										<dt>{{'renewal2017.nurs.assessment.pt.cmm' | translate}}</dt>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.cmmFrom || member.content.cmmTo">
+												<span>{{'renewal2017.nurs.assessment.common.total' | translate}} {{member.content.cmmFrom}} ~ {{member.content.cmmTo}}</span>
+											</i>
+										</dd>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.cmmCtg && member.content.cmmCtg.length > 0">
+												<span *ngIf="member.content.cmmCtg.indexOf('1') > -1">{{'renewal2017.nurs.assessment.common.group.1' | translate}}</span>
+												<span *ngIf="member.content.cmmCtg.indexOf('2') > -1">{{'renewal2017.nurs.assessment.common.group.2' | translate}}</span>
+												<span *ngIf="member.content.cmmCtg.indexOf('3') > -1">{{'renewal2017.nurs.assessment.common.group.3' | translate}}</span>
+												<span *ngIf="member.content.cmmCtg.indexOf('4') > -1">{{'renewal2017.nurs.assessment.common.group.4' | translate}}</span>
+												<span *ngIf="member.content.cmmCtg.indexOf('5') > -1">{{'renewal2017.nurs.assessment.common.group.5' | translate}}</span>
+												<span *ngIf="member.content.cmmCtg.indexOf('6') > -1">{{'renewal2017.nurs.assessment.common.group.6' | translate}}</span>
+											</i>											
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.apcFrom || member.content.apcTo || (member.content.apcCtg && member.content.apcCtg.length > 0)">
+										<dt>{{'renewal2017.nurs.assessment.pt.apc' | translate}}</dt>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.apcFrom || member.content.apcTo">
+												<span>{{'renewal2017.nurs.assessment.common.total' | translate}} {{member.content.apcFrom}} ~ {{member.content.apcTo}}</span>
+											</i>
+										</dd>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.apcCtg && member.content.apcCtg.length > 0">
+												<span *ngIf="member.content.apcCtg.indexOf('1') > -1">{{'renewal2017.nurs.assessment.common.group.1' | translate}}</span>
+												<span *ngIf="member.content.apcCtg.indexOf('2') > -1">{{'renewal2017.nurs.assessment.common.group.2' | translate}}</span>
+												<span *ngIf="member.content.apcCtg.indexOf('3') > -1">{{'renewal2017.nurs.assessment.common.group.3' | translate}}</span>
+												<span *ngIf="member.content.apcCtg.indexOf('4') > -1">{{'renewal2017.nurs.assessment.common.group.4' | translate}}</span>
+												<span *ngIf="member.content.apcCtg.indexOf('5') > -1">{{'renewal2017.nurs.assessment.common.group.5' | translate}}</span>
+												<span *ngIf="member.content.apcCtg.indexOf('6') > -1">{{'renewal2017.nurs.assessment.common.group.6' | translate}}</span>
+											</i>											
+										</dd>
+									</dl>
+									<dl *ngIf="member.content.chldFrom || member.content.chldTo || (member.content.chldCtg && member.content.chldCtg.length > 0)">
+										<dt>{{'renewal2017.nurs.assessment.pt.chld' | translate}}</dt>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.chldFrom || member.content.chldTo">
+												<span>{{'renewal2017.nurs.assessment.common.total' | translate}} {{member.content.chldFrom}} ~ {{member.content.chldTo}}</span>
+											</i>
+										</dd>
+										<dd>
+											<i class="fal fa-check" aria-hidden="true" *ngIf="member.content.chldCtg && member.content.chldCtg.length > 0">
+												<span *ngIf="member.content.chldCtg.indexOf('1') > -1">{{'renewal2017.nurs.assessment.common.group.1' | translate}}</span>
+												<span *ngIf="member.content.chldCtg.indexOf('2') > -1">{{'renewal2017.nurs.assessment.common.group.2' | translate}}</span>
+												<span *ngIf="member.content.chldCtg.indexOf('3') > -1">{{'renewal2017.nurs.assessment.common.group.3' | translate}}</span>
+												<span *ngIf="member.content.chldCtg.indexOf('4') > -1">{{'renewal2017.nurs.assessment.common.group.4' | translate}}</span>
+												<span *ngIf="member.content.chldCtg.indexOf('5') > -1">{{'renewal2017.nurs.assessment.common.group.5' | translate}}</span>
+												<span *ngIf="member.content.chldCtg.indexOf('6') > -1">{{'renewal2017.nurs.assessment.common.group.6' | translate}}</span>
+											</i>											
+										</dd>
+									</dl>
+								</dl>
+							</div>
+						</div>
+						<button type="button" 
+							class="btn btn-card-more"
+							(click)="expandCard($event, item.group)">
+							{{'renewal2017.button.more' | translate}}
+						</button>	
+					</div>
+					<div ngbDropdown class="d-inline-block relative-area" *ngIf="i !== 0">
+						<div class="blind-edit" *ngIf="curUrl === 'interim'"></div>
+						<button class="btn btn-outline-primary" id="dropdownBasic-{i}" ngbDropdownToggle>{{item.condition}}</button>
+						<div ngbDropdownMenu aria-labelledby="dropdownBasic-{i}">
+							<button class="dropdown-item" (click)="changeJoin($event, item.group)">AND</button>
+							<button class="dropdown-item" (click)="changeJoin($event, item.group)">OR</button>
+						</div>
+					</div>
+					<svg id="diagram-{{i}}" height="100" width="100" class="line-box" *ngIf="i !== 0">
+						<line x1="0" y1="50" x2="100%" y2="50" class="line" />
+					</svg>
+				</div>
+			</ngx-item>
+			<button NgxCarouselPrev class="leftRs btn btn-md btn-secondary btn-circle">
+				<span class="sr-only">Prev</span>
+				<i class="fal fa-angle-left fa-2x" aria-hidden="true"></i>
+			</button>
+			<button NgxCarouselNext class="rightRs btn btn-md btn-secondary btn-circle">
+				<span class="sr-only">Next</span>
+				<i class="fal fa-angle-right fa-2x" aria-hidden="true"></i>
+			</button>
+		</ngx-carousel>
+	
+		<!-- <div
+			ng2-carouselamos
+			class="slides-wrapper"
+			[items]="datasource"
+			[width]="winSize"
+			[$prev]="prev"
+			[$next]="next"
+			[$item]="item"
+			*ngIf="datasource">
+		</div>
+		<ng-template #prev>
+			<span class="btn btn-md btn-secondary btn-circle">
+				<span class="sr-only">Prev</span>
+				<i class="fal fa-angle-left fa-2x" aria-hidden="true"></i>
+			</span>
+		</ng-template>
+		<ng-template #next>
+			<span class="btn btn-md btn-secondary btn-circle">
+				<span class="sr-only">Next</span>
+				<i class="fal fa-angle-right fa-2x" aria-hidden="true"></i>
+			</span>
+		</ng-template>	
+ -->
+		<div class="workflow-diagram default" *ngIf="!datasource.length">
+			<div class="card card-workflow">
+				<div class="inner">
+					<span class="fa-stack fa-md">
+						<i class="fal fa-circle-o fa-stack-2x" aria-hidden="true"></i>
+						<i class="fal fa-plus fa-stack-1x" aria-hidden="true"></i>
+					</span>
+
+					<small>{{'renewal2017.cardTxt' | translate}}</small>
+				</div>
+			</div>
+			<!-- <div class="d-inline-block" *ngIf="datasource.length">
+				<button class="btn btn-outline-secondary">AND</button>
+			</div>
+			<svg id="diagram-default" height="100" width="100" class="line-box" *ngIf="datasource.length">
+				<line x1="0" y1="50" x2="100%" y2="50" class="line default" />
+			</svg> -->
+		</div>
+	</article>
+</div>

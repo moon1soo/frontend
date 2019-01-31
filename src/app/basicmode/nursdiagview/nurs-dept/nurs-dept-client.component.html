@@ -1,0 +1,88 @@
+<h3 class="title-grid-sub mb-4">
+    {{'renewal2017.selectResult' | translate}}
+</h3>
+
+<form [formGroup]="clientForm">
+<ngb-accordion #accNursDept="ngbAccordion"
+    [closeOthers]="true"
+    (panelChange)="beforeChange($event)"
+    activeIds="nursDept-0"
+    class="select-accordian">
+    <div *ngFor="let client of dataSource; let idx = index">
+        <ngb-panel id="nursDept-{{idx}}">
+            <ng-template ngbPanelTitle>
+                <div class="float-left floating-btn-group">
+                    <!-- <div class="btn-group mr-4" role="group" aria-label="Basic example" *ngIf="client.length">
+                        <button type="button"
+                            class="btn btn-xs"
+                            [ngClass]="{'btn-info': condition[idx] === 'and', 'btn-light': condition[idx] === 'not'}"
+                            (click)="activeBtn($event, idx, 'and')">
+                            {{'renewal2017.inclusion' | translate}}
+                        </button>
+                        <button type="button"
+                            class="btn btn-xs btn-light"
+                            [ngClass]="{'btn-info': condition[idx] === 'not', 'btn-light': condition[idx] === 'and'}"
+                            (click)="activeBtn($event, idx, 'not')">
+                            {{'renewal2017.exclusion' | translate}}
+                        </button>
+                    </div> -->
+                    <small>{{client.length ? client.length : '0'}} {{'renewal2017.selectEa' | translate}}</small>
+                    <span class="input-material client ml-3" *ngIf="client.length" (click)="inputFocus($event)">
+                        <input type="text"
+                            placeholder="{{'renewal2017.placeholder.index' | translate}}" 
+                            formControlName="word-index-{{clientWordIdx.idx[idx]}}"
+                            [(ngModel)]="clientWordIdx.index[idx]"
+                            (ngModelChange)="activeWordIndex($event, idx)">								
+                        <i class="fal fa-pencil" aria-hidden="true" (mousedown)="inputFocus($event)"></i>
+                    </span>
+                </div>
+                <div class="float-right">
+                    <button type="button" class="btn btn-collapse" ngbTooltip="{{'research.all.delete' | translate}}" (click)="deleteClient($event, idx)">
+                        <i class="fal fa-times" aria-hidden="true"></i>
+                        <span class="sr-only">{{'research.all.delete' | translate}}</span>
+                    </button>
+                    <button type="button" class="btn btn-collapse">
+                        <i class="fal fa-chevron-up" aria-hidden="true" [ngClass]="{'fa-rotate-180' : activeId !== 'nursDept-{idx}'}"></i>
+                        <span class="sr-only">{{'renewal2017.collapse' | translate}}</span>
+                    </button>
+                </div>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <dx-data-grid
+                    class="gridSelect"
+                    [dataSource]="client"
+                    (onSelectionChanged)="onSelectionChanged($event)"
+                    (onContentReady)="onContentReady($event)">
+                    <dxi-column dataField="deptCd" caption="{{'renewal2017.nurs.dept.code' | translate}}" cssClass="text-center" [width]="150"></dxi-column>
+                    <dxi-column dataField="deptNm" caption="{{'renewal2017.nurs.dept.title' | translate}}"></dxi-column>
+                    <dxi-column  [width]="50"
+                        [allowFiltering]="false"
+                        [allowSorting]="false"
+                        cellTemplate="cellTemplate">
+                    </dxi-column>
+                    <dxo-scrolling mode="virtual"></dxo-scrolling>
+                    <dxo-sorting mode="single"></dxo-sorting>
+                    <div *dxTemplate="let data of 'cellTemplate'">
+                        <button type="button" class="btn btn-text-type" title="close" (click)="onDeleteRow(data)">
+                            <i class="fal fa-times-circle" aria-hidden="true"></i>
+                            <span class="sr-only">close</span>
+                        </button>
+                    </div>
+                </dx-data-grid>
+                <div class="guide-curton guidemode" *ngIf="!client.length && isLoadtable">
+                    <div class="bg"></div>
+                    <p class="text">
+                        <i class="fal fa-check text-primary"></i>
+                        <i class="fal fa-mouse-pointer"></i>
+                        <span>{{'renewal2017.p.notice-add-data' | translate}}</span>
+                    </p>  
+                </div>
+            </ng-template>
+        </ngb-panel>
+    </div>
+</ngb-accordion>
+</form>
+<!-- <button type="button" class="btn btn-add-grid btn-default" title="Add Grid" (click)="addGrid($event)">
+    <i class="fal fa-plus-circle fa-inverse" aria-hidden="true"></i>
+    <div class="sr-only">Add Grid</div>
+</button> -->

@@ -1,0 +1,318 @@
+<nav class="sidebar powermode-sidebar">
+    <basic-view></basic-view>
+    <div class="blind-edit" *ngIf="workMode === 'run' || workMode === 'patient' || workMode === 'finalRun' || workMode === 'final'"></div>
+    <sidebar-layout 
+        #sideBar
+        (addCell)="addCellByClick($event)"
+        [itemList]="addItemList">
+    </sidebar-layout>
+</nav>
+<section class="container-fluid powermode">
+    <vertical-split-pane
+        class="vertical-split-grid no-margin"
+        primary-component-minsize="600"
+        secondary-component-minsize="400"
+        primary-component-initialratio="0.8"
+        [secondary-component-toggled-off]="workMode === 'final' || workMode === 'finalRun'"
+        separator-thickness="1">
+        <section class="split-pane-content-primary">
+            <section class="edit-toolbar">
+                <h2 class="tool">Tool</h2>
+                <!-- 복사하기 -->
+                <button type="button" 
+                    class="btn" 
+                    ngbTooltip="{{'renewal2017.button.cut' | translate}}[Ctrl+C]" 
+                    placement="right"
+                    (click)="copyCell()"
+                    [disabled]="!selectionCell">
+                    <i class="fal fa-copy"></i>
+                    <span class="sr-only">{{'renewal2017.button.cut' | translate}}</span>
+                </button>
+                <!-- 붙여넣기 -->
+                <button type="button" 
+                    class="btn" 
+                    ngbTooltip="{{'renewal2017.button.paste' | translate}}[Ctrl+V]" 
+                    placement="right"
+                    (click)="pasteCell()"
+                    [disabled]="!selectionCell || !cellClone">
+                    <i class="fal fa-paste"></i>
+                    <span class="sr-only">{{'renewal2017.button.paste' | translate}}</span>
+                </button>
+                <!-- 삭제 -->
+                <button type="button"
+                    class="btn"
+                    ngbTooltip="{{'renewal2017.button.delete' | translate}}[Delete]"
+                    placement="right"
+                    (click)="deleteCell()"
+                    [disabled]="!selectionCell">
+                    <i class="fal fa-trash-alt"></i>
+                    <span class="sr-only">{{'renewal2017.button.delete' | translate}}</span>
+                </button>
+                <!-- 확대보기 -->
+                <button type="button" 
+                    class="btn" 
+                    ngbTooltip="{{'renewal2017.button.search-plus' | translate}}" 
+                    placement="right"
+                    (click)="screenRate('plus')">
+                    <i class="fal fa-search-plus"></i>
+                    <span class="sr-only">{{'renewal2017.button.search-plus' | translate}}</span>
+                </button>
+                <!-- 축소보기 -->
+                <button type="button" 
+                    class="btn" 
+                    ngbTooltip="{{'renewal2017.button.search-minus' | translate}}" 
+                    placement="right"
+                    (click)="screenRate('minus')">
+                    <i class="fal fa-search-minus"></i>
+                    <span class="sr-only">{{'renewal2017.button.search-minus' | translate}}</span>
+                </button>
+                <!-- 화면 비율 정의 -->
+                <div (clickOutside)="p.close()">
+                <button type="button" 
+                    class="btn" 
+                    placement="right"
+                    [ngbPopover]="popContent"
+                    triggers="manual"
+                    #p="ngbPopover" 
+                    (click)="p.open()"                    
+                    popoverTitle="{{'renewal2017.button.screen-rate' | translate}}">
+                    <i class="fal fa-eye"></i>
+                    <span class="sr-only">{{'renewal2017.button.screen-rate' | translate}}</span>
+                </button>
+                <ng-template #popContent>
+                    <select title="{{'renewal2017.button.screen-rate' | translate}}" 
+                        class="form-control"
+                        #screen
+                        (change)="setScreenRate(screen.value)">
+                        <option *ngFor="let opt of screenOption" [ngValue]="opt.value" [selected]="opt.value === screenRateNum">
+                            {{opt.name}}
+                        </option>
+                    </select>
+                </ng-template>
+                </div>
+            </section>
+            <section class="editor-area">
+                <header class="header-scenario text-center">
+                    <span class="input-material headline" *ngIf="headLine" (clickOutside)="inputFocus($event, 'blur')">
+                        <input type="text"
+                            class="text-center"
+                            [ngClass]="{'focus': focusInput}"
+                            (focus)="inputFocus($event, 'focus')"
+                            [(ngModel)]="headLine"
+                            [disabled]="!focusInput">
+                        <button type="button" 
+                            class="btn btn-sm btn-transparent mt-0" 
+                            (click)="inputFocus($event, 'focus')"
+                            ngbTooltip="{{'renewal2017.button.modify' | translate}}" placement="bottom">
+                            <i class="fal fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </span>
+                    
+                    <div class="float-right">
+                        <!-- Reset -->
+                        <button type="button" 
+                            *ngIf="workMode === 'edit' || workMode === 'run' || workMode === 'patient'"
+                            class="btn btn-sm btn-secondary mr-1 btn-rounded px-2"
+                            (click)="resetStore()">
+                            <i class="fal fa-sync-alt"></i>
+                            Reset
+                        </button>
+                        <!-- Run Query -->
+                        <button type="button" 
+                            *ngIf="workMode === 'edit' || workMode === 'patient'"
+                            class="btn btn-sm btn-info mr-1 btn-rounded px-3"
+                            (click)="runQueryAct()">
+                            <i class="fal fa-play"></i>
+                            Run Query
+                        </button>
+                        <!-- Stop Query -->
+                        <button type="button" 
+                            *ngIf="workMode === 'run'"
+                            class="btn btn-sm btn-danger mr-1 btn-rounded px-3"
+                            (click)="stopQuery()">
+                            <i class="fal fa-stop"></i>
+                            Stop Query
+                        </button>
+                        <!-- Apply -->
+                        <button type="button" 
+                            *ngIf="workMode === 'output'" 
+                            (click)="viewResultTable()"
+                            class="btn btn-sm btn-info mr-2 btn-rounded px-3">
+                            <i class="fal fa-bars"></i>
+                            Apply
+                        </button>
+                    </div>
+                </header>
+                <vertical-split-pane
+                    class="vertical-split-grid no-margin"
+                    primary-component-minsize="500"
+                    secondary-component-minsize="200"
+                    [secondary-component-toggled-off]="workMode !== 'output'"
+                    local-storage-key="split-pane"
+                    separator-thickness="1"
+                    primary-component-initialratio="0.8">
+                 
+                    <div class="split-pane-content-primary">
+                        <!-- 에디터 영역 -->                        
+                        <horizontal-split-pane
+                            primary-component-minsize="200"
+                            secondary-component-minsize="100"
+                            [primary-component-toggled-off]="workMode === 'output' || workMode === 'final' || workMode === 'finalRun'"
+                            [secondary-component-toggled-off]="workMode === 'edit'"
+                            local-storage-key="split-pane"
+                            separator-thickness="3"
+                            primary-component-initialratio="0.5">
+                            <perfect-scrollbar id="powermode-editable-area" class="powermode-editable-area dragscroll scroll-area split-pane-content-primary" [config]="config">
+                                <!-- 에디터 영역 -->
+                                <div id="editorPowermode" class="upper">
+                                    
+                                </div>
+                                <!-- //에디터 영역 -->
+                                <div class="blind-edit" *ngIf="workMode !== 'edit'"></div>
+                                <!-- And, Or 조건 설정 레이어 -->
+                                <article class="card floating-condition-layer">
+                                    <div class="card-header">
+                                        Condition
+                                    </div>
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>
+                                                <a href="javascript: void(0)" class="setConditionAnd">
+                                                    <i class="ico-condition ico-and"></i>
+                                                    <span>AND</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: void(0)" class="setConditionOr">
+                                                    <i class="ico-condition ico-or"></i>
+                                                    <span>OR</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </perfect-scrollbar>  
+                            <div class="split-pane-content-secondary patient-list-area">	
+                                <div class="lower">
+                                    <!-- Patient List -->
+                                    <patient-list #patientList *ngIf="workMode !== 'edit'" [hidden]="workMode === 'final' || workMode === 'finalRun'" [itemList]="addItemList"></patient-list>
+                                    <!-- Final -->
+                                    <final-result #finalResult *ngIf="workMode === 'final' || workMode === 'finalRun'" [itemList]="addItemList"></final-result>
+                                </div>
+                            </div>
+                        </horizontal-split-pane>
+                    </div>
+                 
+                    <div class="split-pane-content-secondary" class="add-item-container">
+                        <!-- Add Item -->
+                        <!-- <h2 class="header-property">
+                            Output Items
+                        </h2> -->
+                        <add-item *ngIf="workMode === 'output' || workMode === 'final' || workMode === 'finalRun'" [itemList]="addItemList"></add-item>
+                    </div>
+                </vertical-split-pane>
+                
+            </section>
+        </section>
+        <section class="split-pane-content-secondary">  
+            <div *ngIf="workMode === 'edit' || workMode === 'output'">
+                <h2 class="header-property">
+                    Properties
+                </h2>
+                <div class="inner-property-area">
+                    <div *ngIf="!selectionDataCell" class="vertical-text">
+                        {{'renewal2017.p.select-item' | translate}}
+                    </div>
+                    
+                    <div *ngIf="selectionDataCell">
+                        <!-- PTLIST -->
+                        <div *ngIf="selectionDataCell.filterType === 'PTLIST'">
+                            <horizontal-split-pane
+                                primary-component-minsize="200"
+                                secondary-component-minsize="200"
+                                [primary-component-toggled-off]="false"
+                                [secondary-component-toggled-off]="false"
+                                local-storage-key="split-pane"
+                                separator-thickness="1"
+                                primary-component-initialratio="0.7">
+                                <div class="split-pane-content-primary">
+                                    <div class="upper">
+                                        <props-ptlist-server [selectionDataCell]="selectionDataCell"></props-ptlist-server>
+                                    </div>
+                                </div>
+                                <div class="split-pane-content-secondary">
+                                    <div class="lower">
+                                        <props-ptlist-client [selectionDataCell]="selectionDataCell"></props-ptlist-client>
+                                    </div>
+                                </div>
+                            </horizontal-split-pane>
+                        </div>
+                        <!-- LT -->
+                        <div *ngIf="selectionDataCell.filterType === 'LT'">
+                            <horizontal-split-pane
+                                primary-component-minsize="200"
+                                secondary-component-minsize="200"
+                                [primary-component-toggled-off]="false"
+                                [secondary-component-toggled-off]="false"
+                                local-storage-key="split-pane"
+                                separator-thickness="1"
+                                primary-component-initialratio="0.7">
+                                <div class="split-pane-content-primary">
+                                    <div class="upper" *ngIf="!selectionDataCell.isFilter">
+                                        <props-lt-server [selectionDataCell]="selectionDataCell"></props-lt-server>
+                                    </div>
+                                    <div class="upper" *ngIf="selectionDataCell.isFilter">
+                                        <props-filter-server [selectionDataCell]="selectionDataCell"></props-filter-server>
+                                    </div>
+                                </div>
+                                <div class="split-pane-content-secondary">
+                                    <div class="lower" *ngIf="!selectionDataCell.isFilter">
+                                        <props-lt-client [selectionDataCell]="selectionDataCell"></props-lt-client>
+                                    </div>
+                                    <div class="lower" *ngIf="selectionDataCell.isFilter">
+                                        <props-filter-client [selectionDataCell]="selectionDataCell"></props-filter-client>
+                                    </div>
+                                </div>
+                            </horizontal-split-pane>
+                        </div>
+                        <!-- DATE -->
+                        <div *ngIf="selectionDataCell.filterType === 'DATE'">
+                            <props-date [selectionDataCell]="selectionDataCell"></props-date>
+                        </div>
+                        <!-- AGE -->
+                        <div *ngIf="selectionDataCell.filterType === 'AGE'">
+                            <props-age [selectionDataCell]="selectionDataCell"></props-age>
+                        </div>
+                        <!-- CHECK -->
+                        <div *ngIf="selectionDataCell.filterType === 'CHECK'">
+                            <props-check [selectionDataCell]="selectionDataCell"></props-check>
+                        </div>
+                        <!-- RADIO -->
+                        <div *ngIf="selectionDataCell.filterType === 'RADIO'">
+                            <props-radio [selectionDataCell]="selectionDataCell"></props-radio>
+                        </div>
+                        <!-- YN -->
+                        <div *ngIf="selectionDataCell.filterType === 'YN'">
+                            <props-yn [selectionDataCell]="selectionDataCell"></props-yn>
+                        </div>
+                        <!-- RANGE -->
+                        <div *ngIf="selectionDataCell.filterType === 'RANGE'">
+                            <props-range [selectionDataCell]="selectionDataCell"></props-range>
+                        </div>
+                        <!-- FREETEXT -->
+                        <div *ngIf="selectionDataCell.filterType === 'FREETEXT'">
+                            <props-freetext [selectionDataCell]="selectionDataCell"></props-freetext>
+                        </div>
+                        <!-- PN -->
+                        <div *ngIf="selectionDataCell.filterType === 'PN'">
+                            <props-pn [selectionDataCell]="selectionDataCell"></props-pn>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="workMode === 'run' || workMode === 'patient'">
+                <result-summary></result-summary>
+            </div>
+        </section>
+    </vertical-split-pane>
+</section>

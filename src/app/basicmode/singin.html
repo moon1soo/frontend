@@ -1,0 +1,211 @@
+<!doctype html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<style>
+
+.gate-container {
+	min-width: 1400px;
+	height: 100%;
+}
+
+.bg-img {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	background: url('./assets/styles/images/bg_main.jpg') 0 0 no-repeat;
+	background-size: auto 100%;
+}
+
+.floating-container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 900px;
+	height: 450px;
+	margin: -225px 0 0 -450px;
+	background-color: #fff;
+	border: solid 0.5px #89898a;
+	border-radius: 10px;
+	box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 5px
+		rgba(0, 0, 0, 0.12), 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+}
+
+.login-container {
+	padding: 60px 50px;
+}
+
+.login-container h1 {
+	font-family: 'Noto Sans KR', 'Roboto', sans-serif;
+	line-height: 1.1;
+	font-size: 24px;
+	font-weight: 400;
+	margin-top: 0px;
+	margin-bottom: 60px;
+}
+
+.login-container h1 img {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.login-container h2 {
+	font-size: 17px;
+	font-weight: 600;
+	margin-bottom: 18px;
+}
+
+.login-container a {
+	margin-top: 75px;
+	width: 120px;
+}
+
+.card {
+	position: relative;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	flex-direction: column;
+	min-width: 0;
+	height: 260px;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	text-align: center;
+}
+
+.form-box input[type="text"] {
+	border-radius: 5px 5px 0 0;
+}
+
+.form-box input {
+	width: 50%;
+	padding: 10px;
+	text-align: center;
+	height: 40px;
+	border: 1px solid #ccc;
+	background: #fff;
+}
+
+input, button, select, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+.form-box button.login {
+	margin-top: 15px;
+	padding: 10px 20px;
+}
+
+.btn-block {
+	display: block;
+	width: 50%;
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.btn-info {
+	color: #fff;
+	background-color: #5bc0de;
+	border-color: #46b8da;
+}
+
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+input, button, select, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"]
+	{
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+button, select {
+	text-transform: none;
+}
+
+button {
+	overflow: visible;
+}
+
+button, input, optgroup, select, textarea {
+	margin: 0;
+	font: inherit;
+	color: inherit;
+}
+</style>
+</head>
+<body>
+	<div class="bg-img"></div>
+	<div class="gate-container">
+		<div class="floating-container">
+			<div class="login-container">
+				<header>
+					<h1>
+						<img src="assets/styles/images/ci_ver.png" height="13" alt="서울대병원">
+						연구검색 통합솔루션
+					</h1>
+				</header>
+				<div class="row">
+					<div class="card">
+						<div class="form-box">
+							<form class="form-horizontal" action="tempAuth.do" method="POST"
+								id="chkAuthFrm">
+								<p>
+									<input type="text"
+										placeholder="ID"
+										id="aplcAdId" name="aplcAdId" value="" required>
+									<!-- value : kim.y.kw -->
+								</p>
+								<p>
+									<input type="password"
+										placeholder=""
+										id="apPasswd" name="apPasswd" value="">
+									<!-- value : Qwerty1! -->
+								</p>
+								<p>
+									<!--span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input placeholder="Domain" id="aplcDmnNm" name="aplcDmnNm" value="" class="ui-autocomplete-input" autocomplete="off"//-->
+									<button class="btn btn-info btn-block login btn-rounded" type="submit()">
+									</button>
+									<!-- <a class="btn btn-info btn-block login" href="/signup">Register</a> -->
+								</p>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	
+	</div>
+</body>
+</html>

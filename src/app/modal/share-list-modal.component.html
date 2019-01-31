@@ -1,0 +1,35 @@
+<div class="modal-header">
+        <h3 class="modal-title">{{'renewal2017.p.share-list' | translate}}</h3>
+            <button type="button" class="close" aria-label="Close"
+            (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="modal-text">
+            <dx-data-grid
+                id="share-query-grid"
+                class="gridContainer"
+                [height]="300"
+                [dataSource]="dataSource"
+                [columnResizingMode]="'nextColumn'" 
+                [allowColumnResizing]="true"
+                (onContentReady)="onContentReady($event)">
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxo-header-filter [visible]="true"></dxo-header-filter>
+                <dxi-column dataField="stfNo" caption="{{'renewal2017.nav-shared-queries.drStfNo' | translate}}" [width]="80" cssClass="text-center"></dxi-column>
+                <dxi-column dataField="stfNm" caption="{{'renewal2017.nav-shared-queries.drStfNm' | translate}}" [width]="140" cssClass="text-center"></dxi-column>
+                <dxi-column dataField="deptNm" caption="{{'renewal2017.nav-shared-queries.medDeptNm' | translate}}"></dxi-column>
+                <dxo-scrolling mode="virtual"></dxo-scrolling>   
+                <dxo-sorting mode="single"></dxo-sorting>        
+            </dx-data-grid>
+        </div>
+    </div>
+    <div class="modal-footer text-right">
+        <button
+            type="button"
+            class="btn btn-md btn-info btn-rounded"
+            (click)="activeModal.close('Confirm')">
+            {{'common.ok' | translate}}
+        </button>
+    </div>

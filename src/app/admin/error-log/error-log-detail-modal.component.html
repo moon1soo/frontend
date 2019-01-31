@@ -1,0 +1,66 @@
+  <div class="modal-header">
+    <h3 class="modal-title">[{{data.errLogId}}] {{'renewal2017.errLogView' | translate}} - ({{data.ocurTm}})
+    </h3>
+    <button type="button" class="close" aria-label="Close" (click)="_activeModal.dismiss('Close Click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="container-header" #header>
+
+      <h3 class="title-grid-sub">LOG DETAIL</h3>
+      <textarea class="form-control mt-2" readonly style="resize: none;min-height: 100px;">{{data.errMsg}}</textarea>
+
+      <div class="mt-4" [hidden]="!data.prmr">
+        <h3 class="title-grid-sub">PARAMETER
+          <small>{{'renewal2017.errLogParameterDescription' | translate}}</small>
+        </h3>
+        <textarea class="form-control mt-2" readonly style="resize: none;min-height: 100px;">{{data.prmr}}</textarea>
+      </div>
+
+      <div class="mt-4" [hidden]="!data.exclSql">
+        <h3 class="title-grid-sub">EXECUTION SQL
+          <small>{{'renewal2017.errLogSQLDescription' | translate}}</small>
+        </h3>
+        <textarea ng-model="data.exclSql" class="form-control mt-2" readonly style="resize: none;min-height: 100px;">{{data.exclSql}}</textarea>
+      </div>
+    </div>
+    <div class="bot-table-area">
+      <dx-data-grid
+        id="error-log-detail-modal-grid"
+        class="gridSelect mt-5"
+        [dataSource]="dataSource"
+        [height]="240"
+        [columnResizingMode]="'nextColumn'"
+        [allowColumnResizing]="true"
+        (onContentReady)="onContentReady($event)"
+        (onRowClick)="onRxRowClick($event)"
+        >
+        <dxo-filter-row [visible]="false"></dxo-filter-row>
+        <dxo-header-filter [visible]="true"></dxo-header-filter>
+        <dxi-column dataField="clsNm" caption="CLASS NAME" cssClass="text-left"></dxi-column>
+        <dxi-column dataField="mthdNm" caption="METHOD NAME" [width]="240" cssClass="text-left"></dxi-column>
+        <dxi-column dataField="lnNumb" caption="LINE NUMBER" [width]="160" cssClass="text-right"></dxi-column>
+        <dxo-scrolling mode="virtual"></dxo-scrolling>
+        <dxo-sorting mode="single"></dxo-sorting>
+      </dx-data-grid>
+      <dx-load-panel
+        #loadPanel
+        shadingColor="rgba(255,255,255,0)"
+        class="mb-5"
+        [position]="{ of: '#error-log-detail-modal-grid' }"
+        [(visible)]="loading"
+        [showIndicator]="true"
+        [showPane]="true"
+        [shading]="true"
+        [closeOnOutsideClick]="false">
+      </dx-load-panel>
+
+    </div>
+  </div>
+
+  <div class="modal-footer text-right">
+    <button type="button" class="btn btn-light btn-rounded"
+      (click)="_activeModal.close('Close Click')"> {{'common.close' | translate}}</button>
+  </div>

@@ -1,0 +1,40 @@
+<dx-data-grid 
+    id="irb-log"
+    class="gridContainer mt-5"
+    [dataSource]="dataSource"
+    [columnResizingMode]="'nextColumn'" 
+    [allowColumnResizing]="true"
+    (onContentReady)="onContentReady($event)"
+    [height]="735">
+    <dxo-filter-row 
+        [visible]="true"></dxo-filter-row>
+    <dxo-header-filter 
+        [visible]="true"></dxo-header-filter>
+    <dxi-column dataField="srchDtm" caption="검색일시" [width]="150" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="loginIp" caption="접속 IP" [width]="120" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="stfNo" caption="사번" [width]="80" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="deptNm" caption="부서" [width]="80" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="stfNm" caption="이름" [width]="80" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="irbNo" caption="IRB 번호" [width]="120" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="irbNm" caption="연구명"></dxi-column>
+    <dxi-column dataField="irbFromDt" caption="유효기간 시작" [width]="120" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="irbToDt" caption="유효기간 종료" [width]="120" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="irbMthd" caption="심의방법" [width]="80" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="irbCount" caption="대상환자" [width]="80" cssClass="text-right"></dxi-column>
+    <dxi-column dataField="ptListCount" caption="환자명단" [width]="80" cssClass="text-right"></dxi-column>
+    <dxi-column dataField="itemList" caption="선택항목" [width]="150"></dxi-column>
+    <dxi-column dataField="ptListSql" caption="SQL"></dxi-column>
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+    <dxo-sorting mode="single"></dxo-sorting>   
+</dx-data-grid>
+<dx-load-panel
+    #loadPanel
+    shadingColor="rgba(255,255,255,0)"
+    class="mb-5"
+    [position]="{ of: '#irb-log' }"
+    [(visible)]="loading"
+    [showIndicator]="true"
+    [showPane]="true"
+    [shading]="true"
+    [closeOnOutsideClick]="false">
+</dx-load-panel>

@@ -1,0 +1,68 @@
+<div class="tab-inner-area">
+    <form [formGroup]="orderForm">
+        <div class="col-sm-12 form-line">
+            <!-- 오더일 -->
+            <div class="form-group row">
+                <label for="order-2" class="col-sm-2 col-form-label">
+                    {{'research.order.prescription.date' |  translate}}
+                </label>
+                <div class="col-sm-7">
+                    <!-- <dashboard-datepicker
+                        (secDate)="selectDate($event)" [secCode]="'datepicker-period'"
+                        [storageDate]="storageDate">
+                    </dashboard-datepicker> -->
+                    <daterangepicker
+						(secDate)="selectDate($event)" [secCode]="'datepicker-period'"
+						[storageDate]="storageDate">
+					</daterangepicker>
+                </div>
+            </div>
+            <!-- Free Text -->
+            <div class="form-group row">
+                <label for="order-4" class="col-sm-2 col-form-label">
+                    {{'research.free.text.order' | translate}}
+                </label>
+                <div class="col-sm-10" *ngIf="freeTextCtrl.freeText">
+
+                    <span *ngFor="let cond of freeTextCtrl.freeTextCondition; let idx = index">
+                        <select
+                            [hidden]="!idx"
+                            class="form-control float-left mr-1 custom-select select-condition"
+                            title="select condition"
+                            formControlName="freeTextCondition-{{idx}}"
+                            [(ngModel)]="freeTextCtrl.freeTextCondition[idx]">
+                            <option value="and" selected>and</option>
+                            <option value="or">or</option>
+                            <option value="not">not</option>
+                        </select>
+                        <input
+                            type="text"
+                            class="form-control input-date-sm float-left mr-1"
+                            title="Free Text"
+                            style="width:165px;"
+                            formControlName="freeText-{{idx}}"
+                            [ngModel]="freeTextCtrl.freeText[idx]">
+                    </span>
+
+                    <button type="button"
+                        class="btn btn-md btn-secondary"
+                        (click)="addCondition()"
+                        [disabled]="freeTextCtrl.freeTextCondition.length > 4">
+                        <i class="fal fa-plus" aria-hidden="true"></i>
+                        <span class="sr-only">{{'research.add' | translate}}</span>
+                    </button>
+                    <button type="button"
+                        class="btn btn-md btn-secondary"
+                        (click)="delCondition()"
+                        [disabled]="freeTextCtrl.freeTextCondition.length === 1">
+                        <i class="fal fa-minus" aria-hidden="true"></i>
+                        <span class="sr-only">{{'research.delete' | translate}}</span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <order-search></order-search>
+</div>

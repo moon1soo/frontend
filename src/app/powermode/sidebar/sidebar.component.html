@@ -1,0 +1,69 @@
+<!-- <perfect-scrollbar class="powermode-sidebar-nav" [config]="config"> -->
+    
+
+<div class="powermode-sidebar-nav">    
+    <fieldset class="search-field">
+        <legend>Search</legend>
+        <div class="input-group">
+            <input type="text" 
+                class="form-control" 
+                placeholder="Search..." 
+                [(ngModel)]="fieldSearchTxt" 
+                (ngModelChange)="fieldSearch($event)">
+            <div class="input-group-append">
+                <i class="fal fa-search"></i>
+            </div>
+        </div>
+    </fieldset>
+    <ngb-accordion 
+        *ngIf="dataSource.dataSource"
+        #acc="ngbAccordion" 
+        class="nav nav-sidebar powermode-sidebar flex-column"
+        [closeOthers]="closeOther"
+        [destroyOnHide]="false"
+        activeIds="{{activeId}}"
+        (panelChange)="beforeChange($event)">
+		<ngb-panel 
+            *ngFor="let cate of dataSource.categoryGroup; let idx = index"           
+			id="toggle-{{cate.ctgCd}}"
+            class="powermode-list-item collapse">
+            <ng-template ngbPanelTitle>
+                <span>
+                    <i class="fal fa-caret-right" aria-hidden="true"></i>
+                    <span>{{cate.ctgNm}}</span>
+                </span>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <form [formGroup]="resultForm">
+                    <ul class="draggable-item-list">
+                        <li 
+                            *ngFor="let data of dataSourceClone | itemFilter: cate.ctgCd:fieldSearchTxt" 
+                            [attr.data-ctg-cd]="data.ctgCd"
+                            [attr.data-ctg-nm]="data.ctgNm"
+                            [attr.data-item-cd]="data.itemCd"
+                            [attr.data-item-nm]="data.itemNm"
+                            [attr.data-filter-type]="data.filterType"
+                            class="powermode-sublist-item text-truncate">
+                            <label class="custom-control custom-checkbox" *ngIf="dataSource.seq === 'A'" 
+                                [ngClass]="{'readonly-input': data.isDisabled}">
+                                <input
+                                    class="custom-control-input align-middle"
+                                    type="checkbox"
+                                    formControlName="{{data.ctgCd}}|{{data.itemCd}}|{{data.itemNm}}|{{data.ltUseYn}}|{{data.filterType}}"                                    
+                                    [(ngModel)]="data.isChecked">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">
+                                    {{data.itemNm}}
+                                </span>
+                            </label>
+                            <span *ngIf="dataSource.seq === 'P'">
+                                {{data.itemNm}}
+                            </span>
+                        </li>                       
+                    </ul>
+                </form>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+</div>
+<!-- </perfect-scrollbar> -->

@@ -1,0 +1,34 @@
+<form [formGroup]="hospitalForm">
+    <div class="col-sm-12 form-line mb-0">
+        <div class="form-group row">
+            <label for="basic-4" class="col-sm-3 col-form-label">
+                {{'renewal2017.selectHospital' | translate}}
+            </label>
+            <div class="col-sm-9 px-0">   
+                <ss-multiselect-dropdown 
+                    *ngIf="myOptions.length"
+                    [options]="myOptions" 
+                    [texts]="myTexts"
+                    [settings]="mySettings"
+                    [(ngModel)]="optionsModel" 
+                    formControlName="optionsModel"
+                    (ngModelChange)="onChange($event)">
+                </ss-multiselect-dropdown>
+                
+                <!-- <div class="form-check form-check-inline" *ngFor="let data of dataSource; let i = index;">
+                    <label class="custom-control custom-checkbox">
+                        <input
+                            class="custom-control-input"
+                            type="checkbox"
+                            formControlName="{{data.hspTpCd}}"
+                            [(ngModel)]="data.isChecked">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">
+                            {{data.hspTpNm}}
+                        </span>
+                    </label>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</form>

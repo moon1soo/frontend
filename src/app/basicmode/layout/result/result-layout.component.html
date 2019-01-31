@@ -1,0 +1,23 @@
+    <!-- Workflow -->
+    <article class="card-workflow-default split-pane-content-primary" style="height: 25%;">
+        <div class="card-header sr-only">
+            {{'research.scenario.preview' | translate}}
+        </div>
+        <div class="card-body card-workflow-body">
+            <workflow-diagram [curUrl]="'interim'"></workflow-diagram>
+        </div>
+    </article>
+    <div class="content-bot-area split-pane-content-secondary" style="overflow-y: hidden;">				
+        <div class="content-bot-tab">
+            <router-outlet>
+                <!-- <div *ngIf="loading" class="load-spinner">
+                    <i class="fal fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                </div> -->
+            </router-outlet>
+        </div>
+    </div>
+<!-- <horizontal-split-pane
+    [primary-component-toggled-off]="false"
+    [secondary-component-toggled-off]="false"
+    separator-thickness="14">
+</horizontal-split-pane> -->

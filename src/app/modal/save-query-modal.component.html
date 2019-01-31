@@ -1,0 +1,94 @@
+<form [formGroup]="saveScenarioForm" (ngSubmit)="submitForm()" (keypress)="onKeyPress($event)">
+    <div class="modal-header">
+        <h3 class="modal-title">
+            {{'renewal2017.h-save-scenario' | translate}}
+        </h3>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Close Click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">        
+        <p>{{'renewal2017.p.save-scenario' | translate}}</p>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <input 
+                    type="text" 
+                    class="form-control angular-material" 
+                    formControlName="scenarioNm"
+                    [(ngModel)]="scenario.scNm"
+                    placeholder="Query Name" 
+                    id="scenario-name">
+            </div>
+            <div class="col-sm-2">
+                <button 
+                    type="button" 
+                    class="btn btn-lg btn-light btn-rounded"
+                    ngbTooltip="{{'renewal2017.button.share' | translate}}" 
+                    placement="top"
+                    (click)="onShare = !onShare">
+                    <i 
+                        class="fal fa-share-alt" 
+                        aria-hidden="true">
+                    </i>
+                </button>
+            </div>            
+        </div>
+        <div class="mt-4 save-query" *ngIf="onShare">
+            <horizontal-split-pane
+            [primary-component-toggled-off]="false"
+            [secondary-component-toggled-off]="false"
+            local-storage-key="split-pane"
+            separator-thickness="1">
+            <div class="split-pane-content-primary">
+                <div class="upper">
+                    <dx-data-grid
+                        id="share-query-grid"
+                        class="gridContainer"
+                        [height]="300"
+                        [dataSource]="dataSource"
+                        [columnResizingMode]="'nextColumn'" 
+                        [allowColumnResizing]="true"
+                        (onSelectionChanged)="onSelectionChanged($event)"
+                        (onContentReady)="onContentReady($event)">
+                        <dxo-filter-row [visible]="true"></dxo-filter-row>
+                        <dxo-header-filter [visible]="true"></dxo-header-filter>
+                        <dxi-column dataField="drStfNo" caption="{{'renewal2017.nav-shared-queries.drStfNo' | translate}}" [width]="60"></dxi-column>
+                        <dxi-column dataField="drStfNm" caption="{{'renewal2017.nav-shared-queries.drStfNm' | translate}}" [width]="120"></dxi-column>
+                        <dxi-column dataField="medDeptNm" caption="{{'renewal2017.nav-shared-queries.medDeptNm' | translate}}"></dxi-column>
+                        <dxo-scrolling mode="virtual"></dxo-scrolling>
+                        <dxo-selection
+                            mode="multiple"
+                            showCheckBoxesMode="onClick">
+                        </dxo-selection>     
+                        <dxo-sorting mode="single"></dxo-sorting>        
+                    </dx-data-grid>
+                    <div *ngIf="loading" class="blind-curton">
+                        <div class="load-spinner">
+                            <i class="fal fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+            <div class="split-pane-content-secondary">
+                <div *ngIf="this.scenario.shareStfNo" class="lower mt-3 sharedlist">
+                    {{'renewal2017.p.staff-number1' | translate}} {{ this.scenario.shareStfNo }} {{'renewal2017.p.staff-number2' | translate}}.
+                </div>
+            </div>
+        </horizontal-split-pane>                
+        </div>
+    </div>  
+    <div class="modal-footer text-center">
+        <button 
+            type="submit" 
+            class="btn btn-md btn-info btn-rounded"
+            [disabled]="!saveScenarioForm.valid">
+            {{'research.save.0' | translate}}
+        </button>
+        <button
+            type="button"
+            class="btn btn-md btn-light btn-rounded"
+            (click)="activeModal.close('no')">
+            {{'renewal2017.button.cancel' | translate}}
+        </button>         
+    </div>
+</form>

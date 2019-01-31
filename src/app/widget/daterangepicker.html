@@ -1,0 +1,121 @@
+
+<form [formGroup]="datepickerForm">
+<div id="{{secCode}}" class="relative-area input-daterange" (clickOutside)="hideDatepicker($event)"
+    [ngClass]="{'guidemode-datepicker': secCode !== 'powermode-datepicker-period'}">    
+    <div *ngIf="secCode !== 'powermode-datepicker-period'">
+        <div class="input-group input-date-range-min float-left mr-1">
+            <button 
+                class="btn input-group-addon"
+                (click)="showDatepicker($event)">
+                <i class="fal fa-calendar-plus-o" aria-hidden="true"></i>
+            </button>
+            <input type="text"                 
+                [(ngModel)]="dataSource.fromDt"
+                [formControl]="datepickerForm.controls['startDate']"
+                maxlength="10"
+                minDate="1990-01-01"
+                class="datepicker-input form-control" placeholder="From" />
+        </div>
+        <div class="input-group input-date-range-min">
+            <button 
+                class="btn input-group-addon"
+                (click)="showDatepicker($event)">
+                <i class="fal fa-calendar-plus-o" aria-hidden="true"></i>
+            </button>
+            <input type="text"                 
+                [(ngModel)]="dataSource.toDt"
+                [formControl]="datepickerForm.controls['endDate']"
+                maxlength="10"
+                class="datepicker-input form-control" placeholder="To" />
+        </div>
+        <small *ngIf="datepickerForm.controls['startDate'].errors?.date || datepickerForm.controls['endDate'].errors?.date" class="text-warning">유효한 날짜 형식이 아닙니다.</small>
+        <!-- <small *ngIf="!datepickerForm.controls['startDate'].errors?.date && datepickerForm.controls['startDate'].errors?.minDate" class="text-warning">1990년 1월 1일 이전으로 날짜를 설정할 수 없습니다.</small> -->
+        <!-- <small *ngIf="datepickerForm.controls['endDate'].errors?.maxDate" class="text-warning">오늘 날짜 이후로 설정할 수 없습니다.</small> -->
+    </div>
+    
+    <div *ngIf="secCode === 'powermode-datepicker-period'">
+        <div class="form-group row">
+            <label class="col-3 col-form-label" for="daterangeStart">
+                {{'renewal2017.label.date-start' | translate}}
+            </label>
+            <div class="col-9 label-border input-group-border">
+                <div class="input-group input-date-range-min">
+                    <button 
+                        class="btn input-group-addon"
+                        (click)="showDatepicker($event)">
+                        <i class="fal fa-calendar-plus-o" aria-hidden="true"></i>
+                    </button>
+                    <input type="text" 
+                        id="daterangeStart"
+                        [(ngModel)]="dataSource.fromDt"
+                        [formControl]="datepickerForm.controls['startDate']"
+                        maxlength="10"
+                        minDate="1990-01-01"
+                        class="datepicker-input form-control" placeholder="From" />                
+                </div>
+                <small *ngIf="datepickerForm.controls['startDate'].errors?.date" class="text-warning">유효한 날짜 형식이 아닙니다.</small>
+                <small *ngIf="!datepickerForm.controls['startDate'].errors?.date && datepickerForm.controls['startDate'].errors?.minDate" class="text-warning">1990년 1월 1일 이전으로 날짜를 설정할 수 없습니다.</small>
+            </div>            
+        </div>
+        <div class="form-group row">
+            <label class="col-3 col-form-label" for="daterangeEnd">
+                {{'renewal2017.label.date-end' | translate}}
+            </label>
+            <div class="col-9 label-border input-group-border">
+                <div class="input-group input-date-range-min">
+                    <button 
+                        class="btn input-group-addon"
+                        (click)="showDatepicker($event)">
+                        <i class="fal fa-calendar-plus-o" aria-hidden="true"></i>
+                    </button>
+                    <input type="text" 
+                        id="daterangeEnd"                        
+                        [(ngModel)]="dataSource.toDt"
+                        [formControl]="datepickerForm.controls['endDate']"
+                        maxlength="10"
+                        class="datepicker-input form-control" placeholder="To" />
+                </div>
+                <small *ngIf="datepickerForm.controls['endDate'].errors?.date" class="text-warning">유효한 날짜 형식이 아닙니다.</small>          
+            </div>              
+        </div>      
+    </div>
+    <div class="daterangepicker-sm">
+        <button type="button" class="btn btn-text-type btn-close"
+            (click)="hideDatepicker($event)">
+            <i class="fal fa-window-close"></i>
+            <span class="sr-only">close</span>
+        </button>
+        <div class="row">
+            <div class="col-6 datepicker-body">
+                <div class="datepickerStart input-sm datepicker-plugin" data-role="from"></div>
+            </div>
+            <div class="col-6 datepicker-body">
+                <div class="datepickerEnd input-sm datepicker-plugin" data-role="to"></div>
+            </div>
+        </div>  
+        <div class="apply-dateranger-area text-center mt-3">
+            <button type="button" class="btn btn-md btn-secondary" (click)="applyDaterangepicker('OCS')">
+                OCS {{'renewal2017.label.next' | translate}}
+            </button>
+            <button type="button" class="btn btn-md btn-secondary" (click)="applyDaterangepicker('EMR')">
+                EMR {{'renewal2017.label.next' | translate}}
+            </button>
+            <button type="button" class="btn btn-md btn-secondary" (click)="applyDaterangepicker('HIS')">
+                HIS {{'renewal2017.label.next' | translate}}
+            </button>
+        </div>
+    </div>
+</div>
+</form>
+<!-- <dx-popover
+    target="#link4" 
+    position="top"
+    [width]="300"
+    [shading]="true"
+    shadingColor="rgba(0, 0, 0, 0.5)"
+    [(visible)]="withShadingOptionsVisible">
+    <div *dxTemplate="let data of 'content'">
+        The changes in our brochure designs for 2013 require 
+        us to update key areas of our website.
+    </div>
+</dx-popover> -->

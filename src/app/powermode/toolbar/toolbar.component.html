@@ -1,0 +1,109 @@
+<header class="nav az-navbar fixed-top powermode"> 
+    <h1 class="powermode-ci">
+        <span class="sr-only">Supreme</span>
+    </h1>
+    <div class="btn-toolbar">        
+        <div class="btn-col">
+            <button type="button" 
+                class="btn btn-text-type btn-invert mr-3" 
+                (click)="goHome()"
+                ngbTooltip="Home"
+                placement="bottom">
+                <i class="fal fa-home"></i>
+                <span class="sr-only">Home</span>
+            </button> 
+        </div>
+        <div class="btn-col">
+            <button type="button" 
+                class="btn btn-text-type btn-invert mr-3" 
+                (click)="newQuery('new')" 
+                ngbTooltip="New"
+                placement="bottom">
+                <i class="fal fa-file-alt"></i>
+                <span class="sr-only">New</span>
+            </button>    
+			<a href="javascript: void(0)"
+				routerLink="/tempAuth.do/powermode/scenario" 
+				skipLocationChange 
+                routerLinkActive="active"
+				class="btn btn-text-type btn-invert mr-3" 
+                ngbTooltip="Open"
+				placement="bottom">
+                <i class="fal fa-folder-open"></i>
+                <span class="sr-only">Open</span>
+			</a>   
+            <button type="button" 
+                class="btn btn-text-type btn-invert"
+                (click)="saveScenario()"
+                [disabled]="isScenario"
+                ngbTooltip="Save"
+                placement="bottom">
+                <i class="fal fa-save"></i>
+                <span class="sr-only">Save</span>
+            </button>
+        </div>
+
+        <div class="btn-col">
+            <button type="button" class="btn btn-text-type btn-invert" 
+                [ngClass]="{ 'active': !isScenario && workMode === 'edit' }"
+                (click)="transferEdit();myTip1.close()"
+                ngbTooltip="Case Design"
+                placement="bottom"
+                #myTip1="ngbTooltip"
+                [disabled]="workMode === 'edit' || workMode === 'run'" >
+                <i class="fal fa-edit"></i>
+                <span class="sr-only">{{'renewal2017.conditionSetup' | translate}}</span>
+            </button>
+            <button type="button" class="btn btn-text-type btn-invert" 
+                [ngClass]="{ 'active': !isScenario && workMode === 'patient' }"
+                (click)="runQueryAct();myTip2.close()"                
+                ngbTooltip="Patient List"
+                placement="bottom"
+                #myTip2="ngbTooltip"
+                [disabled]="workMode === 'edit' || workMode === 'edit' || workMode === 'patient'">
+                <i class="fal fa-users"></i>
+                <span class="sr-only">{{'renewal2017.patientList' | translate}}</span>
+            </button>
+            <button type="button" class="btn btn-text-type btn-invert" 
+                [ngClass]="{ 'active': !isScenario && workMode === 'output' }"
+                (click)="viewOutputMode();myTip3.close()"                 
+                ngbTooltip="Output Items"
+                placement="bottom"
+                #myTip3="ngbTooltip"
+                [disabled]="workMode !== 'patient' && workMode !== 'final'">
+                <i class="fal fa-list"></i>
+                <span class="sr-only">{{'renewal2017.addItems' | translate}}</span>
+            </button>
+        </div>
+
+        <div class="btn-col">
+            <button type="button" class="btn btn-text-type btn-invert btn-text" 
+                [disabled]="workMode === 'edit' || workMode === 'run' || workMode === 'finalRun'"
+                (click)="irbApprovals()">
+                IRB
+            </button>
+        </div>
+    </div>
+    <div class="primary-btn-group">
+        <button type="button" 
+            class="btn btn-text-type btn-invert" 
+            (click)="help()"
+            ngbTooltip="Help"
+            placement="bottom">
+            <i class="fal fa-question-circle"></i> 
+            <span class="sr-only">Help</span>
+        </button>
+        <a routerLink="/tempAuth.do/powermode/admin" skipLocationChange routerLinkActive="active"
+            *ngIf="adminYn"
+            class="btn btn-text-type btn-invert" 
+            ngbTooltip="Admin"
+            placement="bottom">                
+            <i class="fal fa-cog" aria-hidden="true"></i> 
+            <span class="sr-only">Admin</span>
+        </a>    
+    </div>
+    
+    <div class="btn-group-right">
+        <setting-window></setting-window>
+    </div>
+</header>

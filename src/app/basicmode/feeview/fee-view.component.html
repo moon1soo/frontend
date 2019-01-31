@@ -1,0 +1,24 @@
+<div class="tab-inner-area">
+    <form [formGroup]="feeForm">
+        <div class="col-sm-12 form-line">
+            <!-- 처방일 -->
+            <div class="form-group row">
+                <label for="fee-2" class="col-sm-2 col-form-label">
+                    {{'renewal2017.prescriptionDate' |  translate}}
+                </label>
+                <div class="col-sm-7">
+                    <!-- <dashboard-datepicker
+						(secDate)="selectDate($event)" [secCode]="'datepicker-period'"
+						[storageDate]="storageDate">
+                    </dashboard-datepicker>                                       -->
+                    <daterangepicker
+						(secDate)="selectDate($event)" [secCode]="'datepicker-period'"
+						[storageDate]="storageDate">
+					</daterangepicker>
+                </div>
+            </div>
+        </div>
+    </form>
+    <fee-search></fee-search>
+</div>
+    

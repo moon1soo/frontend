@@ -1,0 +1,64 @@
+
+<div class="tab-inner-area list-query">
+  <div class="container-header">
+    <div class="float-left">SERVER LIST</div>
+    <div class="float-right text-right">
+      <!--
+      <i class="fas fa-exchange-alt"></i>
+      <div class="btn-group mr-3" role="group" aria-label="websocket subscribe">
+        <button type="button"
+                class="btn btn-xs"
+                [ngClass]="{'btn-info': onSubscribe, 'btn-light': !onSubscribe}"
+                (click)="setSubscribe($event, true)">ON</button>
+        <button type="button"
+                class="btn btn-xs"
+                [ngClass]="{'btn-info': !onSubscribe, 'btn-light': onSubscribe}"
+                (click)="setSubscribe($event, false)">OFF</button>
+      </div>
+      -->
+      <button type="button" class="btn btn-md btn-light mr-2 border-0" (click)="serverRefresh()" >
+        <i class="fal fa-refresh" aria-hidden="true"></i>
+        Refresh
+      </button>
+    </div>
+  </div>
+    <ul id="work-manager-server-list" class="form-line">
+        <li style="cursor: pointer" class="form-group" *ngFor="let item of serverData" (click)="showServerModal(item.name)">
+          <div class="row mt-2 mb-4">
+            <div class="col-1 icon">
+              <i class="fas fa-server"></i>
+            </div>
+            <div class="col-2">{{ item.name }}</div>
+            <div class="col-3">
+              <div><span title="ㆍPool Active Count"> ㆍ Pool Active Count : {{item.data.poolActiveSize !== undefined ? item.data.poolActiveSize : '-'}} </span></div>
+              <!--<div><span title="ㆍPool-Size"> ㆍ Pool-Size : {{srvData[srv]  ? (srvData[srv].poolSize ) : '-'}}</span></div>-->
+              <div class="mt-1"><span title="ㆍCore Pool-Size"> ㆍ Core Pool-Size : {{ item.data.poolCoreSize !== undefined? item.data.poolCoreSize : '-'}} </span></div>
+              <div class="mt-1"><span title="ㆍMax Pool-Size"> ㆍ Max Pool-Size : {{ item.data.poolMaxSize !== undefined? item.data.poolMaxSize:'-' }} </span></div>
+            </div>
+            <div class="col-3">
+              <div><span title="ㆍWorkGroup Size"> ㆍ WorkGroup Count : {{item.data.workGroupCount !== undefined? item.data.workGroupCount : '-' }}</span></div>
+              <div class="mt-1"><span title="ㆍWork Size"> ㆍ Work Count : {{item.data.workCount !== undefined?  item.data.workCount : '-' }}</span></div>
+              <div class="mt-1"><span title="ㆍTask Size"> ㆍ Task Count : {{item.data.taskCount !== undefined? item.data.taskCount : '-' }}</span></div>
+            </div>
+            <div class="col-3">
+              <div><span title="ㆍTotal Memory"> ㆍ Total Memory : {{item.data.totalMemorySize !== undefined? (item.data.totalMemorySize / 1024 / 1024).toFixed(1):'- '}}MB</span></div>
+              <div class="mt-1"><span title="ㆍMax Memory"> ㆍ Max Memory : {{item.data.maxMemorySize !== undefined? (item.data.maxMemorySize / 1024 / 1024).toFixed(1):'- '}}MB</span></div>
+              <div class="mt-1"><span title="ㆍFree Memory"> ㆍ Free Memory : {{item.data.freeMemorySize !== undefined? (item.data.freeMemorySize / 1024 / 1024).toFixed(1):'- '}}MB</span></div>
+              <!--<div><span title="ㆍUsing Memory"> ㆍ Using Memory : {{srvData[srv]  ? (srvData[srv].USING_MEMORY ) : '-'}}</span></div>-->
+            </div>
+          </div>
+        </li>
+    </ul>
+</div>
+
+<dx-load-panel
+  #loadPanel
+  shadingColor="rgba(255,255,255,0)"
+  class="mb-5"
+  [position]="{ of: '#work-manager-server-list' }"
+  [(visible)]="loading"
+  [showIndicator]="true"
+  [showPane]="true"
+  [shading]="true"
+  [closeOnOutsideClick]="false">
+</dx-load-panel>

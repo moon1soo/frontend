@@ -1,0 +1,68 @@
+/**** Colors (recommended use HEX colors) ****/ 
+$body-bg-color: #ffffff !default;
+$container-bg-color: #ffffff;
+$default-color:#fff; 
+$default-hover: #e6e6e6;
+$bg-white: #ffffff;
+
+$dark-color: #292e32;
+$gray-color: #e1e3e5;
+$light-color: #eceff1;
+$light-gray: #e1e3e5;
+
+$text-color: #242424;
+$text-color-light: #242424;
+$text-color-invert: #ffffff;
+$text-color-save: #242424;
+$text-color-highlight: #5b69bc;
+$title-color: #89898a;
+$title-color-light: #8f8e94;
+
+$border-color-default:rgba(191, 191, 191, 0.85);
+$border-color: #89898a;
+$border-color-active: #ffffff;
+$border-color-grid: #89898a;
+$border-color-light: rgba(191, 191, 191, 0.85);
+$border-color-focus: #89898a;
+$border-color-phantom: #89898a;
+$border-color-thin: #89898a;
+
+$sidebar-bg-color:#292e32;
+$sidebar-item-active-bg-color: #637CA0;
+$sidebar-toolbar-color: #f0eff5;
+$footer-bg-color: #4c4b4b;
+$bg-gray-color: #fbfbfb;
+$bg-gray-color-dark: #ffffff;
+
+$editor-bg: #ffffff;
+
+$tab-bg-color: #8f8e94;
+// $tab-content-bg-color: #ffffff;
+$table-bg-gray: #ececec;
+$table-border: rgba(191, 191, 191, 0.85);
+$table-color-highlight: #3abff5;
+$table-header-color: #148ecf;
+$table-header-normal: #ffffff;
+$folder-bg-color: #f8f8f8;
+
+$accordion-head-color: #ffffff;
+$modal-color-body: #ffffff;
+$modal-color-head: #148ecf;
+
+$btn-light-color: #d9d9d9;
+
+$gradation-to: #f9f8f9;
+$gradation-bottom: #e4e6e8;
+
+// 컬러 선택 변경 부분
+$main-color: #f1f0f0;
+
+$check-text-color: #148ecf;
+
+// $primary-color: #2c65a4;
+$primary-color: #148ecf;
+$success-color: #3abff5;
+$info-color: #007aff;
+$warning-color: #f79a17;
+$danger-color: #bf1725;
+$secondary-color: #ffffff;

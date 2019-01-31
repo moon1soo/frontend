@@ -1,0 +1,81 @@
+<div class="tab-inner-area">
+	<form [formGroup]="nursDiagForm">
+        <div class="col-sm-12 form-line">
+            <!-- 기록작성일 -->
+            <div class="form-group row">
+                <label for="nursDiag-2" class="col-sm-2 col-form-label">
+                    {{'renewal2017.nurs.common.date' |  translate}}
+                </label>
+                <div class="col-sm-5">
+                    <!-- <dashboard-datepicker
+						(secDate)="selectDate($event)" [secCode]="'datepicker-period'"
+						[storageDate]="storageDate">
+					</dashboard-datepicker> -->
+					<daterangepicker
+						(secDate)="selectDate($event)" [secCode]="'datepicker-period'"
+						[storageDate]="storageDate">
+					</daterangepicker>
+                </div>                           
+                <!-- 적용여부 -->
+                <!-- <div *ngIf="activeId==='plan'" class="col-sm-3 label-border">
+                    <div class="form-check form-check-inline">
+                        <label class="custom-control custom-checkbox">
+                            <input
+                                class="custom-control-input"
+                                type="checkbox"
+                                formControlName="fmtYn1"
+                                [(ngModel)]="nursDiagData.fmtYn1"
+								[checked]="nursDiagData.fmtYn1 === 'Y'"
+								[disabled]="!(activeId==='plan')">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">
+                                {{'renewal2017.nurs.diagnosis.yn' |  translate}}
+                            </span>
+                        </label>
+                    </div>
+				</div>				               -->
+            </div>
+        </div>
+	</form>
+	<ngb-tabset class="table-list" 
+		[destroyOnHide]="true"
+		[activeId]="initTab"
+		(tabChange)="beforeChange($event)">	
+		<!-- 간호사정 및 평가 검색 -->
+		<ngb-tab id="circumstance">
+			<ng-template ngbTabTitle>
+				{{'renewal2017.nurs.diagnosis.circumstance.title' | translate}}
+			</ng-template>
+			<ng-template ngbTabContent>
+				<nurs-circum-search></nurs-circum-search>
+			</ng-template>
+		</ngb-tab>		
+		<!-- 간호진단 검색 -->
+		<ngb-tab id="diagnosis">
+			<ng-template ngbTabTitle>
+				{{'renewal2017.nurs.diagnosis.diagnosis.title' | translate}}
+			</ng-template>
+			<ng-template ngbTabContent>
+				<nurs-diag-search></nurs-diag-search>
+			</ng-template>
+		</ngb-tab>   
+		<!-- 간호계획 및 중재 -->
+		<ngb-tab id="plan">
+			<ng-template ngbTabTitle>
+				{{'renewal2017.nurs.diagnosis.plan.title' | translate}}
+			</ng-template>
+			<ng-template ngbTabContent>
+				<nurs-plan-search></nurs-plan-search>
+			</ng-template>
+		</ngb-tab>
+		<!-- 간호기록부서 -->
+		<ngb-tab id="dept">
+			<ng-template ngbTabTitle>
+				{{'renewal2017.nurs.dept.title' | translate}}
+			</ng-template>
+			<ng-template ngbTabContent>
+				<nurs-dept-search></nurs-dept-search>
+			</ng-template>
+		</ngb-tab>		
+	</ngb-tabset>
+</div>

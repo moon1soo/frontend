@@ -1,0 +1,223 @@
+<h3 class="title-grid-sub mb-4">
+    {{'renewal2017.selectResult' | translate}}
+</h3>
+<form [formGroup]="examConditionForm">
+<ngb-accordion #accExam="ngbAccordion"
+    [closeOthers]="true"
+    (panelChange)="beforeChange($event)"
+    activeIds="examPanel-0"
+    class="select-accordian">
+    <div *ngFor="let client of dataSource; let idx = index">
+        <ngb-panel id="examPanel-{{idx}}">
+            <ng-template ngbPanelTitle>
+                <div class="float-left floating-btn-group">
+                    <div class="btn-group mr-4" role="group" aria-label="Basic example" *ngIf="client.length">
+                        <button type="button"
+                            class="btn btn-xs"
+                            [ngClass]="{'btn-info': condition[idx] === 'and', 'btn-light': condition[idx] === 'not'}"
+                            (click)="activeBtn($event, idx, 'and')">
+                            {{'renewal2017.inclusion' | translate}}
+                        </button>
+                        <button type="button"
+                            class="btn btn-xs"
+                            [ngClass]="{'btn-info': condition[idx] === 'not', 'btn-light': condition[idx] === 'and'}"
+                            (click)="activeBtn($event, idx, 'not')">
+                            {{'renewal2017.exclusion' | translate}}
+                        </button>
+                    </div>
+                    <small>{{client.length ? client.length : '0'}} {{'renewal2017.selectEa' | translate}}</small>
+                    <span class="input-material client ml-3" *ngIf="client.length" (click)="inputFocus($event)">
+                        <input type="text"
+                            placeholder="{{'renewal2017.placeholder.index' | translate}}" 
+                            [formControlName]="'word-index-'+clientWordIdx.idx[idx]"                          
+                            [(ngModel)]="clientWordIdx.index[idx]"
+                            (ngModelChange)="activeWordIndex($event, idx)">
+                        <i class="fal fa-pencil" aria-hidden="true" (mousedown)="inputFocus($event)"></i>
+                    </span>
+                </div>
+                <div class="float-right">
+                    <button type="button" class="btn btn-collapse" ngbTooltip="{{'research.all.delete' | translate}}" (click)="deleteClient($event, idx)">
+                        <i class="fal fa-times" aria-hidden="true"></i>
+                        <span class="sr-only">{{'research.all.delete' | translate}}</span>
+                    </button>
+                    <button type="button" class="btn btn-collapse">
+                        <i class="fal fa-chevron-up" aria-hidden="true" [ngClass]="{'fa-rotate-180' : activeId !== 'examPanel-{idx}'}"></i>
+                        <span class="sr-only">{{'renewal2017.collapse' | translate}}</span>
+                    </button>
+                </div>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <dx-data-grid
+                    class="gridSelect"
+                    [dataSource]="client"
+                    (onSelectionChanged)="onSelectionChanged($event)"
+                    (onContentReady)="onContentReady($event)">
+                    <dxi-column dataField="exmCd" caption="{{'research.examination.code' | translate}}" cssClass="text-center" [width]="100"></dxi-column>
+                    <dxi-column dataField="exmNm" caption="{{'research.examination.name.0' | translate}}"></dxi-column>
+                    <dxi-column dataField="formNm" caption="{{'research.form.name' | translate}}"></dxi-column>
+                    <dxi-column dataField="formCpemNm" caption="{{'research.form.item.name.0' | translate}}"></dxi-column>    
+                    <dxi-column  [width]="50"
+                        [allowFiltering]="false"
+                        [allowSorting]="false"
+                        cellTemplate="cellTemplate">
+                    </dxi-column>
+                    <dxo-scrolling mode="virtual"></dxo-scrolling>
+                    <dxo-sorting mode="single"></dxo-sorting>
+                    <div *dxTemplate="let data of 'cellTemplate'">
+                        <button type="button" class="btn btn-text-type" title="close" (click)="onDeleteRow(data)">
+                            <i class="fal fa-times-circle" aria-hidden="true"></i>
+                            <span class="sr-only">close</span>
+                        </button>
+                    </div>
+                </dx-data-grid>
+                <div class="guide-curton guidemode" *ngIf="!client.length && isLoadtable">
+                    <div class="bg"></div>
+                    <p class="text">
+                        <i class="fal fa-check text-primary"></i>
+                        <i class="fal fa-mouse-pointer"></i>
+                        <span>{{'renewal2017.p.notice-add-data' | translate}}</span>
+                    </p>  
+                </div>
+                    
+                <!-- 조건 설정 -->
+                <ul class="nav nav-fill nav-btn-group" *ngIf="client.length">
+                    <li class="nav-item" (clickOutside)="selectRange.close();" *ngIf="formCtrlSet[idx]">
+                        <button type="button"
+                            class="btn btn-sm btn-light btn-fill"
+                            [ngbPopover]="range"
+                            (hidden)="sendData($event)"
+                            placement="top"
+                            #selectRange="ngbPopover">
+                            {{'research.range.0' | translate}}
+                        </button>
+                        <ng-template #range>
+                            <label class="col-form-label mr-3" for="range-{{idx}}">{{'research.range.0' | translate}}</label>
+                            <input type="text"
+                                id="range-{{idx}}"
+                                class="form-control number-input"
+                                title="Range Start"
+                                [formControlName]="'rangeDtSt-'+idx"
+                                [(ngModel)]="formCtrlSet[idx].start">
+                            ~
+                            <input type="text"
+                                class="form-control number-input"
+                                title="Range end"
+                                [formControlName]="'rangeDtEd-'+idx"
+                                [(ngModel)]="formCtrlSet[idx].end">
+                        </ng-template>
+                    </li>
+                    <li class="nav-item" (clickOutside)="selectPN.close();" *ngIf="PNCheckCtrl[idx]">
+                        <button type="button"
+                            class="btn btn-sm btn-light btn-fill"
+                            [ngbPopover]="PN"
+                            (hidden)="sendData($event)"
+                            placement="top"
+                            #selectPN="ngbPopover">
+                            {{'research.pn.0' | translate}}
+                        </button>
+                        <ng-template #PN>
+                            <div class="form-check form-check-inline">
+                                <label class="custom-control custom-checkbox">
+                                    <input
+                                        class="custom-control-input"
+                                        type="checkbox"
+                                        value="a"
+                                        [formControlName]="'pn1a-'+idx"
+                                        [ngModel]="PNCheckCtrl[idx].a">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">
+                                        ±
+                                    </span>
+                                </label>
+                                <label class="custom-control custom-checkbox">
+                                    <input
+                                        class="custom-control-input"
+                                        type="checkbox"
+                                        value="p"
+                                        [formControlName]="'pn1p-'+idx"
+                                        [ngModel]="PNCheckCtrl[idx].p">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">
+                                        +
+                                    </span>
+                                </label>
+                                <label class="custom-control custom-checkbox">
+                                    <input
+                                        class="custom-control-input"
+                                        type="checkbox"
+                                        value="n"
+                                        [formControlName]="'pn1n-'+idx"
+                                        [ngModel]="PNCheckCtrl[idx].n">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">
+                                        -
+                                    </span>
+                                </label>
+                            </div>
+                        </ng-template>
+                    </li>
+                    <li class="nav-item" (clickOutside)="selectText.close();" *ngIf="freeTextCtrl[idx]">
+                        <button type="button"
+                            class="btn btn-sm btn-light btn-fill"
+                            [ngbPopover]="freetext"
+                            (hidden)="sendData($event)"
+                            placement="top"
+                            #selectText="ngbPopover">
+                            {{'research.freetext.0' | translate}}
+                        </button>
+                        <ng-template #freetext>
+                            <ul class="list-group">
+                                <li class="list-group-item" *ngFor="let seq of freeTextCtrl[idx].seq; let i = index">
+                                    <div *ngIf="i == 0">
+                                        <input type="text"
+                                            #text1
+                                            class="form-control input-date"
+                                            title="input free text"
+                                            [formControlName]="'freeText-'+idx+'-'+seq"
+                                            [value]="freeTextCtrl[idx].freeText[i]">
+                                        <button
+                                            type="button"
+                                            class="btn btn-md btn-light"
+                                            (click)="addFreeText([$event, idx, i])">
+                                            <i class="fal fa-plus-circle" aria-hidden="true"></i>
+                                            <span class="sr-only">{{'research.delete.0' | translate}}</span>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="i != 0">
+                                        <select
+                                            #condition
+                                            class="form-control custom-select select-condition"
+                                            title="select condition"
+                                            [formControlName]="'freeTextCondition-'+idx+'-'+seq"
+                                            [value]="freeTextCtrl[idx].freeTextCondition[i]">
+                                            <option value="and" selected>and</option>
+                                            <option value="or">or</option>
+                                            <option value="not">not</option>
+                                        </select>
+                                        <input type="text"
+                                            #text2
+                                            class="form-control input-date"
+                                            title="input free text"
+                                            [formControlName]="'freeText-'+idx+'-'+seq"
+                                            [value]="freeTextCtrl[idx].freeText[i]">
+                                        <button type="button"
+                                            class="btn btn-md btn-light"
+                                            (click)="delFreeText([$event, idx, i, seq])">
+                                            <i class="fal fa-minus-circle" aria-hidden="true"></i>
+                                            <span class="sr-only">{{'research.delete.0' | translate}}</span>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </ng-template>
+                    </li>
+                </ul>
+            </ng-template>
+        </ngb-panel>
+    </div>
+</ngb-accordion>
+</form>
+<button type="button" class="btn btn-add-grid btn-default" title="Add Grid" (click)="addGrid($event)">
+    <i class="fal fa-plus-circle fa-inverse" aria-hidden="true"></i>
+    <div class="sr-only">Add Grid</div>
+</button>

@@ -1,0 +1,62 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        {{'renewal2017.irb.title' | translate}}
+    </h3>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('cancel')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <dx-data-grid
+        id="irb-approval-modal"
+        class="gridContainer"
+        [dataSource]="dataSource"
+        [columnResizingMode]="'nextColumn'" 
+        [allowColumnResizing]="true"
+        (onSelectionChanged)="onSelectionChanged($event)">
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column dataField="irbNo" caption="{{'renewal2017.irb.irbNo' | translate}}" [width]="100"></dxi-column>
+        <dxi-column dataField="reschKorNm" caption="{{'renewal2017.irb.reschKorNm' | translate}}"></dxi-column>
+        <dxi-column dataField="availableStDt" caption="{{'renewal2017.irb.availableStDt' | translate}}"[width]="120"></dxi-column>
+        <dxi-column dataField="availableEdDt" caption="{{'renewal2017.irb.availableEdDt' | translate}}" [width]="120"></dxi-column>
+        <dxi-column dataField="irbMethodNm" caption="{{'renewal2017.irb.irbMethodNm' | translate}}" [width]="80"></dxi-column>
+        <dxi-column dataField="ptCnt" caption="{{'renewal2017.irb.ptCnt' | translate}}" [width]="80"></dxi-column>
+
+        <dxo-scrolling mode="virtual"></dxo-scrolling>
+        <dxo-selection mode="single">
+        </dxo-selection>        
+        <dxo-sorting mode="single"></dxo-sorting>        
+    </dx-data-grid>
+    <dx-load-panel
+        #loadPanel
+        shadingColor="rgba(255,255,255,0)"
+        [position]="{ of: '#irb-approval-modal' }"
+        [(visible)]="loading"
+        [showIndicator]="true"
+        [showPane]="true"
+        [shading]="true"
+        [closeOnOutsideClick]="false">
+    </dx-load-panel>
+    <!-- <div *ngIf="loading" class="blind-curton">
+        <div class="load-spinner">
+            <i class="fal fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+        </div>
+    </div>     -->
+</div>
+<div class="modal-footer text-right">
+    <span>{{'renewal2017.p.irb-change-message-1' | translate}}<span class="text-info">{{'renewal2017.p.irb-change-message-2' | translate}}</span>{{'renewal2017.p.irb-change-message-3' | translate}}</span>
+    <button 
+        type="button" 
+        class="btn btn-primary btn-rounded" 
+        (click)="devOnly()"
+        *ngIf="adminYn || testerYn">
+        개발용
+    </button>
+    <button 
+        type="button" 
+        class="btn btn-primary btn-rounded" 
+        (click)="irbApply()"
+        [disabled]="!irbExists">
+        {{'common.apply' | translate}}
+    </button>
+</div>

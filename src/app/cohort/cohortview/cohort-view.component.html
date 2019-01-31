@@ -1,0 +1,10 @@
+<nav class="sidebar" [ngClass]="{'menu-collapsed': isMenuCollapsed}">
+  <sidebar-layout (toggle)="toggleMenu()"></sidebar-layout>
+</nav>
+<section class="container-fluid app-dark" style="min-width: 600px;left: 200px;">
+  <div class="row" style="overflow:hidden">
+    <div class="main-wrapper" [ngClass]="{'menu-collapsed': isMenuCollapsed}" style="margin-left:0px;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>

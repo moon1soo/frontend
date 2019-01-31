@@ -1,0 +1,43 @@
+<form [formGroup]="categoryForm" (ngSubmit)="submitForm()" (keypress)="onKeyPress($event)">
+    <div class="modal-header">
+        <h3 class="modal-title">
+            {{'cohort.mart.table.group.dlg-title' | translate}}
+        </h3>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Close Click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+  <div class="modal-body" style="padding-top:40px;">
+      <div class="modal-text" style="margin-bottom:40px;">
+        <h5>{{data.title}}</h5> {{'cohort.mart.table.regularExpress.category.info' | translate}}
+      </div>
+        <input
+          type="text"
+          class="form-control angular-material"
+          formControlName="CTG_NM"
+          [(ngModel)]="CTG_NM"
+          placeholder="{{'cohort.mart.table.regularExpress.category.name' | translate}}"
+          id="CTG_NM" style="margin-bottom:20px;" autofocus>
+        <input
+          type="text"
+          class="form-control angular-material"
+          formControlName="CTG_CNTE"
+          [(ngModel)]="CTG_CNTE"
+          placeholder="{{'cohort.mart.table.regularExpress.category.cnte' | translate}}"
+          id="CTG_CNTE" style="margin-bottom:20px;">
+    </div>
+    <div class="modal-footer text-center">
+        <button
+            type="submit"
+            class="btn btn-md btn-info btn-rounded"
+            [disabled]="!categoryForm.valid">
+            {{'cohort.save' | translate}}
+        </button>
+        <button
+            type="button"
+            class="btn btn-md btn-light btn-rounded"
+            (click)="activeModal.close('no')">
+            {{'cohort.cancel' | translate}}
+        </button>
+    </div>
+</form>

@@ -1,0 +1,22 @@
+<div class="power-props-inner">
+    <h2 class="h6">{{propsTitle}}</h2>
+    <form [formGroup]="checkForm">
+        <div *ngIf="dataSource">
+            <div class="form-check"
+                *ngFor="let data of dataSource">
+                <label class="custom-control custom-checkbox">
+                    <input
+                        class="custom-control-input"
+                        type="checkbox"
+                        [value]="data.name"
+                        formControlName="{{data.ctrl}}"
+                        [(ngModel)]="data.isChecked">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">
+                        {{data.name}}
+                    </span>
+                </label>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,248 @@
+/*** Slim-scroll ***/
+.slimScrollBar, .slimScrollRail {
+  border-radius: 0px !important;
+  width: 4px !important;
+}
+
+
+/*** Pace ***/
+.pace {
+  .pace-progress{
+    background: $sidebar-item-active-bg-color;
+    position: absolute;
+    height: 3px;
+    z-index: 0;
+  }
+  .pace-activity{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-width: 1px; 
+    right: auto;
+    width: 18px;
+    height: 18px;
+    border-top-color: $primary-color;
+    border-left-color: $primary-color;
+  }
+} 
+
+
+
+/*** Full Calendar ***/
+.fc{
+    color: $text-color;
+}
+.fc-toolbar {  
+    button{
+        border-radius: 0 !important;
+        background: transparent;
+        border: 1px solid $gray;
+        color: $text-color;
+        text-shadow: none !important;
+        box-shadow: none !important;
+        &:hover, &:focus, &.fc-state-active{
+            background: $primary-color;
+            color: $default-color;
+        }
+        &:first-letter{
+            text-transform: capitalize
+        }
+        &.fc-state-disabled{
+            background: $gray-light;
+            &:hover{
+                cursor: not-allowed;
+            }
+        }
+    }
+    .fc-center h2{
+        font-size: 22px;
+        margin-top: 3px;
+    }
+}
+.fc-event{
+    border: none;
+}
+.fc-day-grid-event{
+    padding: 2px 4px;
+}
+.fc-unthemed .fc-divider, 
+.fc-unthemed .fc-popover .fc-header, 
+.fc-unthemed .fc-list-heading td{
+    background: $gray-light; 
+}
+.fc-list-item:hover td {
+	background-color: $gray-light; 
+}
+
+@media (max-width: 543px) {
+  .fc .fc-toolbar>*>*{
+       float: none;
+   }
+   .fc-toolbar .fc-left{
+       float: none;
+   }
+   .fc-toolbar .fc-right{
+       float: none;
+   }
+   .fc .fc-toolbar>*>:first-child{
+       vertical-align: top;
+   }
+  
+}
+
+.draggable{
+    cursor: move;
+}
+
+/*** Dropzone ***/
+.dropzone{
+    border: 2px dashed #ccc;
+    background: rgb(241, 241, 241);
+    min-height: 220px;
+    .dz-preview{
+        .dz-remove { 
+            font-size: 12px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            color: $default-color;
+        }
+        &.dz-image-preview{
+            background: transparent;
+        }
+        .dz-error-mark, .dz-success-mark{
+            margin-top:-38px;
+        }
+    }
+}
+
+/*** Froala editor ***/
+.fr-wrapper{
+    min-height: 300px;
+}
+
+
+/* perfect-scrollbar v0.7.0 */
+.ps {
+    -ms-touch-action: auto;
+    touch-action: auto;
+    overflow: hidden !important;
+    -ms-overflow-style: none; 
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .ps {
+        overflow: auto !important; 
+    } 
+}
+.ps.ps--active-x > .ps__scrollbar-x-rail,
+.ps.ps--active-y > .ps__scrollbar-y-rail {
+    display: block;
+    background-color: transparent; 
+}
+.ps.ps--in-scrolling.ps--x > .ps__scrollbar-x-rail {
+    background-color: #eee;
+    opacity: 0.9; 
+}
+.ps.ps--in-scrolling.ps--x > .ps__scrollbar-x-rail > .ps__scrollbar-x {
+    background-color: #999;
+    height: 7px; 
+}
+.ps.ps--in-scrolling.ps--y > .ps__scrollbar-y-rail {
+    background-color: #eee;
+    opacity: 0.9; 
+}
+.ps.ps--in-scrolling.ps--y > .ps__scrollbar-y-rail > .ps__scrollbar-y {
+    background-color: #999;
+    width: 7px; 
+}
+.ps > .ps__scrollbar-x-rail {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: background-color .2s linear, opacity .2s linear;
+    -o-transition: background-color .2s linear, opacity .2s linear;
+    -moz-transition: background-color .2s linear, opacity .2s linear;
+    transition: background-color .2s linear, opacity .2s linear;
+    bottom: 0px;
+    height: 7px; 
+}
+.ps > .ps__scrollbar-x-rail > .ps__scrollbar-x {
+    position: absolute;
+    background-color: #aaa;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, -webkit-border-radius .2s ease-in-out;
+    transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, -webkit-border-radius .2s ease-in-out;
+    -o-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
+    -moz-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out, -moz-border-radius .2s ease-in-out;
+    transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
+    transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out, -webkit-border-radius .2s ease-in-out, -moz-border-radius .2s ease-in-out;
+    bottom: 2px;
+    height: 6px;
+}
+.ps > .ps__scrollbar-x-rail:hover > .ps__scrollbar-x, .ps > .ps__scrollbar-x-rail:active > .ps__scrollbar-x {
+    height: 5px; 
+}
+.ps > .ps__scrollbar-y-rail {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: background-color .2s linear, opacity .2s linear;
+    -o-transition: background-color .2s linear, opacity .2s linear;
+    -moz-transition: background-color .2s linear, opacity .2s linear;
+    transition: background-color .2s linear, opacity .2s linear;
+    right: 0;
+    width: 7px; 
+}
+.ps > .ps__scrollbar-y-rail > .ps__scrollbar-y {
+    position: absolute;
+    background-color: #aaa;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, -webkit-border-radius .2s ease-in-out;
+    transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, -webkit-border-radius .2s ease-in-out;
+    -o-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
+    -moz-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out, -moz-border-radius .2s ease-in-out;
+    transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
+    transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out, -webkit-border-radius .2s ease-in-out, -moz-border-radius .2s ease-in-out;
+    right: 0px;      
+    width: 5px; 
+}
+.ps > .ps__scrollbar-y-rail:hover > .ps__scrollbar-y, .ps > .ps__scrollbar-y-rail:active > .ps__scrollbar-y {
+    width: 7px; 
+}
+.ps:hover.ps--in-scrolling.ps--x > .ps__scrollbar-x-rail {
+    background-color: #eee;
+    opacity: 0.9; 
+}
+.ps:hover.ps--in-scrolling.ps--x > .ps__scrollbar-x-rail > .ps__scrollbar-x {
+    background-color: #999;
+    height: 5px; 
+}
+.ps:hover.ps--in-scrolling.ps--y > .ps__scrollbar-y-rail {
+    background-color: #eee;
+    opacity: 0.9; 
+}
+.ps:hover.ps--in-scrolling.ps--y > .ps__scrollbar-y-rail > .ps__scrollbar-y {
+    background-color: #999;
+    width: 5px; 
+}
+.ps:hover > .ps__scrollbar-x-rail,
+.ps:hover > .ps__scrollbar-y-rail {
+    opacity: 0.6; 
+}
+.ps:hover > .ps__scrollbar-x-rail:hover {
+    background-color: #eee;
+    opacity: 0.9; 
+}
+.ps:hover > .ps__scrollbar-x-rail:hover > .ps__scrollbar-x {
+    background-color: #999; 
+}
+.ps:hover > .ps__scrollbar-y-rail:hover {
+    background-color: #eee;
+    opacity: 0.9; 
+}
+.ps:hover > .ps__scrollbar-y-rail:hover > .ps__scrollbar-y {
+    background-color: #999; 
+}

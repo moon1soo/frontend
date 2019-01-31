@@ -1,0 +1,53 @@
+<div class="dx-viewport demo-container parentDiv" style="margin-left: 30px;margin-right: 30px;margin-top:40px;height: 100%;">
+  <div class="row dx-datagrid-title" style="margin-top:16px;margin-bottom: 7px;">
+    <div class="col-6"><h5>{{'cohort.mart.table.group.dlg-title' | translate}}</h5></div>
+    <div class="col-6 text-right">
+      <button type="button" class="btn btn-light btn-sm" (click)="addGroup()">
+        <i class="fal fa-save" aria-hidden="true"></i>
+        {{'cohort.mart.table.add' | translate}}
+      </button>
+    </div>
+  </div>
+  <div style="height:100%;overflow-y:auto;">
+  <table class="table table-hover demo-table-search table-responsive-blockd">
+    <thead>
+    <tr>
+      <th>{{'cohort.mart.table.group.grp_sort' | translate}}</th>
+      <th>{{'cohort.mart.table.group.grp_nm' | translate}}</th>
+      <th>{{'cohort.mart.table.group.grp_cnte' | translate}}</th>
+      <th>{{'cohort.date' | translate}}</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody *ngIf ="dataSource">
+    <tr *ngFor="let group of dataSource; let idx = index">
+      <td>{{group.GRP_SORT}}</td>
+      <td>{{group.GRP_NM}}</td>
+      <td>{{group.GRP_CNTE}}</td>
+      <td>{{group.LOAD_DTM}}</td>
+      <td>
+        <button type="button"
+                class="btn btn-text-type"
+                ngbTooltip="{{'research.modify' | translate}}"
+                (click)="editGroup(idx)" >
+          <i class="fal fa-edit" aria-hidden="true"></i>
+          <span class="sr-only">{{'research.modify' | translate}}</span>
+        </button>
+        <button type="button"
+                class="btn btn-text-type"
+                ngbTooltip="{{'research.delete' | translate}}"
+                (click)="deleteGroup(idx)" >
+          <i class="fal fa-trash" aria-hidden="true"></i>
+          <span class="sr-only">{{'research.delete' | translate}}</span>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+    <tbody *ngIf="!dataSource">
+    <tr>
+      <td class="text-center" colspan="5">No Data.</td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

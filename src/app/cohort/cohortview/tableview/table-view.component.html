@@ -1,0 +1,71 @@
+<form ngNoForm name="excelDownForm" action="{{excelUrl}}" target="_blank" method="POST" #excelDownForm>
+  <input type="hidden" name="fileName" value="{{exFileName}}">
+  <input type="hidden" name="filePath" value="{{exFilePath}}">
+  <button type="submit" id="btn-submit-cohort-excel" onclick="excelDownForm.submit()" hidden>Download</button>
+</form>
+<div class="dx-viewport demo-container" id="datagrid" style="margin-left: 30px;margin-right: 30px;margin-top:40px;height: 100%;">
+  <div class="row dx-datagrid-title"><h2>{{tblCnte}}({{tblNm}})</h2>
+    <span style="color:#89898a;font-size: 11px;">
+      <span *ngIf="getDownloadRights()" class="float-right" style="display:grid;width:70px;"><i class="fal fa-download text-center mb-1"></i><span class="text-center">다운로드권한</span></span>
+      <span *ngIf="getEditRights()" class="float-right" style="display:grid;width:70px;"><i class="fal fa-edit text-center mb-1"></i><span class="text-center">수정권한</span></span>
+      <span *ngIf="getAnonymousRights()==false" class="float-right" style="display:grid;width:70px;"><i class="fal fa-eye text-center mb-1"></i><span class="text-center">비익명권한</span></span>
+      <span *ngIf="getAnonymousRights()==true" class="float-right" style="display:grid;width:70px;"><i class="fal fa-eye-slash text-center mb-1"></i><span class="text-center">익명권한</span></span>
+    </span>
+    <span class="input-material headline col-12" style="height: 10px;margin-bottom: 10px;"></span>
+  </div>
+  <dx-data-grid
+    id="tableData"
+    [dataSource]="dataSource"
+    [columns]="dynamicColumns"
+    [masterDetail]="{ enabled: true, template: 'detail' }"
+    [columnResizingMode]="'nextColumn'"
+    [allowColumnResizing]="true"
+    (onContentReady)="onContentReady($event)"
+    (onToolbarPreparing)="onToolbarPreparing($event)"
+    (onCellPrepared)="onCellPrepared($event)"
+    (onEditorPreparing)="onEditorPreparing($event)"
+    (onRowValidating)="onRowValidating($event)"
+    (onCellHoverChanged)="onCellHoverChanged($event)"
+    [columnFixing]="true"
+    [columnAutoWidth]="true"
+    [allowColumnReordering]="true"
+  >
+    <!--dxo-header-filter [visible]="true"></dxo-header-filter//-->
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+    <dxo-remote-operations
+      [sorting]="true"
+      [paging]="true">
+    </dxo-remote-operations>
+    <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+    <dxo-scrolling mode="infinite"></dxo-scrolling>
+    <dxo-paging [enabled]="true" [pageSize]="100"></dxo-paging>
+    <!--dxo-sorting mode="none"></dxo-sorting>
+    <!--dxo-sorting mode="single"></dxo-sorting//-->
+    <dxo-editing mode="batch" [allowUpdating]="true"></dxo-editing>
+    <div *dxTemplate="let data of 'totalCount'">
+      <span class="count">( Total : {{sizePerSizeStr}} / {{totalStr}} )</span>
+    </div>
+    <div *dxTemplate="let data of 'txt'">
+      <span> ~ </span>
+    </div>
+    <dx-load-panel
+      #loadPanel
+      shadingColor="rgba(255,255,255,0)"
+      [position]="{ of: '#tableData' }"
+      [(visible)]="loading"
+      [showIndicator]="true"
+      [showPane]="true"
+      [shading]="true"
+      [closeOnOutsideClick]="false">
+    </dx-load-panel>
+    <div *dxTemplate="let d of 'detail'">
+      <!--div class="master-detail-caption">{{d.data.FirstName + " " + d.data.LastName + "'s Tasks:"}}</div//-->
+      <dx-data-grid
+        [dataSource]="d.data.DETAIL"
+        [showBorders]="true"
+        [columnAutoWidth]="true">
+      </dx-data-grid>
+    </div>
+  </dx-data-grid>
+</div>

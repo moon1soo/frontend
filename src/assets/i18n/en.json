@@ -1,0 +1,2499 @@
+{
+	"ReschBasic": {
+		"Invaild": {
+			"Passwd": "Password does not match."
+		},
+		"NoAuth": "You are not authorized. Please contact System team if you have inquiries."
+	},
+	"button": {
+		"agree": "agree",
+		"close": "close",
+		"create": "create",
+		"delete": "delete",
+		"disagree": "disagree",
+		"impossible": "impossible",
+		"inquire": "inquire",
+		"list": "list",
+		"moveToGpin": "move to gpin confirm",
+		"moveToIhidnum": "move to ihidnum confirm",
+		"notUsed": "Not used",
+		"passwordUpdate": "password update",
+		"possible": "possible",
+		"realname": "realname confirm",
+		"reset": "reset",
+		"save": "save",
+		"search": "Search",
+		"subscribe": "subscribe",
+		"update": "update",
+		"use": "use"
+	},
+	"cdw": {
+		"title": "SNUH Clinical Research Engine"
+	},
+	"common": {
+		"20": {
+			"page": {
+				"front": "20 Pages Backward",
+				"rear": "20 Pages Forward"
+			}
+		},
+		"acknowledgement": {
+			"msg": "confirm acknowledgement?"
+		},
+		"acknowledgementcancel": {
+			"msg": "confirm acknowledgement cancel?"
+		},
+		"alert": {
+			"rschRprvId": "Input Research Approval ID in Basic Info."
+		},
+		"all": "All",
+		"and": "and",
+		"apply": "Applied",
+		"close": "Close",
+		"cnt": "row(s)",
+		"count": "No. of rows",
+		"dash": "-",
+		"delete": {
+			"msg": "confirm delete?"
+		},
+		"during": {
+			"period": "for patients whose"
+		},
+		"dynamictext": {
+			"first": "{0}"
+		},
+		"empty": "None",
+		"examination": "Exam.",
+		"filter": "filter",
+		"first": {
+			"page": "First Page"
+		},
+		"imposbl": {
+			"fileupload": "cannot upload files"
+		},
+		"is": "is",
+		"isExist": {
+			"msg": "already exist"
+		},
+		"item": {
+			"name": "Item Name"
+		},
+		"last": {
+			"page": "Last Page"
+		},
+		"loading": {
+			"0": "It's being loaded",
+			"sentence": "<span class='title'><strong>Loading<\/strong><\/span><span class='count'>.<\/span>",
+			"staymsg": "Please stay in this page until the result is displayed"
+		},
+		"logout": "Logout",
+		"minimize": "Minimize",
+		"no": {
+			"apply": "Not Applied"
+		},
+		"nodata": {
+			"msg": "There is no data. please choose another seach keyword"
+		},
+		"of": "of",
+		"ok": "OK",
+    "cancel": "Cancel",
+		"open": "Open",
+		"regist": {
+			"msg": "confirm regist?"
+		},
+		"required": {
+			"msg": "is required field"
+		},
+		"save": {
+			"msg": "confirm save?"
+		},
+		"search": "Search",
+		"select": "Select",
+		"update": {
+			"msg": "confirm update?"
+		},
+    "delete": " will be deleted."
+	},
+	"cop": {
+		"account": {
+			"msg": "Please enter your account."
+		},
+		"adres": "Address",
+		"atchFile": "Attach Files",
+		"atchFileList": "Attached File List",
+		"bbsAttrbCode": "BBS Attribute",
+		"bbsIntrcn": "BBS Introduction",
+		"bbsNm": "BBS Name",
+		"bbsTyCode": "BBS Type",
+		"clbIntrcn": "Club Introduction",
+		"clbNm": "Club Name",
+		"clbOprtr": "Club Operator",
+		"clsfNm": "Class Name",
+		"cmmntyIntrcn": "Community Introduction",
+		"cmmntyMngr": "Community Manager",
+		"cmmntyNm": "Community Name",
+		"cmpnyNm": "Company name",
+		"comment": {
+			"commentCn": "Comment",
+			"commentPassword": "Password",
+			"wrterNm": "Writer Name"
+		},
+		"delete": {
+			"confirm": {
+				"msg": "If you choose to disable the re-use change is impossible."
+			}
+		},
+		"deptNm": "Department name",
+		"emailAdres": "E-mail",
+		"extrlUser": "External User",
+		"extrlUserAt": "External User alternative",
+		"fileAtchPosblAt": "File Attach Possible Alternative",
+		"guestList": {
+			"0": "Guest List",
+			"subject": "This article registered by Guest List"
+		},
+		"guestListCn": "Guest List Contents",
+		"ing": {
+			"msg": "Approval is being requested."
+		},
+		"intrlUser": "Internal User",
+		"mbtlNum": "Mobile",
+		"ncrdNm": "NameCard user name",
+		"noticeTerm": "Notice term",
+		"ntceBgnde": "Notice Start Date",
+		"ntceEndde": "Notice End Date",
+		"ntcrNm": "Noticer Name",
+		"nttCn": "Notice Contents",
+		"nttSj": "Notice Subject",
+		"ofcpsNm": "OFCPS name",
+		"password": {
+			"0": "PassWord",
+			"msg": "Please enter your password.",
+			"not": {
+				"same": {
+					"msg": "Password do not match."
+				}
+			}
+		},
+		"posblAtchFileNumber": "Possible Attach File Number",
+		"preview": "preview",
+		"private": "private",
+		"public": "public",
+		"publicAt": "Public open alternative",
+		"registmanager": {
+			"msg": "confirm registration of manager?"
+		},
+		"remark": "Remark",
+		"replyPosblAt": "Reply Possible Alternative",
+		"request": {
+			"msg": "Signup is normally requested."
+		},
+		"reregist": {
+			"msg": "confirm re-registration?"
+		},
+		"satisfaction": {
+			"stsfdg": "Satisfaction Degree",
+			"stsfdgCn": "Satisfaction",
+			"stsfdgPassword": "Password",
+			"wrterNm": "Writer Name"
+		},
+		"scrap": {
+			"scrapNm": "Scrap Name"
+		},
+		"sms": {
+			"addRecptn": "Add",
+			"recptnTelno": {
+				"0": "Receiver(s)",
+				"msg": "The phone number of receiver is required."
+			},
+			"send": "Send",
+			"trnsmitCn": "Contents",
+			"trnsmitTelno": "Sender"
+		},
+		"telNo": "Tel No.",
+		"tmplatCours": "Template Cours",
+		"tmplatId": "Template Information",
+		"tmplatNm": "Template Name",
+		"tmplatSeCode": "Template Se Code",
+		"trgetNm": "Company\/Club Information",
+		"unuse": {
+			"msg": "confirm stop using?"
+		},
+		"use": {
+			"msg": "confirm use?"
+		},
+		"useAt": "Use Alternative",
+		"withdraw": {
+			"msg": "confirm withdrawal memebership?"
+		}
+	},
+	"errors": {
+		"byte": "{0} must be a byte.",
+		"creditcard": "{0} is an invalid credit card number.",
+		"date": "{0} is not a date.",
+		"double": "{0} must be a double.",
+		"email": "{0} is an invalid e-mail address.",
+		"float": "{0} must be a float.",
+		"integer": "{0} must be an integer.",
+		"invalid": "{0} is invalid.",
+		"long": "{0} must be a long.",
+		"maxlength": "{0} can not be greater than {1} characters.",
+		"minlength": "{0} can not be less than {1} characters.",
+		"range": "{0} is not in the range {1} through {2}.",
+		"required": "{0} is required.",
+		"short": "{0} must be a short."
+	},
+	"fail": {
+		"common": {
+			"delete": {
+				"0": "fail to delete",
+				"upperMenuExist": "fail to delete[upperMenuId foreign key error]"
+			},
+			"idsearch": "can not find id",
+			"insert": "fail to insert.",
+			"login": "login information is not correct",
+			"msg": "error ocurred!",
+			"pwsearch": "can not find password",
+			"select": "fail to select",
+			"sql": "sql error ocurred! error code: {0}, error msg: {1}",
+			"update": "fail to update"
+		},
+		"user": {
+			"connectFail": "connection fail",
+			"passwordUpdate1": "current password is not correct",
+			"passwordUpdate2": "password confirm is not correct",
+			"rlnmCnfirm": "it is not realname"
+		}
+	},
+	"info": {
+		"nodata": {
+			"msg": "no data found."
+		},
+		"user": {
+			"rlnmCnfirm": "realname confirm ready"
+		}
+	},
+	"lnb": {
+		"content": {
+			"1": "We are in preparation for service.",
+			"2": "We will do our best to open service as soon as possible."
+		},
+		"move": {
+			"reset": "All selected fields will be cleared.\\n\\n Are you sure to continue?"
+		},
+		"notice": "Notice",
+		"upper": {
+			"logo": "Upper Logo"
+		}
+	},
+	"midResch": {
+		"example": {
+			"1": "Since hospital open, please provide the data of patient name, age, gender, patient no., surgery date, surgery name, and last visit date for the patients diagnosed with【Pancreas head cancer (C250), Pancreas body cancer (C251), Pancreas tail cancer (C252),",
+			"10": "Please provide the data of patient name, age, gender, patient number, surgery data, surgery name and last visit date of the patient who went under the surgery of",
+			"2": "Carcinoma in situ of pancreas (D017), Malignant neoplasm of neck of pancreas (C257),",
+			"3": "Malignant neoplasm of overlapping lesions of pancreas (C258), Pancreatic cancer (C259),",
+			"4": "Neoplasm of pancreas, uncertain behavior (D377)】",
+			"5": "and went under the surgeries like 【 Total pancreatectomy, Subtotal Pancreatectomy, Spleen preserving distal pancreatectomy, Segmental Resection,",
+			"6": "Radical subtotal pancreatectomy, Pylorus preserving pancreaticoduodenectomy(malignant),",
+			"7": "Pylorus preserving pancreaticoduodenectomy(benign), Proximal pancreatectomy, Other partial pancreatectomy,",
+			"8": "Enucleation of pancreas tumor, Duodenum preserving pancreatic head resection, Distal pancreatectomy,",
+			"9": "Pancreaticoduodenectomy, Pylorus preserving pancreaticoduodenectomy】"
+		}
+	},
+	"resch": {
+		"admin": "Admin",
+		"dept": "Department Research",
+		"transpose": {
+			"excel": {
+				"modal": {
+					"alert": "Please wait until download is completed.\\n\\n Download will be cancelled if you proceed with other action.",
+					"desc0": "100 rows of transposed final result will be displayed.(for reference before downloading an Excel file)",
+					"desc1": "Excel file is being downloaded",
+					"desc2": "Please wait a moment.",
+					"desc3": "Following Excel file is created.",
+					"disp": "rows are displayed."
+				}
+			}
+		}
+	},
+	"research": {
+		"APACH2": {
+			"0": "APACHE2",
+			"item": {
+				"name": "APACH2 Item Name",
+				"value": "APACH2 Item Value"
+			},
+			"record": {
+				"date": "APACH2 Record Date"
+			},
+			"score": {
+				"by": {
+					"item": "APACH2 Item Score"
+				}
+			},
+			"total": {
+				"score": "APACH2 Total Score"
+			}
+		},
+		"CC": {
+			"code": "CC Code",
+			"name": {
+				"0": "CC Name",
+				"search": "Chief Complaint"
+			},
+			"occur": {
+				"date": "CC Occurrence Date"
+			},
+			"own": {
+				"code": "Internal CC Code",
+				"name": "Internal CC Name"
+			}
+		},
+		"ICD10": {
+			"0": "ICD10",
+			"code": "ICD10 Code",
+			"local": "ICD10(Loc)",
+			"name": "ICD10 Name",
+			"upper": {
+				"name": "ICD10(Eng Cap)"
+			}
+		},
+		"ICD9CM": {
+			"code": "ICD9CM Code",
+			"name": "ICD9CM Name"
+		},
+		"PN": {
+			"type": {
+				"0": "PN type",
+				"filter": "PN type Filter"
+			}
+		},
+		"SNOMED": {
+			"code": "SNOMED Code",
+			"name": "SNOMED"
+		},
+		"TNM": {
+			"M": {
+				"value": "M Value of TNM Staging"
+			},
+			"N": {
+				"value": "N Value of TNM Staging"
+			},
+			"T": {
+				"value": "T Value of TNM Staging"
+			},
+			"categorization": {
+				"code": "TNM Classification Code"
+			}
+		},
+		"add": "Add",
+		"admin": {
+			"0": "Admin",
+			"receive": {
+				"id": "PACT ID"
+			}
+		},
+		"age": {
+			"at": {
+				"first": {
+					"diagnosis": "Age When Diagnosed"
+				},
+				"treatment": {
+					"day": "Age"
+				}
+			},
+			"from": {
+				"to": {
+					"1": "age from",
+					"2": "to",
+					"4": ","
+				}
+			}
+		},
+		"all": {
+			"delete": "Delete All",
+			"move": "Move All"
+		},
+		"anaesthesia": {
+			"code": "Anesthesia Code"
+		},
+		"and": "And",
+		"anti": {
+			"cancer": {
+				"record": {
+					"item": {
+						"division": {
+							"code": "Anti Cancer Record Element Code",
+							"name": "Anti Cancer Record Element Name"
+						}
+					}
+				}
+			}
+		},
+		"approval": {
+			"id": "Research Approval ID"
+		},
+		"assess": {
+			"desc": {
+				"1": "▶ You can select either score or risk group(classification) from all items (fall, bedsore, delirium, general patient, psychiatry patient, critical patient) from Nursing Assessment.",
+				"2": "▶ You can select only one among general, psychiatry, or critical from Severity Score and Classification.",
+				"3": "▶ When you want to change the item from previously selected item in Severity Score and Classification, please change the selected item to <font color=\"#77aacc\">None<\/font> and select desired item."
+			}
+		},
+		"attribute": {
+			"0": "Attribute",
+			"code": "Attribute Code",
+			"id": "Attribute ID",
+			"item": {
+				"0": "Attribute(Item)",
+				"upper": "Attribute(Item:Cap)"
+			}
+		},
+		"audit": {
+			"log": "Audit Log"
+		},
+		"axis": "Axis",
+		"basic": {
+			"address": "Basic Address"
+		},
+		"bedsore": {
+			"0": "Bedsore",
+			"part": "Bedsore Region",
+			"record": {
+				"0": "Bedsore Record",
+				"date": "Bedsore Record Date"
+			},
+			"risks": "Bedsore Risk",
+			"size": "Bedsore Size",
+			"stage": "Bedsore Stage"
+		},
+		"below": "Or Below",
+		"between": {
+			"nursing": {
+				"care": {
+					"statement": {
+						"and": {
+							"eav": {
+								"filter": {
+									"is": {
+										"and": "▶ Conditions between nursing statement and nursing statement(EAV) are set with 'AND'."
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"blue": {
+			"sheet": {
+				"0": "BLUE Sheet",
+				"item": {
+					"in": {
+						"order": "Blue Sheet Item Sequence"
+					},
+					"name": "Blue Sheet Item Name",
+					"value": "Blue Sheet Item Value"
+				}
+			}
+		},
+		"by": "&nbsp;by",
+		"chemotherapy": {
+			"1": {
+				"date": "chemotherapy#1 Date"
+			}
+		},
+		"classification": "Classification",
+		"click": {
+			"save": {
+				"btn": {
+					"wish": {
+						"save": "If you want to save up to now, please click the save button on top right corner."
+					}
+				}
+			}
+		},
+		"clinical": {
+			"observation": {
+				"paper": "Flow Sheet"
+			}
+		},
+		"clinical_research": "Clinical_Research",
+		"cnt": {
+			"0": "row(s)",
+			"displayed": "rows are displayed"
+		},
+		"comma": ",",
+		"contact": {
+			"type": "Contact Type"
+		},
+		"convert": {
+			"flag": "Convert Flag"
+		},
+		"cost": {
+			"0": "Fee",
+			"billed": {
+				"dept": "Form Type of Fee Issuing Dept."
+			},
+			"code": "Fee Code",
+			"demarcation": "Fee Type",
+			"group": {
+				"code": "Fee Group Code",
+				"name": "Fee Group"
+			},
+			"name": {
+				"0": "Medical Fee Name",
+				"search": "Medical Fee"
+			}
+		},
+		"critical": {
+			"patient": {
+				"0": "Critical Patient",
+				"classification": "Critical Patient Severity Classification",
+				"severity": "Critical Patient Severity",
+				"total": {
+					"score": "Critical Patient Severity Score"
+				}
+			}
+		},
+		"current": {
+			"age": "Current Age",
+			"scenario": {
+				"save": "The scenario currently processing is saved.",
+				"updated": "The scenario is updated to currently processing one."
+			}
+		},
+		"daily": {
+			"dosage": {
+				"packing": {
+					"unit": "Package Unit per Day"
+				}
+			}
+		},
+		"danger": {
+			"and": {
+				"categorization": "Risk & Classification"
+			}
+		},
+		"data": {
+			"loading": {
+				"or": {
+					"none": "It is being downloaded or there is no data to download."
+				}
+			}
+		},
+		"date": {
+			"of": {
+				"birth": "D.O.B"
+			}
+		},
+		"day": {
+			"0": "Day",
+			"dosage": "Dosage per Day",
+			"of": {
+				"death": "Date of Death",
+				"drug": {
+					"prescription": "Prescribed Date"
+				},
+				"hospital": {
+					"ICU": "Length of Stay(ICU)",
+					"stay": {
+						"exclude": {
+							"emergency": {
+								"0": "Length of Stay(excl. ER)",
+								"time": "Length of Stay in Time(excl. ER)"
+							}
+						},
+						"include": {
+							"emergency": {
+								"0": "Length of Stay(incl. ER)",
+								"time": "Length of Stay in Time(incl. ER)"
+							}
+						}
+					}
+				},
+				"in": {
+					"patient": "Admission Date"
+				},
+				"out": {
+					"patient": "Discharge Date"
+				}
+			}
+		},
+		"days": {
+			"0": "day(s)",
+			"of": {
+				"cost": {
+					"prescription": "Fee Prescription Date"
+				},
+				"dosage": "Days of Prescription"
+			}
+		},
+		"default": {
+			"filter": {
+				"only": {
+					"search": "<span class='title'>In case searching basic conditions(period\/gender\/age,Dept.,Physician) only, <\/span><span class='count'>maximum 5,000 of patient list is displayed<\/span>"
+				}
+			},
+			"search": {
+				"filter": {
+					"input": {
+						"window": "Basic Search Condition Input Window"
+					}
+				}
+			}
+		},
+		"delete": "Delete",
+		"delirium": {
+			"0": "Delirium",
+			"circumstances": "Delirium Assessment",
+			"risks": "Delirium Risk"
+		},
+		"department": {
+			"of": {
+				"psychiatry": "Psychiatry"
+			}
+		},
+		"dept": {
+			"0": "Clinical Dept.",
+			"administration": "Departmental Administration",
+			"code": "Dept. Code",
+			"eng": {
+				"code": "Dept."
+			},
+			"name": "Dept.",
+			"scholarship": "Departmental Research"
+		},
+		"detail": {
+			"address": "Detail Address"
+		},
+		"diagnosis": {
+			"0": "Diagnosis",
+			"code": "Diagnosis Code",
+			"day": "Diagnosis Date",
+			"dept": {
+				"0": "Diagnosis Dept.",
+				"code": "Diagnosis Dept. Code",
+				"local": {
+					"name": "Diagnosis Dept.(Loc)"
+				},
+				"search": "Diagnosis Dept."
+			},
+			"first": {
+				"day": "First Diagnosis Date"
+			},
+			"name": "Diagnosis",
+			"search": "Diagnosis",
+			"yn": {
+				"after": {
+					"surgery": "Diagnosis Flag After Surgery"
+				}
+			}
+		},
+		"disconnected": {
+			"login": {
+				"again": "Your session is disconnected. Please login again."
+			}
+		},
+		"division": {
+			"name": "Classification",
+			"treatment": {
+				"frist": {
+					"returning": "First Visit"
+				}
+			}
+		},
+		"do": {
+			"apply": "Do you want apply following items(s)?",
+			"search": "&nbsp;will be inquired",
+			"search2": "&nbsp;will be inquired"
+		},
+		"dr": {
+			"0": "Physician",
+			"staff": {
+				"id": "Physician Staff No."
+			}
+		},
+		"dragNdrop": {
+			"order": {
+				"change": {
+					"btn": {
+						"for": {
+							"change": {
+								"order": "<b>If you would like to change the Scenario order, please click the \\'change order\\' button on top right corner and proceed using drag & drop.<\/b>"
+							}
+						}
+					}
+				}
+			}
+		},
+		"drinking": {
+			"duration": {
+				"at": {
+					"treatment": {
+						"day": "Duration of Drinking"
+					}
+				}
+			},
+			"yn": {
+				"at": {
+					"treatment": {
+						"day": "Drinking"
+					}
+				}
+			}
+		},
+		"drug": {
+			"0": "Medication",
+			"code": "Code",
+			"atc": "ATC Code",
+			"useYn": "Use",
+			"common": {
+				"lower": {
+					"name": "Medicine Name(General_S)"
+				},
+				"name": "General Name"
+			},
+			"component": {
+				"lower": {
+					"name": "Medicine Name(Ingredient_S)"
+				},
+				"name": "Ingredient Name"
+			},
+			"name": "Medicine Name",
+			"product": {
+				"lower": {
+					"name": "Medicine Name(Commercial_S)"
+				},
+				"name": "Medicine Name(Commercial)"
+			},
+			"search": "Medicine"
+		},
+		"early": {
+			"nursing": {
+				"info": {
+					"inquiry": {
+						"paper": "Initial Nursing Assessment"
+					}
+				}
+			}
+		},
+		"entering": {
+			"time": {
+				"emergency": "ER Check In Time"
+			}
+		},
+		"entity": {
+			"0": "Entity",
+			"code": "Entity Code",
+			"id": "Entity ID",
+			"item": {
+				"0": "Entity(Item)",
+				"upper": "Entity(Item:Cap)"
+			}
+		},
+		"etc": "Others",
+		"exam": {
+			"order": {
+				"date": "Test Order Date"
+			},
+			"status": "Test Status"
+		},
+		"examination": {
+			"0": "Clinical Test",
+			"code": "Test Code",
+			"date": "Test Execution Date",
+			"detail": {
+				"item": {
+					"id": "Test Detail Item ID",
+					"name": "Test Detail Item"
+				}
+			},
+			"final": {
+				"reading": {
+					"dr": "Test Interpreter"
+				}
+			},
+			"name": {
+				"0": "Test Name",
+				"search": "Clinical Test"
+			},
+			"place": "Test Execution Dept.",
+			"result": {
+				"0": "Test Result",
+				"day": "Test Result Report Date",
+				"default": {
+					"search": "Test Result"
+				},
+				"detail": {
+					"0": "Test Result Detail",
+					"search": "Test Result Detail Search"
+				}
+			},
+			"select": {
+				"first": "Please choose Test Code first."
+			},
+			"upper": {
+				"name": "Test Name(Cap)"
+			}
+		},
+		"excel": {
+			"downing": "Excel file is being downloaded",
+			"download": {
+				"error": {
+					"0": "Unknown error occurred while downloading Excel file.\\n Please contact System team.",
+					"cur": {
+						"scenario": {
+							"save": {
+								"contect": "Excel download is stopped due to unexpected problem.<br \/><br \/> Please save current scenario and contact System team."
+							}
+						}
+					}
+				}
+			},
+			"example": {
+				"desc": {
+					"1": "Example)",
+					"2": "From 2004 to 2012, search data of patient name, patient no., gender, DOB,",
+					"3": "prescribed medicine, EEG test date & interpreter's comment, MRI date & interpreter's",
+					"4": "comment for the patients diagnosed as 'epilepsy' by physicians AAA and BBB in pediatrics",
+					"5": "and having the words like 'BRE, benign, and rolandic' in medical record."
+				}
+			},
+			"file": {
+				"created": {
+					"blow": "Following Excel file is created."
+				}
+			},
+			"modal": {
+				"wait": "Please wait until download is completed.\\n\\n Download will be cancelled if you proceed with other action."
+			},
+			"upload": {
+				"desc": {
+					"1": "▶ When you click 'File Open' followed by clicking <b>Excel Upload<\/b> button, a pop-up window will open.",
+					"2": "You can upload the Excel file when patient numbers are filled in",
+					"3": "starting from first row of column A in the first sheet.",
+					"4": "-&nbsp;Contact : System team(T.XXXXX)"
+				}
+			}
+		},
+		"excelupload": "Excel Upload",
+		"except": "Exclude",
+		"extra": {
+			"option": {
+				"can": {
+					"select": "You can choose additional options if you click"
+				}
+			}
+		},
+		"fall": "Fall",
+		"female": "Female",
+		"fileupload": "Select File",
+		"filter": {
+			"set": "Set Condition"
+		},
+		"final": {
+			"education": "Education",
+			"result": {
+				"0": "Final Result",
+				"view": "View Final Result"
+			},
+			"treatment": {
+				"day": {
+					"0": "Last Clinic Date",
+					"by": {
+						"dept": "Last Clinic Date by Dept."
+					},
+					"of": {
+						"dept": "Last Visit Date Corresponding Dept."
+					}
+				}
+			}
+		},
+		"form": {
+			"0": "Record Form",
+			"demarcation": {
+				"code": "Category Code",
+				"name": "Category"
+			},
+			"dept": "Dept.",
+			"detail": {
+				"0": "Record Form Detail",
+				"search": "Form Element"
+			},
+			"element": {
+				"id": "Form Element ID",
+				"name": "Form Element",
+				"upper": {
+					"name": "Form Element (Cap)"
+				}
+			},
+			"id": "Record Form ID",
+			"item": {
+				"id": "Form Element ID",
+				"name": {
+					"0": "Form Element Name",
+					"cap": "Form Element Name(Cap)"
+				}
+			},
+			"name": "Form Name",
+			"recorded": {
+				"date": "Record Form Date",
+				"dept": {
+					"0": "Record Form Dept.",
+					"code": "Record Form Dept. Code",
+					"name": "Record Form Dept. Name"
+				}
+			},
+			"recorder": "Prepared by",
+			"search": "Record Form",
+			"upper": {
+				"name": "Record Form Name(Cap)"
+			},
+			"value": "Record Form Value"
+		},
+		"free": {
+			"text": {
+				"filter": "FREE TEXT",
+				"order": "Verval Order"
+			}
+		},
+		"freetext": {
+			"0": "FreeText",
+			"search": "FreeText Search"
+		},
+		"from": {
+			"0": "From",
+			"dosage": "Dose From",
+			"hospital": {
+				"opening": {
+					"day": "Since hospital open"
+				}
+			},
+			"patient": "from patients who had"
+		},
+		"gender": "Gender",
+		"get": {
+			"treatment": ","
+		},
+		"group": ["group", "Group 1", "Group 2", "Group 3", "Group 4", "Group 5", "Group 6"],
+		"help": "Help",
+		"hospital": {
+			"0": "Hospital",
+			"Local": "Hospital Local",
+			"code": "Hospital Code",
+			"name": "Hospital",
+			"opening": {
+				"day": "Hospital Open Date"
+			},
+			"search": "Hospital Search"
+		},
+		"icnp": {
+			"id": "ICNP ID",
+			"local": {
+				"name": "ICNP(Loc)"
+			},
+			"name": "ICNP"
+		},
+		"icu": {
+			"severe": {
+				"evaluation": "ICU Severity Assessment"
+			}
+		},
+		"in": {
+			"0": "&nbsp;in",
+			"patient": {
+				"ward": "Admission Ward"
+			}
+		},
+		"initial": {
+			"0": "Clear",
+			"reset": "All selected fields will be cleared.\\n\\n Are you sure to continue?"
+		},
+		"input": {
+			"content": {
+				"for": {
+					"search": "Please input contents to search."
+				}
+			},
+			"exact": {
+				"usage": {
+					"to": {
+						"etc": {
+							"column": "Please specify your purpose of use in \\'other\\' field."
+						}
+					}
+				}
+			},
+			"period": {
+				"gender": {
+					"age": "Basic Info Input"
+				}
+			},
+			"purpose": "Please input purpose of use and click [OK] button if you agree to the terms of use.",
+			"select": {
+				"info": "Selected Info"
+			}
+		},
+		"inspection": {
+			"assessment": "Assessment"
+		},
+		"interim": {
+			"0": "Interim Result",
+			"result": "Loading Interim Result"
+		},
+		"is": {
+			"required": "is mandatory field.",
+			"selected": {
+				"0": "is selected.",
+				"selected": {
+					"dept": {
+						"reflected": {
+							"dr": "is selected. Selected department is reflected on physician."
+						}
+					},
+					"hospital": {
+						"reflected": {
+							"dept": "is selected. Selected hospital is reflected on department."
+						}
+					}
+				}
+			}
+		},
+		"item": {
+			"attribute": {
+				"code": "Item Attribute Code",
+				"id": "Item Attribute ID",
+				"name": "Item Attribute Name"
+			},
+			"name": {
+				"0": "Item Name",
+				"id": "Item ID"
+			},
+			"value": "Item Value"
+		},
+		"kind": {
+			"0": "Type",
+			"of": {
+				"anaesthesia": "Anesthesia",
+				"assessment": "Assessment Type",
+				"bedsore": {
+					"dressing": "Bedsore Dressing Type"
+				},
+				"record": {
+					"0": "Record Type",
+					"code": "Record Type Code",
+					"name": "Record Type Name"
+				},
+				"tumor": {
+					"name": "Tumor Type Name",
+					"term": {
+						"ID": "Tumor Type term ID"
+					}
+				}
+			}
+		},
+		"leaving": {
+			"time": {
+				"emergency": "ER Check Out Time"
+			}
+		},
+		"loading": "It's being loaded.",
+		"log": {
+			"ip": {
+				"address": "IP"
+			},
+			"print": "Print",
+			"purpose": "Purpose",
+			"query": {
+				"start": {
+					"date": "Date"
+				}
+			},
+			"reasch": {
+				"approval": {
+					"id": "Research Approval ID"
+				}
+			},
+			"scenario": {
+				"name": "Scenario Name"
+			},
+			"sql": "SQL",
+			"staff": {
+				"name": "Staff Name",
+				"no": "Staff No."
+			}
+		},
+		"login": "Login",
+		"main": {
+			"appeal": {
+				"occur": {
+					"time": {
+						"content": "CC Occurred Time or Period"
+					}
+				}
+			},
+			"diagnosis": {
+				"flag": "Main Diagnosis Flag"
+			}
+		},
+		"male": "Male",
+		"married": {
+			"status": {
+				"at": {
+					"treatment": {
+						"day": "Marital Status"
+					}
+				}
+			}
+		},
+		"medical": {
+			"record": {
+				"viewer": "Medical Record Viewer"
+			}
+		},
+		"mental": {
+			"health": {
+				"severe": {
+					"evaluation": "Mental Health Severity Assessment"
+				}
+			}
+		},
+		"minus": {
+			"type": "- type"
+		},
+		"modify": "Modify",
+		"month": "Month",
+		"months": "month(s)",
+		"no": {
+			"data": {
+				"in": {
+					"area": ["No data in area", "No data in area 1."]
+				}
+			},
+			"risk": {
+				"group": "No Risk Group"
+			},
+			"selected": {
+				"filter": "No Filter Selected"
+			},
+			"taken": {
+				"0": "Not taken (Not having?)",
+				"and": "Not taken and"
+			}
+		},
+		"normal": {
+			"0": "General",
+			"characteristic": "Patient Demographics"
+		},
+		"not": {
+			"0": "NOT",
+			"past": {
+				"begin": {
+					"than": {
+						"end": "Start data can\\'t be later than end date."
+					}
+				}
+			}
+		},
+		"notice": {
+			"about": {
+				"use": {
+					"and": {
+						"save": {
+							"0": "Information on saving & using of searched result",
+							"desc": {
+								"1": "Searched output result should be used for clinical treatment, medical study, and etc. in appropriate manner.",
+								"2": "You should destroy the output result once the purpose of use is no longer valid or terminated.",
+								"3": "Personal information should be protected under any circumstances, and you are responsible for leaked information.",
+								"4": "Viewer, user's IP, search condition and result, and output type of the result, and purpose of use are managed by System team."
+							}
+						}
+					}
+				}
+			}
+		},
+		"nursing": {
+			"assessment": {
+				"0": "Nursing Assessment",
+				"date": "Nursing Assessment Date",
+				"id": "Nursing Assessment ID",
+				"record": {
+					"date": "Nursing Assessment Date"
+				},
+				"search": "Nursing Assessment Search",
+				"statement": "Nursing Assessment Statement",
+				"upper": "Nursing Assessment(Cap)"
+			},
+			"care": {
+				"activity": "Nursing Activity",
+				"statement": {
+					"0": "Nursing Statement",
+					"EAV": "Nursing Statement(EAV)",
+					"id": "Nursing Statement ID",
+					"upper": "Nursing Statement(Cap)"
+				}
+			},
+			"dept": {
+				"0": "Nursing Dept. Code",
+				"code": "Nursing Dept.",
+				"desc": {
+					"1": "▶ Nursing Record dept. selected from Nursing procedures(Nursing Assessment, Nursing Diagnosis, Nursing Plan) is refelcted on Statement(Nursing Statement, Nursing StatementEAV), term EAV(Nursing term, Nursing term item).",
+					"2": "▶ If you don't select nursing record department, result will be displayed for all nursing record departments."
+				},
+				"no": {
+					"selected": "▶ No department was selected from nursing record dept."
+				},
+				"select": {
+					"for": {
+						"correct": {
+							"result": "▶ Select nursing record dept. in department, if you want to have accurate result."
+						}
+					}
+				},
+				"selected": {
+					"1": "▶ Selected department from nursing record dept. is"
+				}
+			},
+			"diagnosis": {
+				"0": "Nursing Diagnosis",
+				"date": "Nursing Diagnosis Date",
+				"id": "Nursing Diagnosis ID",
+				"search": "Nursing Diagnosis Search",
+				"statement": "Nursing Diagnosis Statement",
+				"upper": "Nursing Diagnosis(Cap)"
+			},
+			"eav": {
+				"eavitem": {
+					"connected": {
+						"and": "▶ Conditions between nursing term(EAV) and nursing term(EAV) are set with 'AND'."
+					}
+				}
+			},
+			"filter": {
+				"desc": {
+					"1": "▶ In Nursing Procedure, conditions among nursing assessment, nursing diagnosis and nursing plan are set with 'AND'."
+				}
+			},
+			"inspection": {
+				"assessment": "Nursing Assessment"
+			},
+			"item": {
+				"id": "Nursing Item ID",
+				"name": "Nursing Item",
+				"upper": {
+					"name": "Nursing Item(Cap)"
+				}
+			},
+			"kind": {
+				"of": {
+					"record": {
+						"0": "Nursing Record Type",
+						"form": {
+							"eav": "▶ Type of nursing record selected from Nursing term(EAV)"
+						}
+					}
+				}
+			},
+			"note": "Nursing Note",
+			"perform": {
+				"yn": "Nurse Exec. Flag"
+			},
+			"plan": {
+				"0": "Nursing Plan",
+				"date": "Nursing Plan Date",
+				"id": "Nursing Plan ID",
+				"n": {
+					"perform": {
+						"search": "Nursing Plan & Execution Search"
+					}
+				},
+				"statement": "Nursing Plan Statement",
+				"upper": "Nursing Plan(Cap)"
+			},
+			"process": "Nursing Procedure",
+			"record": {
+				"0": "Nursing Record",
+				"dept": {
+					"0": "Nursing Record Dept.",
+					"code": "Nursing Record Dept. Code",
+					"search": "Nursing Record Dept. Search"
+				}
+			},
+			"select": {
+				"all": "All(Nursing Note, Initial Nursing Assessment, Flow Sheet, Nursing Activity)"
+			}
+		},
+		"occupation": {
+			"at": {
+				"treatment": {
+					"day": "Occupation"
+				}
+			}
+		},
+		"one": {
+			"day": {
+				"prescribed": {
+					"amount": "Prescribed Amount per Day"
+				}
+			},
+			"time": {
+				"dosage": {
+					"packing": {
+						"unit": "Package Unit per Dose"
+					}
+				},
+				"prescribed": {
+					"amount": "Prescribed Amount per Dose"
+				}
+			}
+		},
+		"only": {
+			"select": {
+				"default": {
+					"max": {
+						"5000": "<span class='title'>In case searching basic conditions(period\/gender\/age,Dept.,Physician) only, <\/span><span class='count'>maximum 5,000 of patient list is displayed<\/span>"
+					}
+				}
+			}
+		},
+		"or": "Or",
+		"order": {
+			"0": "Order",
+			"change": "Change Order",
+			"code": "Order Code",
+			"demarcation": "Order Group Name",
+			"dept": {
+				"code": "Order Issuing Dept. Code"
+			},
+			"division": "Order Group",
+			"group": {
+				"code": "Order Group Code",
+				"name": "Order Group Name"
+			},
+			"issue": {
+				"dept": "Order Issuing Dept."
+			},
+			"name": {
+				"0": "Order Name",
+				"search": "Order"
+			},
+			"prescription": {
+				"date": "Order Date"
+			},
+			"staff": "Order Staff",
+			"status": "Order Status",
+			"treatment": {
+				"code": "Order Issuing Clinical Code"
+			}
+		},
+		"out": {
+			"patient": {
+				"ward": "Discharge Ward"
+			},
+			"place": {
+				"0": "Post-OP",
+				"after": {
+					"place": "Post-OP Place"
+				},
+				"code": "Post-OP Code"
+			}
+		},
+		"over": "Or Over",
+		"own": {
+			"cost": {
+				"code": "Fee Code"
+			},
+			"diagnosis": {
+				"code": "Code",
+				"name": "Diagnosis Name",
+				"upper": {
+					"name": "Diagnosis Name(Cap)"
+				}
+			},
+			"drug": {
+				"code": "Medicine Code",
+				"id": "Medicine ID"
+			},
+			"surgery": {
+				"code": "Surgery Code",
+				"name": "Surgery Name",
+				"upper": {
+					"name": "Surgery Name (Cap)"
+				}
+			}
+		},
+		"pact": {
+			"emergency": "EP",
+			"in": "IP",
+			"out": "OP"
+		},
+		"panel": {
+			"code": "Panel Code",
+			"name": {
+				"0": "Panel Name",
+				"upper": "Panel Name(Cap)"
+			}
+		},
+		"patient": {
+			"classify": "Patient Type",
+			"contact": "Patient Contact",
+			"demarcation": {
+				"code": "Patient Type Code",
+				"in": {
+					"out": {
+						"emergency": "Patient Type"
+					}
+				}
+			},
+			"final": {
+				"list": "Final Patient List"
+			},
+			"list": {
+				"0": "Patient List",
+				"upload": {
+					"manual": "Patient List Upload Manual"
+				}
+			},
+			"name": "Patient Name",
+			"no": "Patient No.",
+			"relation": "Patient Relation",
+			"severe": {
+				"0": "General Patient Severity",
+				"classification": "General Patient Severity Classification",
+				"total": {
+					"score": "General Patient Severity Score"
+				}
+			},
+			"treatment": {
+				"dept": {
+					"code": "Dept. Code"
+				}
+			}
+		},
+		"period": {
+			"gender": {
+				"age": "Basic Info"
+			}
+		},
+		"please": {
+			"wait": "Please wait a moment."
+		},
+		"plus": {
+			"minus": {
+				"type": "± type"
+			},
+			"type": "+ type"
+		},
+		"pn": {
+			"0": "PN",
+			"search": "PN Search"
+		},
+		"post": {
+			"no": "Post No."
+		},
+		"prescription": {
+			"unit": "Prescription Unit"
+		},
+		"protocol": {
+			"no": "Protocol No.",
+			"number": "Protocol Number"
+		},
+		"psychiatry": {
+			"patient": {
+				"severity": "Psychiatry Patient Severity"
+			},
+			"severe": {
+				"classification": "Psychiatry Severity Classification",
+				"total": {
+					"score": "Psychiatry Severity Score"
+				}
+			}
+		},
+		"range": {
+			"0": "Range",
+			"search": "Range Search",
+			"type": {
+				"0": "Range Type",
+				"filter": "Range Type Filter"
+			}
+		},
+		"record": {
+			"code": "Record Dept. Code",
+			"date": "Record Date",
+			"dept": {
+				"0": "Record Dept.",
+				"code": "Record Dept. Code"
+			},
+			"form": "Record Form"
+		},
+		"reg": {
+			"no": {
+				"0": "Patient No.",
+				"add": "Add Patient No."
+			}
+		},
+		"religion": "Religion",
+		"request": {
+			"adaccount": "AD Account",
+			"approved": "Incl. Approved",
+			"badge": "Badge",
+			"date": "Request Date",
+			"detail": {
+				"info": "Request Detail Information"
+			},
+			"domain": "Domain",
+			"email": "EMail",
+			"end": {
+				"date": "Use End Date"
+			},
+			"grant": {
+				"0": "Grant",
+				"date": "Grant Date"
+			},
+			"granter": "Granter",
+			"info": "Request Information",
+			"level": "Level",
+			"list": "Request List",
+			"local": "Local",
+			"name": "Name",
+			"reason": "Reason",
+			"start": {
+				"date": "Use Start Date"
+			},
+			"use": {
+				"period": "Use Period"
+			}
+		},
+		"required": {
+			"first": {
+				"area": "First condition selection is required.",
+				"select": {
+					"and": {
+						"2": {
+							"5": {
+								"initial": {
+									"go": "First condition selection is required. Selection from 2 to 5 will be initialized. Do you want to continue?"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"resesrch": {
+			"in": {
+				"result": "Re-search within Result"
+			}
+		},
+		"result": {
+			"view": "View Interim Result"
+		},
+		"risk": {
+			"group": "Risk Group"
+		},
+		"run": {
+			"yn": "Executed Only"
+		},
+		"save": {
+			"0": "Save",
+			"date": "Saved Date",
+			"name": "Saved Name"
+		},
+		"scenario": {
+			"0": "Scenario",
+			"example": {
+				"1": "Example)",
+				"2": "From 2004 to 2012, search data of patient name, patient no., gender, DOB,",
+				"3": "prescribed medicine, EEG test date & interpreter's comment,",
+				"4": "MRI date & interpreter's comment for the patients diagnosed as 'epilepsy' by physicians AAA and BBB in pediatrics",
+				"5": "and having the words like 'BRE, benign, and rolandic' in medical record."
+			},
+			"history": {
+				"0": "Scenario History",
+				"description": "Scenario history is the data saved during proceeding scenario. You can recall scenario by double-clicking corresponding row.",
+				"save": {
+					"data": {
+						"row": "Scenario history is the data saved during proceeding scenario. You can recall scenario by double-clicking corresponding row."
+					}
+				}
+			},
+			"input": {
+				"name": "Please insert a name for Scenario to save."
+			},
+			"preview": "Scenario Preview",
+			"save": "Save Scenario"
+		},
+		"search": {
+			"no": {
+				"selected": {
+					"dept": {
+						"all": {
+							"dr": {
+								"selected": {
+									"dept": {
+										"belong": {
+											"dr": "In case no department selected, data will be searched for all physician."
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"result": {
+				"0": "Search Result",
+				"filter": {
+					"set": {
+						"can": {
+							"in": {
+								"selected": {
+									"examination": "Test result filtering is only possible with selected Test name."
+								}
+							}
+						}
+					}
+				}
+			},
+			"standard": "Search Criteria"
+		},
+		"searched": {
+			"free": {
+				"text": {
+					"and": {
+						"order": {
+							"seperately": {
+								"and": {
+									"required": {
+										"first": "<b>Free Text Order filtering is separately searched from order search condition. And the first input of Free Text Order is mandatory. <\/b>"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"select": {
+			"description": "You can proceed with filtering conditions up to 5 steps.",
+			"eav": {
+				"entity": {
+					"first": "Please select EAV Entity first."
+				}
+			},
+			"file": "Please choose a file.",
+			"form": {
+				"name": {
+					"filter": {
+						"first": "Please select record form name fileter first."
+					},
+					"first": "Please select the record form first."
+				}
+			},
+			"grid": {
+				"no": {
+					"1": "Selected Grid 1",
+					"2": "Selected Grid 2",
+					"3": "Selected Grid 3",
+					"4": "Selected Grid 4",
+					"5": "Selected Grid 5"
+				}
+			}
+		},
+		"selected": {
+			"delete": "Delete Selected",
+			"dept": {
+				"reflected": {
+					"dept": {
+						"if": {
+							"no": {
+								"select": {
+									"all": {
+										"dept": "Selected hospital is reflected on department. If you don\\'t select hospital, result will be displayed for all department."
+									}
+								}
+							}
+						}
+					},
+					"dr": {
+						"if": {
+							"no": {
+								"select": {
+									"all": {
+										"dr": "Selected department is reflected on physician. If you don\\'t select department, result will be displayed for all physicians."
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"item": {
+				"delete": "Do you want to delete selected item(s)?"
+			},
+			"move": "Move Selected",
+			"result": "Selected Result"
+		},
+		"severe": {
+			"evaluation": {
+				"n": {
+					"division": "Severity Score & Classification"
+				}
+			}
+		},
+		"severity": {
+			"classification": {
+				"kind": {
+					"of": {
+						"risk": {
+							"assessment": "Severity Classification & Risk Assessment Type"
+						}
+					}
+				},
+				"risk": {
+					"assessment": "Severity Classification & Risk Assessment"
+				}
+			}
+		},
+		"sheet": {
+			"division": "Sheet Type"
+		},
+		"sign": {
+			"yn": "Signed Only"
+		},
+		"slip": {
+			"name": {
+				"0": "SLIP Name",
+				"upper": "SLIP Name(Cap)"
+			}
+		},
+		"smoking": {
+			"duration": {
+				"at": {
+					"treatment": {
+						"day": "Duration of Smoking"
+					}
+				}
+			},
+			"yn": {
+				"at": {
+					"treatment": {
+						"day": "Smoking"
+					}
+				},
+				"treatment": {
+					"day": {
+						"within": {
+							"one": {
+								"month": "Smoking within 1 month?"
+							}
+						}
+					}
+				}
+			}
+		},
+		"standard": {
+			"form": {
+				"download": "Download Standard Format"
+			}
+		},
+		"statement": {
+			"0": "Statement",
+			"type": "Statement Type"
+		},
+		"subject": "Subject",
+		"surgery": {
+			"0": "Surgery",
+			"code": "Surgery Code",
+			"day": "Surgery Date",
+			"dept": {
+				"0": "Surgery Dept.",
+				"code": "Dept. Code",
+				"local": {
+					"name": "Deptartment Name"
+				},
+				"search": "Surgery Dept."
+			},
+			"detail": {
+				"0": "Surgery Detail",
+				"kind": {
+					"of": {
+						"anaesthesia": "Surgery Detail(Anesthesia Type)"
+					}
+				},
+				"out": {
+					"place": "Surgery Detail (Disc. Loc. after Surgery)"
+				}
+			},
+			"diagnosis": {
+				"name": {
+					"0": "Surgery Diagnosis",
+					"search": "Surgery Diagnosis"
+				}
+			},
+			"dr": {
+				"dept": "Department Name",
+				"id": "Staff No.",
+				"search": "Operation Surgeon"
+			},
+			"joint": {
+				"yn": "Surgery Consult Flag"
+			},
+			"name": {
+				"0": "Surgery Name",
+				"search": "Surgery"
+			},
+			"operating": {
+				"surgeon": {
+					"0": "Operation Surgeon",
+					"at": {
+						"determine": "Operation Surgeon"
+					}
+				}
+			},
+			"prearranged": "Surgery(incl. Expected)"
+		},
+		"taken": {
+			"0": "Taken (Having?)",
+			"and": "Taken and"
+		},
+		"tel": {
+			"no": "Phone No."
+		},
+		"term": {
+			"EAV": {
+				"0": "term(EAV)",
+				"item": "termEAV item"
+			},
+			"ICNP": "term(ICNP)"
+		},
+		"text": {
+			"type": "Text type"
+		},
+		"to": {
+			"0": "to",
+			"dosage": "Dose To"
+		},
+		"total": {
+			"0": "Total",
+			"score": ["Total Score", "Total Score"]
+		},
+		"transpose": {
+			"examination": {
+				"result": "Transpose(Examination) Result"
+			},
+			"excel": {
+				"download": {
+					"examination": {
+						"date": {
+							"required": "Test execution date is mandatory when downloading transposed Excel file.\\n\\n Please check and apply Test execution date and download the file again."
+						}
+					},
+					"form": {
+						"date": {
+							"required": "Medical record date is mandatory when downloading transposed Excel file.\\n\\n Please check and apply medical record date and download the file again."
+						}
+					},
+					"treatment": {
+						"date": {
+							"required": "Clinical(treatment) date is mandatory when downloading transposed Excel file.\\n\\n Please check and apply clinical(treatment) date and download the file again."
+						}
+					}
+				}
+			},
+			"form": {
+				"result": "Transpose(Form) Result"
+			}
+		},
+		"treatment": {
+			"date": "Clinic Date",
+			"dept": {
+				"code": "Dept. Code",
+				"include": {
+					"out": {
+						"patient": "Clinical Dept.(incl. OUT)"
+					}
+				},
+				"local": {
+					"name": "Department Name"
+				},
+				"search": "Clinical Dept."
+			},
+			"dr": {
+				"0": "Clinical Physician",
+				"dept": "Clinical Physician Dept.",
+				"name": "Clinical Physician",
+				"no": "Clinical Physician Badge No.",
+				"search": "Clinical Physician"
+			},
+			"form": "Medical Record Form",
+			"history": "Medical Record",
+			"info": "Medical Info"
+		},
+		"tumor": {
+			"type": "Tumor Type"
+		},
+		"unknown": {
+			"error": "Unknown error occurred while running.\\n Please contact System team."
+		},
+		"upload": {
+			"0": "Upload",
+			"file": "Please upload your file."
+		},
+		"uploaded": {
+			"patient": {
+				"list": "rows of patient list is uploaded."
+			}
+		},
+		"vdr": {
+			"period": {
+				"end": "End Period",
+				"start": "Start Period"
+			}
+		},
+		"vdt": {
+			"at": {
+				"that": {
+					"age": "Age"
+				}
+			},
+			"period": "Clinical Period"
+		},
+		"visit": {
+			"service": "Visit Service"
+		},
+		"ward": {
+			"severe": {
+				"evaluation": "Ward Severity Assessment"
+			}
+		},
+		"when": {
+			"in": {
+				"patient": {
+					"dept": {
+						"0": "Admission Dept.",
+						"code": "Admission Dept. Code"
+					}
+				}
+			}
+		},
+		"year": "Year",
+		"years": "year(s)"
+	},
+	"sts": {
+		"category": "Report Category",
+		"regDate": "Registration Date",
+		"reprtId": "Report ID",
+		"status": "Report Status",
+		"title": "Report Title"
+	},
+	"success": {
+		"common": {
+			"delete": "successfully deleted",
+			"insert": "successfully inserted",
+			"select": "successfully selected",
+			"update": "successfully updated"
+		},
+		"request": {
+			"msg": "you're request successfully done"
+		},
+		"user": {
+			"rlnmCnfirm": "it is realname"
+		}
+	},
+	"sym": {
+		"cal": {
+			"restCategory": "Holiday Category",
+			"restDay": "Holiday Date",
+			"restDetail": "Holiday Detail",
+			"restName": "Holiday Name"
+		},
+		"ems": {
+			"content": "Content",
+			"receiver": "Receiver",
+			"title": "Title"
+		},
+		"log": {
+			"atchFile": "Attached File",
+			"atchFileList": "Attached File List",
+			"histCn": "History Contents",
+			"histSeCode": "History Code",
+			"sysNm": "System Name"
+		}
+	},
+	"uss": {
+		"ion": {
+			"noi": {
+				"alertNtfcTime": "Date and time of notification is not valid.",
+				"bhNtfcIntrvl": {
+					"0": "Beforehand Interval",
+					"msg": "Beforehand Interval is required."
+				},
+				"ntfcCn": "Contents",
+				"ntfcDate": "Notification Date",
+				"ntfcHH": "Notification Hour",
+				"ntfcMM": "Notification Minute",
+				"ntfcSj": "Subject",
+				"ntfcTime": "Notification Time"
+			}
+		}
+	},
+	"vdt": {
+		"end": {
+			"age": {
+				"big": "Selected age is older than End Age."
+			}
+		},
+		"start": {
+			"age": {
+				"small": "Selected age is younger than Start Age."
+			}
+		}
+	},
+	"view": {
+		"example": "See Example"
+	},
+	"renewal2017": {
+		"snuh": "Seoul National University Hospital",
+		"irb": {
+			"name": "IRB",
+			"title": "IRB Approvals",
+			"irbNo": "IRB No.",
+			"reschKorNm": "Researh ",
+			"availableStDt": "Valid Since",
+			"availableEdDt": "Valid Till",
+			"irbMethodNm": "Review Type",
+			"ptCnt": "Target Patient"
+		},
+		"title" : {
+			"ptInfo": "Patient Basics",
+			"theme": "테마 변경",
+			"go-home": "홈으로 이동"
+		},
+		"basic": "Patient Info",
+		"cc": "CC",
+		"nursing": "Nursing",
+		"addDel": "Add/Del",
+		"basicInfo": "Hospital/Patient",
+		"age": "Age",
+		"processOverview": "Query Flow",
+		"conditionSetting": "Condition Setting",
+		"conditionSetup": "Case Design",
+		"patientList": "Patient List",
+		"finalResult": "Final Result",
+    "errLogView": "Error Log",
+    "workManager": "Work Manager",
+    "workGroupManager": "Research Search User Work-Group Information.",
+    "workManagerList": "Task Information",
+    "currentErrorList": "Current Error List",
+    "threadExecutor": "Thread Executor Pool",
+    "memory": "Memory",
+    "errLogParameterDescription": "Parameter values recorded in relation to the error.",
+    "errLogSQLDescription": "Execution SQL recorded in relation to the error",
+		"basicInfoEx": "Basic info of patients to search",
+		"processOverviewEx": "Set the search condition in each area. You may change the order or the way of set calculation.",
+		"selectResult": "Selection",
+		"inclusion": "Incl.",
+		"exclusion": "Excl.",
+		"selectEa": " row(s) selected",
+		"collapse": "펼치기/접기",
+		"treatmentList": "진료 담당",
+		"treatment": "Visit",
+		"cardTxt": "Make your selection below to start",
+		"writeAppealDay": "Date Recorded",
+		"selectHospital": "Hospital",
+		"viewScenario": "View Scenario",
+		"excelDownload": "Excel Download",
+		"resultSummary": "Result Summary",
+		"totalRecords": " Total Records",
+		"totalPatients": "Total Patients",
+		"eachCount": "별 건수",
+		"conditionResultTable": "Patient List Table",
+		"finalResultTable": "Final Data Set",
+		"ageSpecificRate": "Age-specific Rate",
+		"addItems": "Output Items",
+		"pivot": "Pivot",
+		"sqlViewer": "SQL Viewer",
+		"hospitalName": "Hospital",
+		"prescriptionDate": "처방일",
+		"recordData": "Date Recorded",
+		"ccRecordData": "주호소 기입일",
+		"drugId": "약품ID",
+		"nursingRecordCode": "간호구분코드",
+		"entityId": "Entity ID",
+		"attributeId": "Attribute ID",
+		"commonPtCnt": "명",
+		"apply": "Apply",
+		"h-solution-name": "Clinical Research Insights",
+		"h-save-scenario": "Save Query",
+		"date": {
+			"year": "year",
+			"month": "month",
+			"day": "Days",
+			"old-year": "Years",
+			"old-month": "Months",
+			"January": "January",
+			"Febuary": "February",
+			"March": "March",
+			"April": "April",
+			"May": "May",
+			"June": "June",
+			"July": "July",
+			"August": "August",
+			"September": "September",
+			"October": "October",
+			"November": "November",
+			"December": "December",
+			"week": "week"
+		},
+		"button": {
+			"start": "Go",
+			"home": "Home",
+			"new": "New",
+			"save": "Save",
+			"open": "Open",
+			"close": "Close",
+			"increase": "크게",
+			"decrease": "작게",
+			"group": "Group",
+			"ungroup": "Ungroup",
+			"cut": "Cut",
+			"paste": "Paste",
+			"delete": "Delete",
+			"search-plus": "확대",
+			"search-minus": "축소",
+			"more": "Show More",
+			"cancel": "Cancel",
+			"delete-work": "작업 삭제",
+			"except-work": "조건 제외",
+			"except-cancel": "조건 제외 취소",
+			"check-all": "전체 선택",
+			"all": "All",
+			"uncheck-all": "선택해제",
+			"checked-plural": "개 선택",
+			"share": "Share",
+			"apply": "Apply",
+			"screen-rate": "화면 비율 지정",
+			"remove": "Remove",
+			"modify": "수정"
+		},
+		"p": {
+			"data-ref": "Choose a base date.",
+			"cohort": "User-defined cohorts are created and curated with well-structured manner.",
+			"select-item": "Please select an item.",
+			"guidemode": "Fast and easy clinical data search using selected key fields in the data warehouse",
+			"powermode": "Query builder environment for people who need more delicate and elaborate search",
+			"patient": " 대상환자 총",
+			"save-scenario": "Save your query by entering a title below.",
+			"write-date": "Created on",
+			"writer": "Owner",
+			"delete1": " will be deleted.",
+			"delete2": "삭제 시 파일을 복구할 수 없습니다.",
+			"search-empty-result": "Nothing found...",
+			"search-no-render-text": "Type in search box to see results...",
+			"reset1": "All input conditions will be reset.",
+			"reset2": "Do you want to reset your query?",
+			"err-message": "Oops, there was a problem communicating with the server.",
+			"staff-number1": "Selected users are ",
+			"staff-number2": " .",
+			"message-hospital": "선택한 병원은 진료과에 반영됩니다. 병원을 선택하지 않으면 진료과에서 전체 진료과가 출력됩니다.",
+			"message-doctor": "선택된 진료과가 없는 경우는 전체 진료의를 대상으로 선택된 진료과가 있는 경우는 선택된 진료과 진료의를 대상으로 검색합니다.",
+			"change-theme": "테마를 변경하려면 페이지를 새로고침해야 합니다. 변경하시겠습니까?",
+			"convert-fail": "파워모드 전환에 실패했습니다.",
+			"condition-err": "And, Or 조건으로 연결되지 않은 상자가 있습니다.",
+			"empty-err": "데이터가 입력되지 않은 상자가 있습니다.",
+			"home-alert": "홈으로 이동하면 저장하지 않은 내용은 소실됩니다. 계속 하시겠습니까?",
+			"message-visit": "수진일, 환자구분, 진료과, 진료의 등을 기준으로 검색합니다.",
+			"message-diagnosis": "진단일, 진단명과 진단을 내린 진료과를 기준으로 검색합니다.",
+			"message-order": "구두 오더를 포함한 처치지시와 수혈오더 정보를 검색합니다.",
+			"message-fee": "처치료, 수술료, 마취료 등의 처방이 내려진 수가에 대해 검색합니다.",
+			"message-medicine": "약품 처방일과 약품명(성분명), 원내코드, ATC코드를 이용하여 검색합니다.",
+			"message-exam": "검사가 시행된 건을 기준으로 검사항목별 결과에 대해 세부 검색이 가능합니다.",
+			"message-pathology": "검사결과 전문에서 추출된 Key & Value를 검색 및 조회할 수 있습니다.",
+			"message-surgical": "수술 예정 기준의 수술명, 진단명 등의 관련 정보를 검색합니다.",
+			"message-cc": "주호소 기입일과 주호소명을 기준으로 검색합니다.",
+			"message-form": "과별서식, 퇴원기록 등 서식으로 작성된 정보들을 검색합니다.",
+			"message-nursState": "간호사정 및 평가, 계획 및 중재, 진단 등 간호진술문을 중심으로 검색합니다.",
+			"message-nursEav": "입원간호정보조사, 임상관찰기록, 간호일지 등의 기록에 대해 간호항목/진술문으로 검색합니다.",
+			"message-nursAssm": "낙상, 욕창 등의 위험도 평가 및 병동별, 환자군별 중증도 위험평가 결과를 검색합니다.",
+			"message-open": "내가 저장한 쿼리와 다른 사용자가 나에게 공유한 쿼리 목록을 보여줍니다.",
+			"message-interim": "Case Design을 통해 설정된 조건을 만족하는 데이터 분포를 주제 영역별로 확인하고 대상 환자군의 규모를 파악합니다.",
+			"message-final": "Patient List에서 조회된 환자의 수진을 기준으로 선택된 출력 변수를 포함하는 데이터셋을 제공합니다.",
+			"message-admin": "로그인 정보, IRB 승인 정보, Query 실행 정보를 보여줍니다.",
+			"message-admin-work": "각 서버 별 Work 현황 정보를 보여줍니다.",
+			"message-admin-error-log": "ERROR 로그 정보를 보여줍니다.",
+			"message-admin-user-table-manager": "사용자 임시 태이블을 관리합니다.",
+			"share-list": "아래의 사용자와 공유됨",
+			"trans-header": "파워 모드로 이동",
+			"trans-alert": "가이드 모드에서 설정한 조건을 이용해 파워 모드로 전환하면 다시 되돌릴 수 없습니다.",
+			"transfer-powermode-alert": "파워모드로의 전환은 'Case Design'에서만 가능합니다.",
+			"notice-date1": "참조일 이전의 날짜를 설정하려면 마이너스로 입력하시기 바랍니다.",
+			"notice-date2": "(예: 시작: -10일부터, 종료: 30일까지)",
+			"failed-drop-table-1": "Fail to table removed.",
+			"failed-drop-table-2": "ORA-00054: resource busy and acquire with NOWAIT specified or timeout expired.",
+			"alert-ptlist": "환자기본정보는 중복해서 추가할 수 없습니다.",
+			"notice-limit-patient": "업로드 할 수 있는 환자 수는 10만 건으로 제한됩니다.",
+			"alert-limit-upload": "업로드 환자 수가 10만 건을 초과했습니다.",
+			"notice-add-data": "선택한 데이터를 더블 클릭하거나 이곳으로 드래그 해서 추가하세요.",
+			"notice-add-data2": "선택한 데이터를 이곳으로 드래그 해서 추가하세요.",
+			"alert-prevent-back": "뒤로가기 버튼은 사용하실 수 없습니다."
+		},
+		"grid": {
+			"connect-date": "접속일시",
+			"connet-ip": "접속 IP",
+			"co-num": "사번",
+			"co-ass": "부서",
+			"name": "이름"
+		},
+		"nav-new-scenario": "New Scenario",
+		"nav-save-scenario": "Saved Scenario",
+		"nav-open-scenario": "Open Scenario",
+		"nav-new-query": "New Query",
+		"nav-save-query": "Save Query",
+		"nav-open-query": "Open Query",
+		"nav-my-queries": "My Queries",
+		"nav-shared-queries": {
+			"title": "Shared Queries",
+			"drStfNo": "Staff No.",
+			"drStfNm": "User Name",
+			"medDeptNm": "Department"
+		},
+		"nav-upload-patient": {
+			"title": "Upload Patients",
+			"select-file": "Click",
+			"drop-file": "to upload or drag and drop your file here.",
+			"ready-to-upload": "업로드 준비 완료",
+			"upload": "Upload",
+			"uploaded": "Upload Completed",
+			"failed": "Upload Failed.",
+			"alert-1": "Have your Excel sheet filled with patient number",
+			"alert-2": "in the first column starting from the row #1."
+		},
+		"useYn": "Use",
+		"shareYn": "Share with Others",
+		"label": {
+			"yes": "Yes",
+			"no": "No",
+			"date-start": "시작일",
+			"date-end": "종료일",
+			"prev": "이전",
+			"next": "이후",
+			"start": "시작",
+			"end": "종료",
+			"ref": "기준일",
+			"useYn": "사용",
+			"from": "일부터",
+			"to": "일까지",
+			"select-item": "선택 항목",
+			"reference": "기준"
+		},
+		"placeholder": {
+			"index": "색인 입력..."
+		},
+		"suffix": {
+			"from": "일부터",
+			"to": "일 이내"
+		},
+		"excel": {
+			"modal": {
+				"header": "연구검색 열람 결과의 저장 및 이용에 관한 안내",
+				"alert-1": "열람하신 결과는 진료, 연구, 기타 등 사용 목적과 방법에 합당하도록 사용하여야 합니다.",
+				"alert-2": "엑셀, PDF, 인쇄 등으로 출력한 결과물은 사용 목적이 종료되면 즉시 폐기하여야 합니다.",
+				"alert-3": "어떠한 경우라도 개인정보를 보호해야 하며, 유출된 경우 책임은 사용자에게 있습니다.",
+				"alert-4": "열람자, 사용 IP, 검색 조건 및 결과, 출력 형태, 사용 목적 등이 의료정보팀에 의해 관리되고 있습니다.",
+				"alert-5": "연구검색 열람 결과의 저장 및 이용에 동의하시면 확인 버튼을 눌러주세요.",
+				"agree-button": "확인",
+				"save-button": "저장"
+			}
+		},
+		"pathology": {
+			"title": "Pathology Test",
+			"primary-organ": "Primary Organ",
+			"diagnosis": "Diagnosis",
+			"procedure": "Procedure",
+			"else": "Other Keys"
+		},
+		"concern-patient": {
+			"title": "Concern Patients"
+		},
+		"rediation": {
+			"title": "Radiation"
+		},
+		"transpose": {
+			"title": "Transpose"
+		},
+		"job-status": {
+			"title": "Job Status",
+			"alert-1": "현재 실행 중인 Job이 존재합니다. 취소하시겠습니까?",
+			"alert-2": "Job을 취소하는 중입니다. 잠시만 기다려주세요.",
+			"alert-3": "새로운 Job을 생성할 수 있습니다."
+		},
+		"final": {
+			"request": "Data Request",
+			"extract": "Data Extract",
+			"retrieve": "Data Retrieve"
+		}
+	},
+  "cohort":{
+    "nav-my-cohort":"My Cohort",
+    "nav-all-cohort":"All Cohort",
+    "share-date":"Share Date",
+    "share":"공유",
+    "isshare": "공유여부",
+    "request-share-cohort": "Request Share Cohort",
+    "request-share-reason": "Why do you want to share ",
+    "request": "Request",
+    "cancel":"Cancel",
+    "save": "저장",
+    "load": "불러오기",
+    "saved": "저장하였습니다.",
+    "failed": "실패하였습니다. 관리자에게 문의하세요.",
+    "request-share":"Requesting Share",
+    "name": "이름",
+    "birth": "생년월일",
+    "sex": "성별",
+    "date": "적재일시",
+    "manage": "관리",
+    "cnte": "설명",
+    "data_none": "데이터가 존재하지 않습니다.",
+    "select_table": "테이블을 선택하세요",
+    "delete_comment": "<br>코호트마트내의 해당환자 관련기록도 모두 삭제됩니다.<br><br>\r\n\r\n해당환자를 삭제하시겠습니까?<br>",
+    "requestShare" : {
+      "request-share-cohort-list":"Request Share Cohort List",
+      "request-date":"요청일시",
+      "staff-name":"이름",
+      "staff-no":"사번",
+      "dept-nm":"부서",
+      "cohort-nm":"코호트",
+      "req-cnte":"요청사유",
+      "req-anonymous":"익명화",
+      "req-edit":"수정권한",
+      "req-download":"다운로드권한",
+      "apv":"비/승인",
+      "apv-cnte":"비/승인사유",
+      "apv-date":"비/승인날짜",
+      "emailyn":"사유이메일전송",
+      "apv-select":"비/승인여부를 선택하세요"
+    },
+    "mart": {
+      "create": "코호트마트 생성",
+      "name": "이름",
+      "cnte": "설명",
+      "suffix": "대표약어(Suffix)",
+      "owner": "Owner",
+      "patient-sql": "환자 SQL",
+      "sourcedata-sql": "원본데이터 SQL",
+      "input":{
+        "name": "코호트마트 이름을 입력하세요",
+        "description": "코호트마트 설명을 입력하세요",
+        "suffix": "코호트마트 Suffix를 입력하세요",
+        "owner": "코호트마트 Owner을 입력하세요",
+        "patient-sql": "코호트마트 환자 SQL을 입력하세요"
+      },
+      "input_comment": "COMMENT를 입력하세요",
+      "table": {
+        "sort": "정렬",
+        "add": "추가",
+        "reload": "Reload",
+        "tbl-sfx": "대표약어(Suffix)",
+        "pso-sql": "원본데이터 Sql",
+        "pso-cnte": "원본데이터 설명",
+        "prc-cnte": "파싱결과 데이터 설명",
+        "dlg-title": "테이블 정보",
+        "delete": " 대표약어(Suffix)를 사용하는 테이블",
+        "input": {
+          "info": "테이블 정보를 입력하세요.",
+          "suffix": "대표약어(Suffix)를 입력하세요",
+          "pso_cnte": "원본데이터 설명을 입력하세요",
+          "prc_cnte": "파싱결과 데이터 설명을 입력하세요",
+          "sort": "정렬 숫자를 입력하세요"
+        },
+        "group": {
+          "dlg-title": "그룹 정보",
+          "grp_sort": "정렬",
+          "grp_nm": "이름",
+          "grp_cnte": "설명",
+          "input": {
+            "info": "그룹 정보를 입력하세요.",
+            "grp_sort": "정렬 숫자를 입력하세요",
+            "grp_nm": "그룹 이름을 입력하세요",
+            "grp_cnte": "그룹 설명을 입력하세요"
+          },
+          "delete": " 그룹 "
+        },
+        "column": {
+          "regex": {
+            "dlg-title": "칼럼 정규식 정보",
+            "info": "칼럼 정규식 정보를 관리합니다.",
+            "category": "Category",
+            "name": "Name",
+            "select-regex": "정규식을 선택하세요."
+          },
+          "STR": "문자",
+          "NUM": "숫자",
+          "BOOL": "BOOL",
+          "DTM": "날짜",
+          "dlg-title": "칼럼 정보",
+          "col_pk": "PK",
+          "col_grp": "그룹",
+          "col_nm": "이름",
+          "col_tp": "유형",
+          "col_size": "길이",
+          "col_src": "원본",
+          "col_visible": "표시",
+          "col_sort": "정렬",
+          "col_anonymous": "식별화",
+          "col_edit": "수정",
+          "col_ispk": "PK",
+          "col_cnte": "설명",
+          "input": {
+            "info": "칼럼 정보를 입력하세요.",
+            "col_grp": "선택하세요",
+            "col_nm": "칼럼 이름을 입력하세요",
+            "col_tp": "선택하세요",
+            "col_size": "문자길이를 입력하세요",
+            "col_visible": "선택하세요",
+            "col_sort": "정렬 숫자를 입력하세요",
+            "col_anonymous": "선택하세요",
+            "col_cnte": "칼럼 설명을 입력하세요"
+          },
+          "delete": " 칼럼 "
+        },
+        "sourceData": {
+          "initialize": "초기화"
+        },
+        "regularExpress": {
+          "category": {
+            "dlg-title": "정규식 카테고리 정보",
+            "info": "정규식 카테고리 정보를 관리합니다.",
+            "name": "카테고리 이름을 입력하세요",
+            "cnte": "카테고리 설명을 입력하세요"
+          },
+          "rgep":{
+            "dlg-title": "정규식 정보",
+            "info": "정규식 정보를 관리합니다.",
+            "name": "정규식 이름을 입력하세요",
+            "data": "정규식을 입력하세요",
+            "cnte": "정규식 설명을 입력하세요",
+            "save": "정규식을 저장하시겠습니까?"
+          }
+        }
+      },
+      "suffix-duplication": "Suffix가 중복입니다. 다른 값을 입력하세요.",
+      "patient-initial": "환자 테이블을 초기화 하시겠습니까?",
+      "sourcedata-initial": "원본 데이터 테이블을 초기화 하시겠습니까?",
+      "initial-patient": "환자 초기화",
+      "initial-patient-excel": "환자 업로드",
+      "select-file": "선택",
+      "schedule": {
+        "name": "적재스케쥴",
+        "none": "None",
+        "day": "Day",
+        "week": "Week",
+        "month": "Month",
+        "year": "Year"
+      }
+    }
+  }
+}

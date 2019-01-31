@@ -1,0 +1,71 @@
+<div class="power-props-inner">
+    <h2 class="h6">{{propsTitle}}</h2>
+    <form [formGroup]="dateForm">
+        <div class="form-group row border-bottom">
+            <label class="col-3 col-form-label" for="dateRef">
+                {{'renewal2017.label.ref' | translate}}
+            </label>
+            <div class="col-9 label-border">
+                <select
+                    class="form-control custom-select"
+                    id="dateRef"
+                    formControlName="gubun"
+                    [(ngModel)]="dataSource.gubun">
+                    <option value="range">{{'renewal2017.p.data-ref' | translate}}</option>
+                    <option *ngFor="let state of dateRef" [ngValue]="state.value">
+                        {{state.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <daterangepicker
+            (secDate)="selectDate($event)" 
+            [secCode]="'powermode-datepicker-period'"
+            [storageDate]="storageDate"
+            *ngIf="dataSource.gubun === 'range'">
+        </daterangepicker>
+
+        <div *ngIf="dataSource.gubun !== 'range'">
+            <div class="form-group row">			
+                <label class="col-3 col-form-label" for="daterangeStart2">
+                    {{'renewal2017.label.start' | translate}}
+                </label>
+                <div class="col-9 label-border">
+                    <div class="input-group">
+                        <input type="Number"
+                            id="daterangeStart2"
+                            formControlName="fromNum"
+                            [(ngModel)]="dataSource.fromNum"
+                            class="form-control" />
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{'renewal2017.label.from' | translate}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+            
+            <div class="form-group row">
+                <label class="col-3 col-form-label" for="daterangeEnd2">
+                    {{'renewal2017.label.end' | translate}}
+                </label>
+                <div class="col-9 label-border">
+                    <div class="input-group">
+                        <input type="Number"
+                            id="daterangeStart2"
+                            formControlName="toNum"
+                            [(ngModel)]="dataSource.toNum"
+                            class="form-control" />
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{'renewal2017.label.to' | translate}}</span>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <p>
+                <small class="text-warning">
+                    {{'renewal2017.p.notice-date1' | translate}}<br>{{'renewal2017.p.notice-date2' | translate}}
+                </small>                
+            </p>            
+        </div>        
+    </form>
+</div>

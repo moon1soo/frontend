@@ -1,0 +1,22 @@
+<vertical-split-pane
+    class="vertical-split-grid inner-area"
+    primary-component-minsize="80"
+    secondary-component-minsize="80"
+    primary-component-initialratio="0.5"
+    separator-thickness="1">
+    <div class="split-pane-content-primary">
+        <div class="left">
+            <form-basic-server></form-basic-server>
+        </div>
+    </div>
+    <div class="split-pane-content-secondary">
+        <div class="right">
+            <div *ngIf="isFilter">
+                <form-basic-filter></form-basic-filter>
+            </div>
+            <div *ngIf="!isFilter">
+                <form-basic-client></form-basic-client>
+            </div>
+        </div>
+    </div>
+</vertical-split-pane>

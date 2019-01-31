@@ -1,0 +1,97 @@
+.gate-container {
+    min-width: $window-width;
+    height: 100%;
+    .bg-img {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background: url('./images/bg_main.jpg') 0 0 no-repeat;
+        background-size: auto 100%; 
+        // opacity: 0.73;
+        // -webkit-filter: blur(2.3px);
+        // filter: blur(2.3px);
+    }    
+    .card-body {
+        height: 260px;
+        border: 1px solid $border-color-default;
+        border-radius: 4px;
+    }
+
+    .message {
+        margin-top: 10px;
+    }
+
+    .confirm {
+        position: relative !important;
+        left: 0% !important;
+        margin-left: 0px !important;
+        bottom: 0px !important;
+        margin-top: 5px;
+    }
+}
+.floating-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 900px;
+    height: 450px;
+    padding: 60px 50px;
+    // height: 400px;
+    // padding: 30px;
+    margin: -175px 0 0 -450px;
+    background-color: $bg-white;
+    border: solid 0.5px $border-color-default;
+    border-radius: 10px;
+    color: $dark-color;
+    box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+    h1 {
+        img {
+            display: block;
+            margin-bottom: 10px;
+        }
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    h2 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    h3 {
+        font-size: 17px;
+        font-weight: 600;
+        margin-bottom: 18px;
+    }
+    .btn {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        margin-left: -60px;
+        width: 120px;
+    }
+    .caption {
+        font-size: 17px;
+        font-weight: 200;
+        em {
+            &:nth-of-type(1), &:nth-of-type(2) {
+                color: #01348b;
+            }
+            &.sm {
+                font-size: 17px;
+            }
+            font-style: normal;
+            font-size: 19px;
+            font-weight: 500;
+            color: $primary-color;
+        }
+    }
+}
+
+@media (min-width: 544px) and (max-width: 1400px) {
+	.gate-container {
+		.bg-img {
+            background-size: auto 100%; 
+        }
+	}
+}

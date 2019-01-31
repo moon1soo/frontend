@@ -1,0 +1,143 @@
+<div class="modal-header">
+  <h3 class="modal-title">[{{serverName}}] {{'renewal2017.workManager' | translate}}</h3>
+  <button type="button" class="close" aria-label="Close" (click)="_activeModal.dismiss('Close Click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="container-header form-line" #header>
+    <div class="row form-group">
+      <div class="col-5">
+        <div class="row">
+          <div class="col-3"><h6 class="h6 mt-2">{{'renewal2017.threadExecutor' | translate}}</h6>
+          </div>
+          <div class="col-9">
+            <ngb-progressbar class="final-bar" type="info" [value]="rate.executorActive">
+              <span *ngIf="rate.executorActive > 0"> {{ rate.executorActive.toFixed(1) }}%</span>
+            </ngb-progressbar>
+            <div class="small mt-2">
+              Active Count : {{rate.activeExecutor}} / Core Pool-Size : {{rate.coreExecutor}} / Maximum Pool-Size : {{rate.maxExecutor}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-5 label-border">
+        <div class="row">
+          <div class="col-3">
+            <h6 class="h6 mt-2">{{'renewal2017.memory' | translate}}</h6>
+          </div>
+          <div class="col-9">
+            <ngb-progressbar class="final-bar" type="info" [value]="rate.usedMemory">
+              <span *ngIf="rate.usedMemory > 0"> {{ rate.usedMemory.toFixed(1) }}%</span>
+            </ngb-progressbar>
+            <div class="small mt-2">
+              Free Memory : {{(rate.freeMemory > 0 ? rate.freeMemory/1024/1024 : 0).toFixed(rate.freeMemory > 0 ? 1:0)}}
+              / Total Memory : {{(rate.totalMemory/1024/1024).toFixed(rate.totalMemory > 0 ? 1:0)}}
+              / Maximum memory : {{(rate.maxMemory/1024/1024).toFixed(rate.maxMemory > 0 ? 1:0)}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-2 text-right">
+        <button type="button" class="btn btn-md btn-light mr-2" (click)="serverRefresh()" >
+          <i class="fal fa-refresh" aria-hidden="true"></i>
+          Refresh
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="bot-table-area mt-2">
+      <div class="row">
+        <div class="col-5">
+          <h5 class="h6">{{'renewal2017.workGroupManager' | translate}}</h5>
+          <dx-data-grid
+            id="work-group-grid"
+            class="gridSelect"
+            [dataSource]="dataSource.workGroup"
+            [height]="480"
+            [columnResizingMode]="'nextColumn'"
+            [allowColumnResizing]="true">
+            <dxo-filter-row [visible]="false"></dxo-filter-row>
+            <dxo-header-filter [visible]="false"></dxo-header-filter>
+            <dxi-column dataField="name" caption="Name" cssClass="text-center"></dxi-column>
+            <dxi-column dataField="status" caption="Status" [width]="130" cssClass="text-center"></dxi-column>
+            <dxi-column [width]="50"
+                         [allowFiltering]="false"
+                         [allowSorting]="false"
+                         cssClass="text-center"
+                         cellTemplate="cellTemplate">
+            </dxi-column>
+            <dxo-scrolling mode="virtual"></dxo-scrolling>
+            <dxo-sorting mode="single"></dxo-sorting>
+
+            <div *dxTemplate="let data of 'cellTemplate'">
+              <button type="button" class="btn btn-text-type" title="close" (click)="destroyWorkGroup(data)">
+                <i class="fal fa-times-circle" aria-hidden="true"></i>
+                <span class="sr-only">close</span>
+              </button>
+            </div>
+          </dx-data-grid>
+        </div>
+        <div class="col-7 label-border">
+          <div>
+            <h5 class="h6">{{'renewal2017.workManagerList' | translate}}</h5>
+            <dx-data-grid
+              id="work-grid"
+              class="gridSelect"
+              [dataSource]="dataSource.work"
+              [height]="160"
+              [columnResizingMode]="'nextColumn'"
+              [allowColumnResizing]="true"
+              >
+              <dxo-filter-row [visible]="false"></dxo-filter-row>
+              <dxo-header-filter [visible]="false"></dxo-header-filter>
+              <dxi-column dataField="workName" caption="Work Name" cssClass="text-center"></dxi-column>
+              <dxi-column dataField="workIndex" caption="Work Index" cssClass="text-center"></dxi-column>
+              <dxi-column dataField="status" caption="Status" [width]="150" cssClass="text-center"></dxi-column>
+              <dxi-column dataField="createDate" caption="Create Date" [width]="140" cssClass="text-center"></dxi-column>
+              <dxi-column dataField="rate" caption="Rate" [width]="120" cssClass="text-center"></dxi-column>
+              <dxi-column [width]="50"
+                          [allowFiltering]="false"
+                          [allowSorting]="false"
+                          cssClass="text-center"
+                          cellTemplate="cellTemplate"></dxi-column>
+              <dxo-scrolling mode="virtual"></dxo-scrolling>
+              <dxo-sorting mode="single"></dxo-sorting>
+              <div *dxTemplate="let data of 'cellTemplate'">
+                <button type="button" class="btn btn-text-type" title="close" (click)="cancelWork(data)">
+                  <i class="fal fa-times-circle" aria-hidden="true"></i>
+                  <span class="sr-only">close</span>
+                </button>
+              </div>
+            </dx-data-grid>
+          </div>
+
+          <div class="mt-3">
+            <h5 class="h6">{{'renewal2017.currentErrorList' | translate}}</h5>
+            <dx-data-grid
+              id="table-grid"
+              class="gridSelect"
+              [dataSource]="dataSource.errorLog"
+              [height]="280"
+              [columnResizingMode]="'nextColumn'"
+              [allowColumnResizing]="true"
+              >
+              <dxo-filter-row [visible]="false"></dxo-filter-row>
+              <dxo-header-filter [visible]="false"></dxo-header-filter>
+              <dxi-column dataField="errLogId" caption="Error ID" [width]="120" cssClass="text-center"></dxi-column>
+              <dxi-column dataField="ocurTm" caption="Occurrence Time" [width]="170" cssClass="text-center"></dxi-column>
+              <dxi-column dataField="errTp" caption="Error Type" cssClass="text-center"></dxi-column>
+              <dxo-scrolling mode="virtual"></dxo-scrolling>
+              <dxo-sorting mode="single"></dxo-sorting>
+            </dx-data-grid>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal-footer text-right">
+  <button type="button" class="btn btn-light btn-rounded"
+          (click)="_activeModal.close('Close Click')"> {{'common.close' | translate}}</button>
+</div>

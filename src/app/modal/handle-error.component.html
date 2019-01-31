@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <h3 class="modal-title">Error</h3>
+        <button type="button" class="close" aria-label="Close"
+        (click)="_activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <p>{{'renewal2017.p.err-message-1' | translate}}</p>
+    <p>{{'renewal2017.p.err-message-2' | translate}}</p>
+    <p>{{'renewal2017.p.err-message-3' | translate}} <span class="text-info">[{{data}}]</span></p>
+</div>
+<div class="modal-footer text-right">
+    <button
+        type="button"
+        class="btn btn-md btn-secondary btn-rounded"
+        (click)="_activeModal.close('Confirm')">
+        {{'common.ok' | translate}}
+    </button>
+</div>

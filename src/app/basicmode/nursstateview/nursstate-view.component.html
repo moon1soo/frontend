@@ -1,0 +1,69 @@
+<div class="tab-inner-area">
+	<form [formGroup]="nursStateForm">
+        <div class="col-sm-12 form-line">
+            <!-- 기록작성일 -->
+            <div class="form-group row">
+                <label for="nursState-2" class="col-sm-2 col-form-label">
+                    {{'renewal2017.nurs.common.date' |  translate}}
+                </label>
+                <div class="col-sm-5">
+                    <!-- <dashboard-datepicker
+						(secDate)="selectDate($event)" [secCode]="'datepicker-period'"
+						[storageDate]="storageDate">
+					</dashboard-datepicker> -->
+					<daterangepicker
+						(secDate)="selectDate($event)" [secCode]="'datepicker-period'"
+						[storageDate]="storageDate">
+					</daterangepicker>
+				</div>
+                <label for="nursState-2" class="col-sm-2 col-form-label label-border">
+					{{'renewal2017.nurs.dept.title' |  translate}}
+				</label>				
+				<div class="col-sm-4">
+					<div class="select-sm">
+						<ss-multiselect-dropdown 
+							*ngIf="myOptions.length"
+							[options]="myOptions" 
+							[texts]="myTexts"
+							[settings]="mySettings"
+							formControlName="dept1"
+							[(ngModel)]="nursStateData.dept1"
+							(ngModelChange)="onChange($event)"
+							class="input-date-range">
+						</ss-multiselect-dropdown>
+					</div>
+				</div>					              
+            </div>
+        </div>
+	</form>
+	<ngb-tabset class="table-list" 
+		[destroyOnHide]="true">	
+		<!-- 간호진술문 -->
+		<ngb-tab>
+			<ng-template ngbTabTitle>
+				{{'renewal2017.nurs.statement.statement.title' | translate}}
+			</ng-template>
+			<ng-template ngbTabContent>
+				<nurs-state-search></nurs-state-search>
+			</ng-template>
+		</ngb-tab>		
+		<!-- 진술문 속성(EAV) -->
+		<ngb-tab [disabled]="isStateExists">
+			<ng-template ngbTabTitle>
+				{{'renewal2017.nurs.statement.eav.title' | translate}}
+			</ng-template>
+			<ng-template ngbTabContent>
+				<nurs-state-eav-search></nurs-state-eav-search>
+			</ng-template>
+		</ngb-tab>   
+		<!-- 간호기록부서 -->
+		<!-- <ngb-tab>
+			<ng-template ngbTabTitle>
+				{{'renewal2017.nurs.dept.title' | translate}}
+			</ng-template>
+			<ng-template ngbTabContent>
+				<nurs-dept-search></nurs-dept-search>
+			</ng-template>
+		</ngb-tab> -->
+	</ngb-tabset>
+</div>

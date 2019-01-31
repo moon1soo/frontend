@@ -1,0 +1,41 @@
+<dx-data-grid 
+    id="sur-medical-server"
+    class="gridContainer floor-420"
+    [dataSource]="dataSource"
+    [columnResizingMode]="'nextColumn'" [allowColumnResizing]="true"
+    (onContentReady)="onContentReady($event)"
+    (onSelectionChanged)="onSelectionChanged($event)"
+    (onRowClick)="onRowClick($event)"
+    (onToolbarPreparing)="onToolbarPreparing($event)">
+    <dxo-filter-row 
+        [visible]="true"></dxo-filter-row>
+    <dxo-header-filter 
+        [visible]="true"></dxo-header-filter>
+    <dxo-search-panel 
+        [visible]="true" 
+        [width]="240" 
+        placeholder="Search..."></dxo-search-panel>
+    <dxi-column dataField="medDeptCd" caption="{{'research.surgery.dept.code' | translate}}" [width]="130" cssClass="text-center"></dxi-column>
+    <dxi-column dataField="medDeptNm" caption="{{'research.surgery.dept.local.name' | translate}}"></dxi-column>
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+    <dxo-selection
+        mode="multiple"
+       [selectAllMode]="allMode"
+        showCheckBoxesMode="onClick">
+    </dxo-selection>
+    <dxo-sorting mode="single"></dxo-sorting>   
+
+    <div *dxTemplate="let data of 'totalCount'">
+        <h3 class="title-grid-sub">
+            {{'research.surgery.dept.search' | translate}}
+        </h3>
+        <div class="informer">
+            {{'research.search.result.0' | translate}}: <strong>{{resultCount}} / {{totalCount}}</strong>{{'common.cnt' | translate}}
+        </div>
+    </div>
+</dx-data-grid>
+<div *ngIf="loading" class="blind-curton">
+    <div class="load-spinner">
+        <i class="fal fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+    </div>
+</div>

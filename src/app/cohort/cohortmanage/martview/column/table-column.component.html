@@ -1,0 +1,79 @@
+<div class="dx-viewport demo-container parentDiv" style="margin-left: 30px;margin-right: 30px;margin-top:40px;height: 100%;">
+  <div class="row dx-datagrid-title" style="margin-top:16px;margin-bottom: 7px;">
+    <div class="col-6"><h5>{{'cohort.mart.table.column.dlg-title' | translate}}</h5></div>
+    <div class="col-6 text-right">
+      <button type="button" class="btn btn-light btn-sm" (click)="addColumn()">
+        <i class="fal fa-save" aria-hidden="true"></i>
+        {{'cohort.mart.table.add' | translate}}
+      </button>
+    </div>
+    <!--span class="input-material headline col-12" style="height: 10px;margin-bottom: 10px;"></span//-->
+  </div>
+  <div style="height:100%;overflow-y:auto;">
+  <table class="table table-hover demo-table-search table-responsive-blockd">
+    <thead>
+    <tr>
+      <th>{{'cohort.mart.table.column.col_sort' | translate}}</th>
+      <!--th>{{'cohort.mart.table.column.col_grp' | translate}}</th//-->
+      <th>{{'cohort.mart.table.column.col_nm' | translate}}</th>
+      <th>{{'cohort.mart.table.column.col_tp' | translate}}</th>
+      <th>{{'cohort.mart.table.column.col_size' | translate}}</th>
+      <th>{{'cohort.mart.table.column.col_src' | translate}}</th>
+      <!--th>{{'cohort.share' | translate}}</th//-->
+      <th>{{'cohort.mart.table.column.col_visible' | translate}}</th>
+      <th>{{'cohort.mart.table.column.col_anonymous' | translate}}</th>
+      <th>{{'cohort.mart.table.column.col_edit' | translate}}</th>
+      <th>{{'cohort.mart.table.column.col_pk' | translate}}</th>
+      <th>{{'cohort.mart.table.column.col_cnte' | translate}}</th>
+      <th>{{'cohort.date' | translate}}</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody *ngIf ="dataSource">
+    <tr *ngFor="let column of dataSource; let idx = index">
+      <td>{{column.COL_SORT}}</td>
+      <!--td>{{column.GRP_NM}}</td//-->
+      <td>{{column.COL_NM}}</td>
+      <td>{{column.COL_TP}}</td>
+      <td>{{column.COL_SIZE}}</td>
+      <td>{{column.COL_SRC}}</td>
+      <!--td>{{column.COL_SHARE}}</td//-->
+      <td>{{column.COL_VISIBLE}}</td>
+      <td>{{column.COL_ANONYMOUS}}</td>
+      <td>{{column.COL_EDIT}}</td>
+      <td>{{column.COL_ISPK}}</td>
+      <td>{{column.COL_CNTE}}</td>
+      <td>{{column.LOAD_DTM}}</td>
+      <td>
+        <button type="button"
+                class="btn btn-text-type"
+                ngbTooltip="{{'research.modify' | translate}}"
+                (click)="editColumn(idx)" >
+          <i class="fal fa-edit" aria-hidden="true"></i>
+          <span class="sr-only">{{'research.modify' | translate}}</span>
+        </button>
+        <button type="button"
+                class="btn btn-text-type"
+                ngbTooltip="{{'cohort.manage' | translate}}"
+                (click)="manageColumn(idx)" >
+          <i class="fal fa-code" aria-hidden="true"></i>
+          <span class="sr-only">{{'cohort.manage' | translate}}</span>
+        </button>
+        <button type="button"
+                class="btn btn-text-type"
+                ngbTooltip="{{'research.delete' | translate}}"
+                (click)="deleteColumn(idx)" >
+          <i class="fal fa-trash" aria-hidden="true"></i>
+          <span class="sr-only">{{'research.delete' | translate}}</span>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+    <tbody *ngIf="!dataSource || dataSource.length <= 0">
+    <tr>
+      <td class="text-center" colspan="12">No Data.</td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<form [formGroup]="rgepForm" (ngSubmit)="submitForm()" (keypress)="onKeyPress($event)">
+    <div class="modal-header">
+        <h3 class="modal-title">
+            {{'cohort.mart.table.regularExpress.rgep.dlg-title' | translate}}
+        </h3>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Close Click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" style="padding-top:40px;">
+      <div class="modal-text" style="margin-bottom:40px;">
+        <h5>{{data.title}}</h5> {{'cohort.mart.table.regularExpress.rgep.info' | translate}}
+      </div>
+      <input
+          type="text"
+          class="form-control angular-material"
+          formControlName="RGEP_NM"
+          [(ngModel)]="RGEP_NM"
+          placeholder="{{'cohort.mart.table.regularExpress.rgep.name' | translate}}"
+          id="RGEP_NM" style="margin-bottom:20px;" autofocus>
+        <textarea
+          maxlength="20000"
+          rows = "10"
+          class="form-control angular-material"
+          formControlName="RGEP_DATA"
+          [(ngModel)]="RGEP_DATA"
+          placeholder="{{'cohort.mart.table.regularExpress.rgep.data' | translate}}"
+          id="RGEP_DATA" style="margin-bottom:20px;height:180px;"></textarea>
+        <input
+          type="text"
+          class="form-control angular-material"
+          formControlName="RGEP_CNTE"
+          [(ngModel)]="RGEP_CNTE"
+          placeholder="{{'cohort.mart.table.regularExpress.rgep.cnte' | translate}}"
+          id="RGEP_CNTE" style="margin-bottom:20px;" >
+    </div>
+    <div class="modal-footer text-center">
+        <button
+            type="submit"
+            class="btn btn-md btn-info btn-rounded"
+            [disabled]="!rgepForm.valid">
+            {{'cohort.save' | translate}}
+        </button>
+        <button
+            type="button"
+            class="btn btn-md btn-light btn-rounded"
+            (click)="activeModal.close('no')">
+            {{'cohort.cancel' | translate}}
+        </button>
+    </div>
+</form>

@@ -1,0 +1,47 @@
+<div class="btn-close-side">
+    <button type="button" class="btn btn-dark btn-close-side" (click)="rgepManage()">
+        <i class="fal fa-plus" aria-hidden="true"></i>
+        <span class="sr-only">Plus</span>
+    </button>
+</div>
+<ngb-accordion
+  *ngIf="allCohorts"
+  #acc="ngbAccordion"
+  class="nav nav-sidebar powermode-sidebar flex-column"
+  [destroyOnHide]="true" style="overflow-y: auto;">
+  <ngb-panel
+    *ngFor="let cohort of allCohorts | cohortfilter; let idx = index"
+    class="collapse">
+    <ng-template ngbPanelTitle>
+      <span (click)="openMart(idx)">
+        <i class="fal fa-caret-right" aria-hidden="true"></i>
+        <span>{{cohort.CHT_NM}}</span>
+      </span>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <ul class="nav nav-sidebar flex-column">
+        <!-- Home -->
+        <li class="sidebar-list-item" style="height:40px;" *ngFor="let tbl of tbls | viewfilter:cohort.CHT_ID">
+          <a class="sidebar-list-link" routerLinkActive="active" (click)="openTable(tbl.TBL_ID,$event,tbl.TBL_SFX)" id="{{tbl.TBL_SFX}}">
+            <i class="fal fa-table" aria-hidden="true"
+               ngbTooltip="{{tbl.PSO_CNTE}}"
+               container="body"
+               placement="right"></i>
+            <span style="color: #cecdd2;">FT_COH_PRO_{{tbl.TBL_SFX}}</span>
+          </a>
+        </li>
+      </ul>
+      <!--ul class="draggable-item-list">
+        <li
+          *ngFor="let tbl of tbls | viewfilter:cohort.CHT_ID"
+          [attr.data-cht-no]="cohort.CHT_ID"
+          [attr.data-cht-nm]="cohort.CHT_NM"
+          [attr.data-tbl-id]="tbl.TBL_ID"
+          [attr.data-tbl-nm]="tbl.PRO_NM"
+          class="powermode-sublist-item text-truncate" (click)="openTable(tbl.TBL_ID,$event)" routerLinkActive="active" style="margin-top: 6px;height:39px;padding-top: 10px;">
+          {{tbl.PRO_NM}}
+        </li>
+      </ul//-->
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

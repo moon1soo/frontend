@@ -1,0 +1,13 @@
+<div class="input-group input-date-range float-left mr-1">
+    <span class="input-group-addon"><i class="fal fa-calendar-plus-o" aria-hidden="true"></i></span>
+	<input type="text" 
+		#datepickerSet
+        id="daterangeStart"
+        daterangepicker
+        [(ngModel)]="displayDate"
+        [options]="options"
+        (selected)="selectedDate($event)"
+        (applyDaterangepicker)="applyDaterangepicker($event, picker)"
+        class="form-control" placeholder="YYYY-MM-DD ~ YYYY-MM-DD" />
+</div>
+

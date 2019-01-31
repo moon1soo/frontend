@@ -1,0 +1,100 @@
+<form [formGroup]="requestShareCohortForm" (ngSubmit)="submitForm()" (keypress)="onKeyPress($event)">
+    <div class="modal-header">
+        <h3 class="modal-title">
+            {{'cohort.request-share-cohort' | translate}}
+        </h3>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Close Click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" style="padding-top:40px;">
+      <div class="modal-text" style="margin-bottom:40px;">
+        <h5>{{data.title}}</h5> 코호트를 공유 요청하시겠습니까?<br>요청 사유를 입력하시고 익명화정보 또는 비익명화정보 권한과 수정권한, 자료 다운로드권한도 체크 해주세요.
+      </div>
+        <!-- <p>{{'cohort.request-share-reason' | translate}}{{data}}</p> -->
+        <input
+            type="text"
+            class="form-control angular-material"
+            formControlName="reasonCnte"
+            [(ngModel)]="reasonCnte"
+            placeholder="Input Reason"
+            id="reasonCnte" style="margin-bottom:20px;" autofocus>
+    </div>
+      <div class="modal-body">
+      <label class="custom-control custom-radio">
+        <input
+          class="custom-control-input"
+          type="radio"
+          value="Y"
+          formControlName="anonymous"
+          [(ngModel)]="anonymous"
+          checked
+          (click)="anonymousClicked($event)"
+        >
+        <span class="custom-control-indicator"></span>
+        <span style="display:grid;">
+          <i class="fal fa-eye-slash text-center mb-1"></i>
+          <span class="custom-control-description">
+            익명화정보(비식별정보)
+          </span>
+        </span>
+      </label>
+      <label class="custom-control custom-radio">
+        <input
+          class="custom-control-input"
+          type="radio"
+          value="N"
+          formControlName="anonymous"
+          [(ngModel)]="anonymous"
+          (click)="anonymousClicked($event)"
+        >
+        <span class="custom-control-indicator"></span>
+        <span style="display:grid;">
+          <i class="fal fa-eye text-center mb-1"></i>
+          <span class="custom-control-description">
+            비익명화정보(식별정보)
+          </span>
+        </span>
+      </label>
+    </div>
+    <div class="modal-body" >
+        <div class="form-check form-check-inline">
+          <label class="custom-control custom-checkbox">
+            <input
+              class="custom-control-input"
+              type="checkbox"
+              (change)="changedEditAuthority($event)">
+            <span class="custom-control-indicator"></span>
+            <span style="display:grid;width:76px;margin-top: -15px;"><i class="fal fa-edit text-center mb-1"></i>
+              <span class="custom-control-description text-center">수정권한 요청</span>
+            </span>
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <label class="custom-control custom-checkbox">
+            <input
+              class="custom-control-input"
+              type="checkbox"
+              (change)="changedDownloadAuthority($event)">
+            <span class="custom-control-indicator"></span>
+            <span style="display:grid;width:100px;margin-top: -15px;"><i class="fal fa-download text-center mb-1"></i>
+              <span class="custom-control-description text-center">다운로드권한 요청</span>
+            </span>
+          </label>
+        </div>
+    </div>
+    <div class="modal-footer text-center">
+        <button
+            type="submit"
+            class="btn btn-md btn-info btn-rounded"
+            [disabled]="!requestShareCohortForm.valid">
+            {{'cohort.request' | translate}}
+        </button>
+        <button
+            type="button"
+            class="btn btn-md btn-light btn-rounded"
+            (click)="activeModal.close('no')">
+            {{'cohort.cancel' | translate}}
+        </button>
+    </div>
+</form>

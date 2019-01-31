@@ -1,0 +1,31 @@
+<div class="tab-inner-area">
+    <div id="notice-manager" class="mt-5">
+        <div id="message" class="row ml-1 mr-1">
+            <dx-text-area
+                class="col-sm-12"
+                [height]="100"
+                [(value)]="message">
+            </dx-text-area>
+        </div>
+        <div id="toolbox" class="dx-fieldset row float-right">
+            <div class="dx-field">
+                <div class="dx-field-label">{{'renewal2017.label.useYn' | translate}}</div>
+                <div class="dx-field-value">
+                    <dx-select-box
+                        [dataSource]="ynList"
+                        [(value)]="yn">
+                    </dx-select-box>
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-value">
+                    <button
+                        class="btn btn-sm btn-light"
+                        (click)="onSave()">
+                        <i class="fal fa-save" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

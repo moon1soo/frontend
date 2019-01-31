@@ -1,0 +1,47 @@
+table {
+    th, td {
+        font-size: $font-tbl;
+    }
+}
+.draggable-tr {    
+    position: absolute;
+    z-index: 99;
+    // height: 160px;
+    // overflow: hidden;
+    td {
+        font-size: $font-sm;
+        color: $title-color;
+        padding: 5px;
+        background-color: $light-color;
+        opacity: 0.7;
+    }
+}
+.draggable-tr-one {
+    position: absolute;
+    z-index: 99;
+    .dx-selection {
+        display: none;
+    }
+    .dx-selection:first-child {
+        display: block;
+    }
+    td {
+        font-size: $font-sm;
+        color: $title-color;
+        padding: 5px;
+        background-color: $light-color;
+        opacity: 0.7;
+    }
+}
+
+.save-query {
+    background-color: $bg-gray-color-dark;
+    
+    .dx-row {
+        color: $text-color-save;
+    }
+    
+    .dx-datagrid-rowsview .dx-row:nth-of-type(even) {
+        background-color: $table-bg-gray;
+    }
+}

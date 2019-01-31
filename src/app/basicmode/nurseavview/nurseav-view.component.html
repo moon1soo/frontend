@@ -1,0 +1,59 @@
+<div class="tab-inner-area">
+	<form [formGroup]="nursEavForm">
+        <div class="col-sm-12 form-line">
+            <!-- 기록작성일 -->
+            <div class="form-group row">
+                <label for="nursEav-2" class="col-sm-2 col-form-label">
+                    {{'renewal2017.nurs.common.date' |  translate}}
+                </label>
+                <div class="col-sm-5">
+                    <!-- <dashboard-datepicker
+						(secDate)="selectDate($event)" [secCode]="'datepicker-period'"
+						[storageDate]="storageDate">
+					</dashboard-datepicker> -->
+					<daterangepicker
+						(secDate)="selectDate($event)" [secCode]="'datepicker-period'"
+						[storageDate]="storageDate">
+					</daterangepicker>
+                </div>                           
+                <label for="nursState-2" class="col-sm-2 col-form-label label-border">
+					{{'renewal2017.nurs.dept.title' |  translate}}
+				</label>				
+				<div class="col-sm-4">
+					<div class="select-sm">
+						<ss-multiselect-dropdown 
+							*ngIf="myOptions.length"
+							[options]="myOptions" 
+							[texts]="myTexts"
+							[settings]="mySettings"
+							formControlName="dept1"
+							[(ngModel)]="nursEavData.dept1"
+							(ngModelChange)="onChange($event)"
+							class="input-date-range">
+						</ss-multiselect-dropdown>
+					</div>
+				</div>
+            </div>
+        </div>
+	</form>	
+	
+	<nurs-eav-search></nurs-eav-search>
+		<!-- 용어(EAV)항목 -->
+		<!-- <ngb-tab [disabled]="isEavExists">
+			<ng-template ngbTabTitle>
+				{{'renewal2017.nurs.term.items.title' | translate}}
+			</ng-template>
+			<ng-template ngbTabContent>
+				<nurs-eav-items-search></nurs-eav-items-search>
+			</ng-template>
+        </ngb-tab> -->
+		<!-- 간호기록부서 -->
+		<!-- <ngb-tab>
+			<ng-template ngbTabTitle>
+				{{'renewal2017.nurs.dept.title' | translate}}
+			</ng-template>
+			<ng-template ngbTabContent>
+				<nurs-dept-search></nurs-dept-search>
+			</ng-template>
+		</ngb-tab> -->
+</div>

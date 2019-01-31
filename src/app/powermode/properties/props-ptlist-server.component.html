@@ -1,0 +1,59 @@
+<div class="power-props-inner">
+	<div class="form-group row floor">
+		<div class="col-12">
+			<button id="patient-0" class="btn btn-primary btn-md btn-rounded upload-btn" (click)="uploadPatients()">
+				<i class="fal fa-upload" aria-hidden="true"></i>
+				Upload Patients
+			</button>
+			<p>
+				<small class="text-warning">
+					{{'renewal2017.p.notice-limit-patient' | translate}}
+				</small>
+			</p>
+		</div>
+	</div>
+
+	<h2 class="h6">{{'renewal2017.concern-patient.title' | translate}}</h2>
+	<dx-tree-list
+		id="concern-powermode-server"
+		class="power-props-tbl tree"
+		[dataSource]="dataSource"
+		keyExpr="cncnPtNdSeq"
+    	parentIdExpr="uprCncnPtNdSeq"
+		[allowColumnResizing]="true"
+		(onNodesInitialized)="onNodesInitialized($event)"
+		(onSelectionChanged)="onSelectionChanged($event)"
+		(onContentReady)="onContentReady($event)"
+		itemsExpr="item"
+		dataStructure="tree"
+		[showRowLines]="true">
+		<dxo-filter-row 
+			[visible]="true"></dxo-filter-row>
+		<dxo-header-filter 
+			[visible]="true"></dxo-header-filter>
+		<dxi-column dataField="cncnPtNdCnte" caption="{{'renewal2017.concern-patient.title' | translate}}"></dxi-column>
+		<dxi-column dataField="ptNo" caption="{{'research.patient.no' | translate}}"></dxi-column>
+		<dxo-scrolling mode="virtual"></dxo-scrolling>
+		<dxo-selection
+			mode="multiple"
+			[selectAllMode]="allMode"
+			[recursive]="true"
+			showCheckBoxesMode="onClick">
+		</dxo-selection>
+		<dxo-sorting mode="single"></dxo-sorting>   
+
+		<div *dxTemplate="let data of 'totalCount'">
+			<h3 class="title-grid-sub float-left">
+				{{'renewal2017.concern-patient.title' | translate}}            
+				<span class="text-info ml-1" style="font-size: 13px !important;">관심 환자를 선택한 후 적용 버튼을 눌러주세요.</span>
+			</h3>
+			<button 
+				class="btn btn-light btn-sm ml-1 float-right" 
+				(click)="apply()">
+				<i class="fal fa-check" aria-hidden="true"></i>
+				{{'common.apply' | translate}}
+			</button>
+		</div>
+	</dx-tree-list>
+</div>
+

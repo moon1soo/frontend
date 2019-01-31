@@ -1,0 +1,4 @@
+{
+    "host": "http://10.193.5.249:8080/cri/",
+    "socket": "ws://10.193.5.249:8080/cri/wsep/websocket"
+}

@@ -1,0 +1,19 @@
+<div [ngClass]="">
+	<toolbar-layout 
+		[isMenuCollapsed]="isMenuCollapsed"
+		(toggle)="toggelMenu()">
+	</toolbar-layout>
+	<nav class="sidebar" [ngClass]="{'menu-collapsed': isMenuCollapsed}">
+		<sidebar-layout (toggle)="toggelMenu()"></sidebar-layout>
+	</nav>
+	<section class="container-fluid app-dark">
+		<div class="row">
+			<div class="main-wrapper" [ngClass]="{'menu-collapsed': isMenuCollapsed}">
+				<router-outlet></router-outlet>
+			</div>
+		</div>
+	</section>
+	<footer class="footer">
+		<div class="message" [ngClass]="{'menu-collapsed': isMenuCollapsed}">{{message}}</div>
+	</footer>
+</div>
